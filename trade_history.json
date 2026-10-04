@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "GRAPHITEBOOM",
+    "address": "4Zw9rdvuaW8coCGGPFigVgQD3rHqeqQiRdYNjj6PpEGb",
+    "buy_price": 8.441e-05,
+    "sell_price": 5.32e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.302570785451961,
+    "profit_usd": -3.6974292145480394,
+    "pnl_pct": -36.97429214548039,
+    "reason": "STOP_LOSS",
+    "closed_at": 1791146430.495833
+  },
+  {
+    "symbol": "CLANKER",
+    "address": "1TeRGrjWSpnSv8BFUjB7grc4vabanw3evaKRsNt79Vi",
+    "buy_price": 6.497e-05,
+    "sell_price": 3.856e-05,
+    "cost_usd": 10.0,
+    "proceeds": 5.935046944743728,
+    "profit_usd": -4.064953055256272,
+    "pnl_pct": -40.64953055256272,
+    "reason": "STOP_LOSS",
+    "closed_at": 1791146658.8189948
+  },
+  {
+    "symbol": "PHILJAK",
+    "address": "2vD4GNzzUsVkzAiNHGj8gQo5s6LvoktDWaYuewTjpump",
+    "buy_price": 5.651e-05,
+    "sell_price": 2.841e-06,
+    "cost_usd": 10.0,
+    "proceeds": 0.5027428773668378,
+    "profit_usd": -9.497257122633162,
+    "pnl_pct": -94.97257122633161,
+    "reason": "STOP_LOSS",
+    "closed_at": 1791146658.8620973
+  }
+]

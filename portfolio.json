@@ -1,0 +1,31 @@
+{
+  "cash": 62.74036060756253,
+  "positions": [
+    {
+      "address": "Fah6hS4tEx8MeHmDo4W3CVkbS7A2DiAZFzkXAfaDpump",
+      "name": "ALLINCAT",
+      "symbol": "ALLINCAT",
+      "buy_price": 4.562e-05,
+      "tokens_count": 219202.10434020165,
+      "cost_usd": 10.0,
+      "current_price": 4.54e-05,
+      "current_val": 9.951775537045155,
+      "target_tp_price": 6.1587e-05,
+      "target_sl_price": 3.8777e-05,
+      "opened_at": 1791146483.9021807
+    },
+    {
+      "address": "2RSsw9tntE1RmoiPnNFiu93EzQu2eLnCAzvZiqMSoatH",
+      "name": "0ath",
+      "symbol": "OATH",
+      "buy_price": 1.498e-05,
+      "tokens_count": 667556.7423230974,
+      "cost_usd": 10.0,
+      "current_price": 1.704e-05,
+      "current_val": 11.37516688918558,
+      "target_tp_price": 2.247e-05,
+      "target_sl_price": 1.0486e-05,
+      "opened_at": 1791146643.7932756
+    }
+  ]
+}
