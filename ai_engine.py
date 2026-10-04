@@ -10,8 +10,8 @@ def analyze_token(token_info):
         # Fallback dummy jika API key belum diset
         return {
             "action": "BUY",
-            "tp_multiplier": 1.2, # TP 20%
-            "sl_multiplier": 0.8, # SL 20%
+            "tp_multiplier": 1.08, # TP 8%
+            "sl_multiplier": 0.94, # SL 6%
             "reason": "Default AI mock logic"
         }
     

@@ -34,5 +34,41 @@
     "pnl_pct": -94.97257122633161,
     "reason": "STOP_LOSS",
     "closed_at": 1791146658.8620973
+  },
+  {
+    "symbol": "OATH",
+    "address": "2RSsw9tntE1RmoiPnNFiu93EzQu2eLnCAzvZiqMSoatH",
+    "buy_price": 1.498e-05,
+    "sell_price": 3.061e-05,
+    "cost_usd": 10.0,
+    "proceeds": 20.433911882510014,
+    "profit_usd": 10.433911882510014,
+    "pnl_pct": 104.33911882510012,
+    "reason": "TAKE_PROFIT",
+    "closed_at": 1791146728.4616334
+  },
+  {
+    "symbol": "UPTOBER",
+    "address": "8W8hXBka6r3mRQEunqFGyi6BRbSmZk937GH3p3Vvpump",
+    "buy_price": 5.373e-05,
+    "sell_price": 3.621e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.739251814628699,
+    "profit_usd": -3.260748185371301,
+    "pnl_pct": -32.60748185371301,
+    "reason": "STOP_LOSS",
+    "closed_at": 1791147306.70586
+  },
+  {
+    "symbol": "ShibaLisa",
+    "address": "G939riCWgdnZyRSZwJm44nPr1SocioKcWH41w8JLpump",
+    "buy_price": 0.0006652,
+    "sell_price": 0.0008287,
+    "cost_usd": 10.0,
+    "proceeds": 12.457907396271798,
+    "profit_usd": 2.457907396271798,
+    "pnl_pct": 24.57907396271798,
+    "reason": "TAKE_PROFIT",
+    "closed_at": 1791147468.9050615
   }
 ]
