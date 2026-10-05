@@ -1,4 +1,31 @@
 {
-  "cash": 83.32461505961513,
-  "positions": []
+  "cash": 60.246587491010004,
+  "positions": [
+    {
+      "address": "CwCcW5LgK1cEaQJcuHF9n5dKU9HsPYuwQeuXC1aYpump",
+      "name": "RELAY",
+      "symbol": "RELAY",
+      "buy_price": 4.873e-05,
+      "tokens_count": 205212.39482864764,
+      "cost_usd": 10.0,
+      "current_price": 4.873e-05,
+      "current_val": 10.0,
+      "target_tp_price": 5.75014e-05,
+      "target_sl_price": 4.4831600000000006e-05,
+      "opened_at": 1791216569.2574472
+    },
+    {
+      "address": "HpkDyHK7avch8TS3raZ6mifBjZoUHRgvWwgzRQL1RXFR",
+      "name": "Artifact Council",
+      "symbol": "AC",
+      "buy_price": 0.000111,
+      "tokens_count": 90090.09009009009,
+      "cost_usd": 10.0,
+      "current_price": 0.000111,
+      "current_val": 10.0,
+      "target_tp_price": 0.00013098,
+      "target_sl_price": 0.00010212,
+      "opened_at": 1791216586.9354014
+    }
+  ]
 }

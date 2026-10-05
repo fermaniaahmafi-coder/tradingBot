@@ -1,18 +1,18 @@
 {
-  "cash": 59.20843962455368,
+  "cash": 38.1598917482451,
   "positions": [
     {
-      "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
-      "name": "UsePackz",
-      "symbol": "PACKZ",
-      "buy_price": 2.525e-05,
-      "tokens_count": 396039.603960396,
+      "address": "Fo55PxWeNaUy8b8NHuynf4yc7fYx5Z1QrnDN4eDgSPAZ",
+      "name": "Super PePe X",
+      "symbol": "SPEPEX",
+      "buy_price": 1.986e-06,
+      "tokens_count": 5035246.727089627,
       "cost_usd": 10.0,
-      "current_price": 2.522e-05,
-      "current_val": 9.988118811881188,
-      "target_tp_price": 3.40875e-05,
-      "target_sl_price": 2.2725e-05,
-      "opened_at": 1791203192.2906344
+      "current_price": 1.843e-06,
+      "current_val": 9.279959718026182,
+      "target_tp_price": 2.6811000000000005e-06,
+      "target_sl_price": 1.74768e-06,
+      "opened_at": 1791216524.7536864
     }
   ]
 }

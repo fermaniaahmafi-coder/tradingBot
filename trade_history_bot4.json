@@ -1,1 +1,41 @@
-[]
+[
+  {
+    "symbol": "SH",
+    "address": "HVEyhCnbmSLWYmxmYC9gc2tvUDmWSm1ayeai4LVTpump",
+    "buy_price": 0.0002018,
+    "sell_price": 0.0001726,
+    "cost_usd": 10.0,
+    "proceeds": 8.553022794846383,
+    "profit_usd": -1.4469772051536172,
+    "pnl_pct": -14.469772051536179,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213015.3252392,
+    "closed_at": 1791213224.717768
+  },
+  {
+    "symbol": "SH",
+    "address": "HVEyhCnbmSLWYmxmYC9gc2tvUDmWSm1ayeai4LVTpump",
+    "buy_price": 0.0001848,
+    "sell_price": 0.0002115,
+    "cost_usd": 10.0,
+    "proceeds": 11.444805194805195,
+    "profit_usd": 1.4448051948051948,
+    "pnl_pct": 14.44805194805195,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791213267.0786865,
+    "closed_at": 1791213358.2460408
+  },
+  {
+    "symbol": "SH",
+    "address": "HVEyhCnbmSLWYmxmYC9gc2tvUDmWSm1ayeai4LVTpump",
+    "buy_price": 0.0002047,
+    "sell_price": 0.000155,
+    "cost_usd": 10.0,
+    "proceeds": 7.572056668295066,
+    "profit_usd": -2.4279433317049337,
+    "pnl_pct": -24.27943331704934,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213401.2993677,
+    "closed_at": 1791213446.9926562
+  }
+]

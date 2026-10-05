@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "symbol": "-\u203f-",
     "address": "2RqV5SWJ5FnCzkqB4XYS9jSeQAozEjUBeV8Ety3rpump",
     "buy_price": 5.726e-05,
@@ -13,6 +14,7 @@
     "closed_at": 1791200858.8390265
   },
   {
+    "id": 2,
     "symbol": "BRAIN",
     "address": "FiJ4gnd4dhqNeBKfS4E8wnERMEpjMPdUfJhu8foipump",
     "buy_price": 3.131e-05,
@@ -26,6 +28,7 @@
     "closed_at": 1791200858.8701217
   },
   {
+    "id": 3,
     "symbol": "ISAAC",
     "address": "2us1WG1j2UCqDy3T3rRZKoW3jHTfQRQvJ9AsGk9Jpump",
     "buy_price": 9.505e-06,
@@ -39,6 +42,7 @@
     "closed_at": 1791200905.0783448
   },
   {
+    "id": 4,
     "symbol": "BOND",
     "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
     "buy_price": 2.395e-05,
@@ -52,6 +56,7 @@
     "closed_at": 1791201004.4325914
   },
   {
+    "id": 5,
     "symbol": "ISAAC",
     "address": "2us1WG1j2UCqDy3T3rRZKoW3jHTfQRQvJ9AsGk9Jpump",
     "buy_price": 1.065e-05,
@@ -65,6 +70,7 @@
     "closed_at": 1791201059.1595232
   },
   {
+    "id": 6,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 8.65e-05,
@@ -78,6 +84,7 @@
     "closed_at": 1791201289.4979064
   },
   {
+    "id": 7,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 9.153e-05,
@@ -91,6 +98,7 @@
     "closed_at": 1791201332.0332274
   },
   {
+    "id": 8,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 7.177e-05,
@@ -104,6 +112,7 @@
     "closed_at": 1791201369.0059655
   },
   {
+    "id": 9,
     "symbol": "BOND",
     "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
     "buy_price": 2.497e-05,
@@ -117,6 +126,7 @@
     "closed_at": 1791201494.066703
   },
   {
+    "id": 10,
     "symbol": "VANTA",
     "address": "GBA7C3tPZNBH9U43GmqEgMEzToyMDqw4DABwbBxipump",
     "buy_price": 8.302e-05,
@@ -130,6 +140,7 @@
     "closed_at": 1791201591.621554
   },
   {
+    "id": 11,
     "symbol": "BOND",
     "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
     "buy_price": 2.012e-05,
@@ -143,6 +154,7 @@
     "closed_at": 1791201756.1401458
   },
   {
+    "id": 12,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 3.431e-05,
@@ -156,6 +168,7 @@
     "closed_at": 1791201756.2018642
   },
   {
+    "id": 13,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 5.145e-05,
@@ -169,6 +182,7 @@
     "closed_at": 1791201801.7406888
   },
   {
+    "id": 14,
     "symbol": "VANTA",
     "address": "GBA7C3tPZNBH9U43GmqEgMEzToyMDqw4DABwbBxipump",
     "buy_price": 0.0001019,
@@ -182,6 +196,7 @@
     "closed_at": 1791201836.1142533
   },
   {
+    "id": 15,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 4.586e-05,
@@ -195,6 +210,7 @@
     "closed_at": 1791201874.1665542
   },
   {
+    "id": 16,
     "symbol": "ISAAC",
     "address": "2us1WG1j2UCqDy3T3rRZKoW3jHTfQRQvJ9AsGk9Jpump",
     "buy_price": 1.49e-05,
@@ -208,6 +224,7 @@
     "closed_at": 1791201910.204893
   },
   {
+    "id": 17,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 3.948e-05,
@@ -221,6 +238,7 @@
     "closed_at": 1791201910.4541988
   },
   {
+    "id": 18,
     "symbol": "Trojan",
     "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
     "buy_price": 3.525e-05,
@@ -234,6 +252,7 @@
     "closed_at": 1791201940.0595584
   },
   {
+    "id": 19,
     "symbol": "VANTA",
     "address": "GBA7C3tPZNBH9U43GmqEgMEzToyMDqw4DABwbBxipump",
     "buy_price": 0.0001076,
@@ -247,6 +266,7 @@
     "closed_at": 1791202006.2661576
   },
   {
+    "id": 20,
     "symbol": "TIT",
     "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
     "buy_price": 7.483e-05,
@@ -260,6 +280,7 @@
     "closed_at": 1791202115.8294754
   },
   {
+    "id": 21,
     "symbol": "Sensei",
     "address": "CDZpLf9dfXFPcVYfhd5cpCfYAvZ19ZSnHvF8Whyb4Y7u",
     "buy_price": 1.29e-05,
@@ -273,6 +294,7 @@
     "closed_at": 1791202159.6714997
   },
   {
+    "id": 22,
     "symbol": "TIT",
     "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
     "buy_price": 5.837e-05,
@@ -286,6 +308,7 @@
     "closed_at": 1791202212.4364688
   },
   {
+    "id": 23,
     "symbol": "Sensei",
     "address": "CDZpLf9dfXFPcVYfhd5cpCfYAvZ19ZSnHvF8Whyb4Y7u",
     "buy_price": 1.045e-05,
@@ -299,6 +322,7 @@
     "closed_at": 1791202299.0283256
   },
   {
+    "id": 24,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 6.402e-05,
@@ -312,6 +336,7 @@
     "closed_at": 1791202376.5106509
   },
   {
+    "id": 25,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 5.032e-05,
@@ -325,6 +350,7 @@
     "closed_at": 1791202505.9065704
   },
   {
+    "id": 26,
     "symbol": "TIT",
     "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
     "buy_price": 6.027e-05,
@@ -338,6 +364,7 @@
     "closed_at": 1791202632.6382685
   },
   {
+    "id": 27,
     "symbol": "TIT",
     "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
     "buy_price": 6.232e-05,
@@ -351,6 +378,7 @@
     "closed_at": 1791202752.198189
   },
   {
+    "id": 28,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 3.672e-05,
@@ -364,6 +392,7 @@
     "closed_at": 1791202870.4054809
   },
   {
+    "id": 29,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 5.212e-05,
@@ -377,6 +406,7 @@
     "closed_at": 1791202915.783731
   },
   {
+    "id": 30,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 4.323e-05,
@@ -390,6 +420,7 @@
     "closed_at": 1791202962.2367494
   },
   {
+    "id": 31,
     "symbol": "Sensei",
     "address": "CDZpLf9dfXFPcVYfhd5cpCfYAvZ19ZSnHvF8Whyb4Y7u",
     "buy_price": 3.002e-06,
@@ -403,6 +434,7 @@
     "closed_at": 1791203115.5011053
   },
   {
+    "id": 32,
     "symbol": "TIT",
     "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
     "buy_price": 8.592e-05,
@@ -416,6 +448,7 @@
     "closed_at": 1791203150.9059412
   },
   {
+    "id": 33,
     "symbol": "PACKZ",
     "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
     "buy_price": 3.044e-05,
@@ -429,6 +462,7 @@
     "closed_at": 1791203183.3393474
   },
   {
+    "id": 34,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 4.474e-05,
@@ -442,6 +476,7 @@
     "closed_at": 1791203231.3947926
   },
   {
+    "id": 35,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 2.429e-05,
@@ -455,6 +490,7 @@
     "closed_at": 1791203430.384682
   },
   {
+    "id": 36,
     "symbol": "Apiary",
     "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
     "buy_price": 5.252e-05,
@@ -468,6 +504,7 @@
     "closed_at": 1791203464.211813
   },
   {
+    "id": 37,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 4.945e-05,
@@ -481,6 +518,7 @@
     "closed_at": 1791203464.23581
   },
   {
+    "id": 38,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 2.799e-05,
@@ -494,6 +532,7 @@
     "closed_at": 1791203582.1190753
   },
   {
+    "id": 39,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 1.725e-05,
@@ -507,6 +546,7 @@
     "closed_at": 1791203618.3178039
   },
   {
+    "id": 40,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 1.798e-05,
@@ -520,6 +560,7 @@
     "closed_at": 1791203657.9505575
   },
   {
+    "id": 41,
     "symbol": "NEWS",
     "address": "3K1U9rwWVFhSXoVJqJfLoujKpkn85Cve3T8mZuq4pump",
     "buy_price": 0.0001352,
@@ -533,6 +574,7 @@
     "closed_at": 1791203911.9528413
   },
   {
+    "id": 42,
     "symbol": "Web",
     "address": "6x4B4emuM8dLPhxkG6or7kAeM11oUG86Pr7bBmnopump",
     "buy_price": 2.375e-05,
@@ -546,6 +588,7 @@
     "closed_at": 1791203960.0416183
   },
   {
+    "id": 43,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 1.603e-05,
@@ -559,6 +602,7 @@
     "closed_at": 1791204105.5812767
   },
   {
+    "id": 44,
     "symbol": "CRIME",
     "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
     "buy_price": 2.253e-05,
@@ -572,6 +616,7 @@
     "closed_at": 1791204157.8471801
   },
   {
+    "id": 45,
     "symbol": "Web",
     "address": "6x4B4emuM8dLPhxkG6or7kAeM11oUG86Pr7bBmnopump",
     "buy_price": 4.275e-05,
@@ -585,6 +630,7 @@
     "closed_at": 1791204195.6449387
   },
   {
+    "id": 46,
     "symbol": "Web",
     "address": "6x4B4emuM8dLPhxkG6or7kAeM11oUG86Pr7bBmnopump",
     "buy_price": 6.978e-05,
@@ -598,6 +644,7 @@
     "closed_at": 1791204413.8002062
   },
   {
+    "id": 47,
     "symbol": "Web",
     "address": "6x4B4emuM8dLPhxkG6or7kAeM11oUG86Pr7bBmnopump",
     "buy_price": 6.869e-05,
@@ -611,6 +658,7 @@
     "closed_at": 1791204457.596584
   },
   {
+    "id": 48,
     "symbol": "Web",
     "address": "6x4B4emuM8dLPhxkG6or7kAeM11oUG86Pr7bBmnopump",
     "buy_price": 8.897e-05,
@@ -624,6 +672,7 @@
     "closed_at": 1791204690.180485
   },
   {
+    "id": 49,
     "symbol": "Web",
     "address": "6x4B4emuM8dLPhxkG6or7kAeM11oUG86Pr7bBmnopump",
     "buy_price": 6.021e-05,
@@ -637,6 +686,7 @@
     "closed_at": 1791204739.9482067
   },
   {
+    "id": 50,
     "symbol": "jelly",
     "address": "CyDJMENR6Sbtwj4erhuARNa5cNbeK92GpNAGyXLVpump",
     "buy_price": 0.0003924,
@@ -650,6 +700,7 @@
     "closed_at": 1791205020.238885
   },
   {
+    "id": 51,
     "symbol": "OFF",
     "address": "JNWePghAnPqWMpDvu2Tp1fyCWyxhqEcR6FC3Xjwpump",
     "buy_price": 9.076e-05,
@@ -663,6 +714,7 @@
     "closed_at": 1791205398.8825147
   },
   {
+    "id": 52,
     "symbol": "OFF",
     "address": "JNWePghAnPqWMpDvu2Tp1fyCWyxhqEcR6FC3Xjwpump",
     "buy_price": 0.0001318,
@@ -676,6 +728,7 @@
     "closed_at": 1791205500.2167618
   },
   {
+    "id": 53,
     "symbol": "NEWS",
     "address": "3K1U9rwWVFhSXoVJqJfLoujKpkn85Cve3T8mZuq4pump",
     "buy_price": 8.464e-05,
@@ -687,5 +740,474 @@
     "reason": "STOP_LOSS",
     "opened_at": 1791204709.8804193,
     "closed_at": 1791205826.2070575
+  },
+  {
+    "id": 54,
+    "symbol": "PACKZ",
+    "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
+    "buy_price": 2.525e-05,
+    "sell_price": 2.15e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.514851485148515,
+    "profit_usd": -1.4851485148514847,
+    "pnl_pct": -14.85148514851485,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791203192.2906344,
+    "closed_at": 1791212604.2303967
+  },
+  {
+    "symbol": "COINPUTER",
+    "address": "GSRkwgt5uioDBUm59nHVb67FS9aQMGAfrmnGZqeVpump",
+    "buy_price": 0.0004519,
+    "sell_price": 0.0003985,
+    "cost_usd": 10.0,
+    "proceeds": 8.818322637751715,
+    "profit_usd": -1.1816773622482852,
+    "pnl_pct": -11.81677362248285,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213024.7834108,
+    "closed_at": 1791213160.9780397
+  },
+  {
+    "symbol": "SOS",
+    "address": "J79Gug1W4NM4pFnCiiV1svJ2Hu61mmCxV9krNEvMGvy3",
+    "buy_price": 5.407e-05,
+    "sell_price": 4.51e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.341039393378953,
+    "profit_usd": -1.6589606066210472,
+    "pnl_pct": -16.589606066210475,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213017.01133,
+    "closed_at": 1791213221.050064
+  },
+  {
+    "symbol": "SOS",
+    "address": "J79Gug1W4NM4pFnCiiV1svJ2Hu61mmCxV9krNEvMGvy3",
+    "buy_price": 7.635e-05,
+    "sell_price": 0.0001024,
+    "cost_usd": 10.0,
+    "proceeds": 13.41191879502292,
+    "profit_usd": 3.4119187950229204,
+    "pnl_pct": 34.119187950229204,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791213279.8823278,
+    "closed_at": 1791213375.5838146
+  },
+  {
+    "symbol": "SH",
+    "address": "HVEyhCnbmSLWYmxmYC9gc2tvUDmWSm1ayeai4LVTpump",
+    "buy_price": 0.0001967,
+    "sell_price": 0.000155,
+    "cost_usd": 10.0,
+    "proceeds": 7.880020335536349,
+    "profit_usd": -2.119979664463651,
+    "pnl_pct": -21.199796644636507,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213285.6468956,
+    "closed_at": 1791213442.7368176
+  },
+  {
+    "symbol": "DAFTPUNK51",
+    "address": "J17koXnKcqLJCB4nU8doAE8PURo8ynVAFinQ49n8pump",
+    "buy_price": 0.0001431,
+    "sell_price": 0.0001275,
+    "cost_usd": 10.0,
+    "proceeds": 8.909853249475892,
+    "profit_usd": -1.0901467505241076,
+    "pnl_pct": -10.901467505241088,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213452.7694287,
+    "closed_at": 1791213470.4449701
+  },
+  {
+    "symbol": "DAFTPUNK51",
+    "address": "J17koXnKcqLJCB4nU8doAE8PURo8ynVAFinQ49n8pump",
+    "buy_price": 0.0001275,
+    "sell_price": 0.0001049,
+    "cost_usd": 10.0,
+    "proceeds": 8.227450980392158,
+    "profit_usd": -1.7725490196078422,
+    "pnl_pct": -17.725490196078436,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213475.7440975,
+    "closed_at": 1791213497.5580401
+  },
+  {
+    "symbol": "Bob",
+    "address": "6eaDDsqtzMUsnDxH3qGsiXb9RfahpwxjFood7iDbPint",
+    "buy_price": 4.394e-05,
+    "sell_price": 3.735e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.500227583067819,
+    "profit_usd": -1.4997724169321813,
+    "pnl_pct": -14.997724169321808,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213782.419908,
+    "closed_at": 1791213863.6316977
+  },
+  {
+    "symbol": "DAFTPUNK51",
+    "address": "J17koXnKcqLJCB4nU8doAE8PURo8ynVAFinQ49n8pump",
+    "buy_price": 0.0001049,
+    "sell_price": 7.516e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.1649189704480465,
+    "profit_usd": -2.8350810295519535,
+    "pnl_pct": -28.35081029551954,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213511.8105621,
+    "closed_at": 1791213971.5457723
+  },
+  {
+    "symbol": "RESCUE",
+    "address": "Djpjj1L5dg6ryh4cHAJfy7P8pvQtjefZfSriz7pCpump",
+    "buy_price": 5.106e-05,
+    "sell_price": 3.758e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.359968664316491,
+    "profit_usd": -2.640031335683509,
+    "pnl_pct": -26.400313356835092,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213744.4108746,
+    "closed_at": 1791213971.577402
+  },
+  {
+    "symbol": "SOLBORN",
+    "address": "26ZixeXtGBQe3DBrN4448oZaY5rnhwPrZNhAjZPopump",
+    "buy_price": 6.725e-05,
+    "sell_price": 5.506e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.187360594795539,
+    "profit_usd": -1.812639405204461,
+    "pnl_pct": -18.126394052044606,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213832.8090892,
+    "closed_at": 1791213971.6135373
+  },
+  {
+    "symbol": "SOLBORN",
+    "address": "26ZixeXtGBQe3DBrN4448oZaY5rnhwPrZNhAjZPopump",
+    "buy_price": 5.506e-05,
+    "sell_price": 7.46e-05,
+    "cost_usd": 10.0,
+    "proceeds": 13.548855793679623,
+    "profit_usd": 3.548855793679623,
+    "pnl_pct": 35.48855793679622,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791213984.9946299,
+    "closed_at": 1791214083.0281644
+  },
+  {
+    "symbol": "Bob",
+    "address": "6eaDDsqtzMUsnDxH3qGsiXb9RfahpwxjFood7iDbPint",
+    "buy_price": 5.009e-05,
+    "sell_price": 2.342e-05,
+    "cost_usd": 10.0,
+    "proceeds": 4.675583948891994,
+    "profit_usd": -5.324416051108006,
+    "pnl_pct": -53.24416051108006,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791213994.6989396,
+    "closed_at": 1791214083.0557492
+  },
+  {
+    "symbol": "AMM",
+    "address": "819sNSLxXnHzBVYReWEAqRJPFLtVEgNghrhrQk88pump",
+    "buy_price": 0.0001319,
+    "sell_price": 0.0001182,
+    "cost_usd": 10.0,
+    "proceeds": 8.96133434420015,
+    "profit_usd": -1.03866565579985,
+    "pnl_pct": -10.386656557998489,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791214049.9313664,
+    "closed_at": 1791214083.0880153
+  },
+  {
+    "symbol": "SOLBORN",
+    "address": "26ZixeXtGBQe3DBrN4448oZaY5rnhwPrZNhAjZPopump",
+    "buy_price": 6.516e-05,
+    "sell_price": 0.0001404,
+    "cost_usd": 10.0,
+    "proceeds": 21.546961325966848,
+    "profit_usd": 11.546961325966848,
+    "pnl_pct": 115.46961325966849,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791214214.5503278,
+    "closed_at": 1791214307.7142391
+  },
+  {
+    "symbol": "SOLBORN",
+    "address": "26ZixeXtGBQe3DBrN4448oZaY5rnhwPrZNhAjZPopump",
+    "buy_price": 7.758e-05,
+    "sell_price": 0.0001404,
+    "cost_usd": 10.0,
+    "proceeds": 18.097447795823665,
+    "profit_usd": 8.097447795823665,
+    "pnl_pct": 80.97447795823666,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791214318.0299108,
+    "closed_at": 1791214333.104576
+  },
+  {
+    "symbol": "AMM",
+    "address": "819sNSLxXnHzBVYReWEAqRJPFLtVEgNghrhrQk88pump",
+    "buy_price": 0.0001448,
+    "sell_price": 0.0001176,
+    "cost_usd": 10.0,
+    "proceeds": 8.121546961325967,
+    "profit_usd": -1.8784530386740332,
+    "pnl_pct": -18.784530386740332,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791214205.4976587,
+    "closed_at": 1791214357.9181867
+  },
+  {
+    "symbol": "SOLBORN",
+    "address": "26ZixeXtGBQe3DBrN4448oZaY5rnhwPrZNhAjZPopump",
+    "buy_price": 0.0001404,
+    "sell_price": 0.000106,
+    "cost_usd": 10.0,
+    "proceeds": 7.54985754985755,
+    "profit_usd": -2.45014245014245,
+    "pnl_pct": -24.5014245014245,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791214342.8846672,
+    "closed_at": 1791214357.9517553
+  },
+  {
+    "symbol": "AMM",
+    "address": "819sNSLxXnHzBVYReWEAqRJPFLtVEgNghrhrQk88pump",
+    "buy_price": 0.0001594,
+    "sell_price": 8.559e-05,
+    "cost_usd": 10.0,
+    "proceeds": 5.369510664993726,
+    "profit_usd": -4.630489335006274,
+    "pnl_pct": -46.304893350062734,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791214361.5380807,
+    "closed_at": 1791214391.5840585
+  },
+  {
+    "symbol": "SOLBORN",
+    "address": "26ZixeXtGBQe3DBrN4448oZaY5rnhwPrZNhAjZPopump",
+    "buy_price": 0.000113,
+    "sell_price": 0.0001497,
+    "cost_usd": 10.0,
+    "proceeds": 13.247787610619469,
+    "profit_usd": 3.2477876106194685,
+    "pnl_pct": 32.4778761061947,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791214447.1702185,
+    "closed_at": 1791214548.3708339
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.0002007,
+    "sell_price": 0.0001455,
+    "cost_usd": 10.0,
+    "proceeds": 7.249626307922273,
+    "profit_usd": -2.7503736920777273,
+    "pnl_pct": -27.50373692077727,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215203.0532641,
+    "closed_at": 1791215271.8351235
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.0001136,
+    "sell_price": 0.000167,
+    "cost_usd": 10.0,
+    "proceeds": 14.700704225352114,
+    "profit_usd": 4.700704225352114,
+    "pnl_pct": 47.00704225352113,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791215335.6015542,
+    "closed_at": 1791215352.8718708
+  },
+  {
+    "symbol": "solOS",
+    "address": "4MCXVvFkxuvcBsuUmnFqnao8J4TqrnNHKv9KAToYnXvS",
+    "buy_price": 1.767e-05,
+    "sell_price": 9.306e-06,
+    "cost_usd": 10.0,
+    "proceeds": 5.266553480475382,
+    "profit_usd": -4.733446519524618,
+    "pnl_pct": -47.334465195246175,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215159.8385553,
+    "closed_at": 1791215400.1344435
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.000167,
+    "sell_price": 0.0002349,
+    "cost_usd": 10.0,
+    "proceeds": 14.065868263473053,
+    "profit_usd": 4.065868263473053,
+    "pnl_pct": 40.65868263473054,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791215376.6544032,
+    "closed_at": 1791215516.8458161
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.0002349,
+    "sell_price": 8.693e-05,
+    "cost_usd": 10.0,
+    "proceeds": 3.700723712217965,
+    "profit_usd": -6.299276287782035,
+    "pnl_pct": -62.99276287782034,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215530.5030873,
+    "closed_at": 1791215553.4648762
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.0002312,
+    "sell_price": 8.546e-05,
+    "cost_usd": 10.0,
+    "proceeds": 3.6963667820069204,
+    "profit_usd": -6.303633217993079,
+    "pnl_pct": -63.03633217993079,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215562.1661592,
+    "closed_at": 1791215586.4616017
+  },
+  {
+    "symbol": "PUE",
+    "address": "6EMaiY15Q3Nw6ryn2jvMUXrKWS6cU1rBfmNiPfdtpump",
+    "buy_price": 4.267e-05,
+    "sell_price": 3.671e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.603234122334191,
+    "profit_usd": -1.3967658776658087,
+    "pnl_pct": -13.967658776658082,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215274.7326453,
+    "closed_at": 1791215616.5616322
+  },
+  {
+    "symbol": "lemonbob",
+    "address": "6FKwzYKmVyDT9CWAHuiidi5AFQBrVLdYJAhGmR6ACzpF",
+    "buy_price": 0.0001068,
+    "sell_price": 8.887e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.321161048689138,
+    "profit_usd": -1.678838951310862,
+    "pnl_pct": -16.788389513108616,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791214675.2117217,
+    "closed_at": 1791215759.8722482
+  },
+  {
+    "symbol": "LLM",
+    "address": "6UEXtQXShpAu9GUvyYirMNjSw6kpciKowRgepYKPic16",
+    "buy_price": 7.543e-05,
+    "sell_price": 6.252e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.288479384860135,
+    "profit_usd": -1.7115206151398645,
+    "pnl_pct": -17.11520615139864,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215768.2929137,
+    "closed_at": 1791215880.2599013
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.0002049,
+    "sell_price": 0.0002804,
+    "cost_usd": 10.0,
+    "proceeds": 13.684724255734505,
+    "profit_usd": 3.684724255734505,
+    "pnl_pct": 36.84724255734505,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791215865.2136533,
+    "closed_at": 1791215880.2903326
+  },
+  {
+    "symbol": "LLM",
+    "address": "6UEXtQXShpAu9GUvyYirMNjSw6kpciKowRgepYKPic16",
+    "buy_price": 7.525e-05,
+    "sell_price": 6.36e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.451827242524917,
+    "profit_usd": -1.5481727574750828,
+    "pnl_pct": -15.481727574750828,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215884.7513654,
+    "closed_at": 1791215912.3842642
+  },
+  {
+    "symbol": "LLM",
+    "address": "6UEXtQXShpAu9GUvyYirMNjSw6kpciKowRgepYKPic16",
+    "buy_price": 6.252e-05,
+    "sell_price": 4.545e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.269673704414587,
+    "profit_usd": -2.730326295585413,
+    "pnl_pct": -27.30326295585413,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791215918.4629722,
+    "closed_at": 1791215951.1016452
+  },
+  {
+    "symbol": "AGENCYSOL",
+    "address": "7sn1xUBbX4wWeHp3nk4w6zC9NsYE9mdVxoYeGtJnpump",
+    "buy_price": 0.0002804,
+    "sell_price": 0.0003635,
+    "cost_usd": 10.0,
+    "proceeds": 12.963623395149787,
+    "profit_usd": 2.963623395149787,
+    "pnl_pct": 29.636233951497864,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791215897.347448,
+    "closed_at": 1791216217.6734462
+  },
+  {
+    "symbol": "Agentry",
+    "address": "3qrsb66cNoXM4SoWR7oQVU78WeadnJx93aS1eRmETxtC",
+    "buy_price": 6.244e-05,
+    "sell_price": 0.0001075,
+    "cost_usd": 10.0,
+    "proceeds": 17.21652786675208,
+    "profit_usd": 7.216527866752081,
+    "pnl_pct": 72.16527866752081,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791216477.2162905,
+    "closed_at": 1791216507.9562104
+  },
+  {
+    "symbol": "RELAY",
+    "address": "CwCcW5LgK1cEaQJcuHF9n5dKU9HsPYuwQeuXC1aYpump",
+    "buy_price": 5.266e-05,
+    "sell_price": 4.336e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.233953665020888,
+    "profit_usd": -1.7660463349791122,
+    "pnl_pct": -17.660463349791115,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791216473.656506,
+    "closed_at": 1791216557.7961247
+  },
+  {
+    "symbol": "Agentry",
+    "address": "3qrsb66cNoXM4SoWR7oQVU78WeadnJx93aS1eRmETxtC",
+    "buy_price": 0.0001227,
+    "sell_price": 9.86e-06,
+    "cost_usd": 10.0,
+    "proceeds": 0.8035859820700897,
+    "profit_usd": -9.19641401792991,
+    "pnl_pct": -91.96414017929911,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791216517.6734388,
+    "closed_at": 1791216557.8286397
   }
 ]

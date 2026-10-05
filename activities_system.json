@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-10-05 15:09:26",
+    "event_type": "CONFIG",
+    "message": "Pengaturan AI diubah: AI_BASE_URL, AI_MODEL, AI_API_KEY",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-10-05 15:09:02",
+    "event_type": "CONFIG",
+    "message": "Pengaturan AI diubah: AI_BASE_URL, AI_MODEL, AI_API_KEY",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-10-05 15:00:12",
+    "event_type": "CONFIG",
+    "message": "Pengaturan AI diubah: AI_BASE_URL, AI_MODEL, AI_API_KEY",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-10-05 15:00:07",
+    "event_type": "CONFIG",
+    "message": "Pengaturan AI diubah: AI_BASE_URL, AI_MODEL, AI_API_KEY",
+    "details": {}
+  }
+]
