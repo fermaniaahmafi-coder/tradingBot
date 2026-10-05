@@ -754,14 +754,24 @@
                 <a href="/transactions" class="nav-pill-btn">Transactions</a>
             </div>
 
-            <!-- Mode Switcher -->
-            <div class="mode-switcher-capsule">
-                <button class="mode-btn active-test" id="btn-mode-testing" onclick="switchMode('testing')">
-                    🧪 Mode Testing
-                </button>
-                <button class="mode-btn" id="btn-mode-production" onclick="switchMode('production')">
-                    ⚡ Mode Production
-                </button>
+            <!-- Mode Switcher & Logout -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="mode-switcher-capsule">
+                    <button class="mode-btn active-test" id="btn-mode-testing" onclick="switchMode('testing')">
+                        🧪 Mode Testing
+                    </button>
+                    <button class="mode-btn" id="btn-mode-production" onclick="switchMode('production')">
+                        ⚡ Mode Production
+                    </button>
+                </div>
+                <a href="/logout" title="Keluar / Logout" style="display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; background: #fff1f2; border: 1px solid #fecdd3; border-radius: var(--pill-radius); color: var(--rose); text-decoration: none; font-size: 12px; font-weight: 700; transition: all 0.2s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Logout</span>
+                </a>
             </div>
         </nav>
 

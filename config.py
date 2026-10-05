@@ -20,3 +20,8 @@ class Config:
     DB_PATH = os.getenv("DB_PATH", "/home/trading/trading.db" if os.path.exists("/home/trading") else os.path.join(BASE_DIR, "trading.db"))
     DATA_FILE = os.getenv("DATA_FILE", "/home/trading/portfolio.json" if os.path.exists("/home/trading") else os.path.join(BASE_DIR, "portfolio.json"))
     HISTORY_FILE = os.getenv("HISTORY_FILE", "/home/trading/trade_history.json" if os.path.exists("/home/trading") else os.path.join(BASE_DIR, "trade_history.json"))
+
+    ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
+    ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "hermes123")
+    JWT_SECRET = os.getenv("JWT_SECRET", "hermes_solana_jwt_secret_key_987654321")
+    JWT_EXPIRY_HOURS = int(os.getenv("JWT_EXPIRY_HOURS", "72"))

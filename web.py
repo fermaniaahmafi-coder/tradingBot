@@ -2,11 +2,12 @@ import os
 import json
 import time
 import subprocess
-from flask import Flask, jsonify, request, render_template, send_file
+from flask import Flask, jsonify, request, render_template, send_file, redirect, make_response
 from config import Config
 from db_manager import get_wallet, set_wallet, get_positions, save_positions, get_trades, get_recent_activities, reset_db
 from bot_logger import log_event, get_recent_logs
 from scanner import get_token_details
+from auth import create_token, verify_token, login_required
 
 app = Flask(__name__)
 
@@ -106,28 +107,80 @@ def load_data_with_fallback(mode=None):
     return cash, positions, history, logs
 
 
+@app.route("/login")
+def login_page():
+    token = request.cookies.get("auth_token")
+    if token and verify_token(token):
+        return redirect("/")
+    return render_template("login.html")
+
+
+@app.route("/api/auth/login", methods=["POST"])
+def api_auth_login():
+    data = request.get_json(silent=True) or {}
+    username = data.get("username", "").strip()
+    password = data.get("password", "")
+    remember = data.get("remember", True)
+
+    if username == Config.ADMIN_USERNAME and password == Config.ADMIN_PASSWORD:
+        token = create_token(username)
+        max_age = (Config.JWT_EXPIRY_HOURS * 3600) if remember else None
+
+        resp = make_response(jsonify({
+            "success": True,
+            "message": "Login berhasil!",
+            "token": token,
+            "username": username
+        }))
+        resp.set_cookie(
+            "auth_token",
+            token,
+            max_age=max_age,
+            httponly=True,
+            samesite="Lax"
+        )
+        return resp
+
+    return jsonify({
+        "success": False,
+        "error": "Username atau password salah!"
+    }), 401
+
+
+@app.route("/logout")
+@app.route("/api/auth/logout")
+def logout():
+    resp = make_response(redirect("/login"))
+    resp.delete_cookie("auth_token")
+    return resp
+
+
 @app.route("/")
+@login_required
 def index():
     return render_template("dashboard.html")
 
 
 @app.route("/analytics")
+@login_required
 def analytics_page():
     return render_template("analytics.html")
 
 
-
 @app.route("/transactions")
+@login_required
 def transactions_page():
     return render_template("transactions.html")
 
 
 @app.route("/coin/<address>")
+@login_required
 def coin_detail(address):
     return render_template("coin.html")
 
 
 @app.route("/api/status")
+@login_required
 def api_status():
     state = get_bot_state()
     mode = request.args.get("mode", state.get("mode", "testing")).lower()
@@ -185,6 +238,7 @@ def api_status():
 
 
 @app.route("/api/analytics")
+@login_required
 def api_analytics():
     timeframe = request.args.get("timeframe", "all").lower()
     cash, positions, all_history, _ = load_data_with_fallback()
@@ -311,6 +365,7 @@ def api_analytics():
 
 
 @app.route("/api/export/transactions")
+@login_required
 def api_export_transactions():
     filter_type = request.args.get("filter", "all")
     search_query = request.args.get("search", "").strip().lower()
@@ -466,6 +521,7 @@ def api_export_transactions():
 
 
 @app.route("/api/coin/<address>")
+@login_required
 def api_coin(address):
     _, positions, history, _ = load_data_with_fallback()
 
@@ -509,6 +565,7 @@ def api_coin(address):
 
 
 @app.route("/api/control/<action>", methods=["POST"])
+@login_required
 def api_control(action):
     state = get_bot_state()
     current_mode = state.get("mode", "testing")
@@ -580,6 +637,7 @@ def api_control(action):
 
 
 @app.route("/api/control/sell/<address>", methods=["POST"])
+@login_required
 def api_control_sell(address):
     try:
         positions = get_positions()
