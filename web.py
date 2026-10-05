@@ -410,11 +410,11 @@ def api_status():
         "positions": positions,
         "history": history,
         "logs": logs,
-        "can_buy_slots": max(0, int(cash // Config.POSITION_SIZE)),
+        "can_buy_slots": max(0, int(cash // (5.0 if bot_id == "bot7" else Config.POSITION_SIZE))),
         "can_reset": True,
         "config": {
             "initial_balance": init_bal,
-            "position_size": Config.POSITION_SIZE,
+            "position_size": "Dynamic ($5-$25)" if bot_id == "bot7" else Config.POSITION_SIZE,
             "mode": mode
         }
     })

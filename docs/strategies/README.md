@@ -1,6 +1,6 @@
 # Dokumentasi Strategi & Persona Trading Bot (Multi-Bot Architecture)
 
-Repositori ini menjalankan 6 bot trading otomatis (Paper Trading) secara simultan di jaringan Solana dengan persona dan metodologi teknikal yang berbeda. Dokumentasi ini merinci filosofi trading, formula indikator, filter keamanan, aturan entry/exit, dan prompt LLM untuk masing-masing bot.
+Repositori ini menjalankan 7 bot trading otomatis (Paper Trading) secara simultan di jaringan Solana dengan persona dan metodologi teknikal yang berbeda. Dokumentasi ini merinci filosofi trading, formula indikator, filter keamanan, aturan entry/exit, dan prompt LLM untuk masing-masing bot.
 
 ---
 
@@ -14,6 +14,7 @@ Repositori ini menjalankan 6 bot trading otomatis (Paper Trading) secara simulta
 | **Bot 4** | **Conservative Trend** | Ultra selektif, likuiditas besar, win-rate tinggi | +8% s.d +15% | -4% s.d -7% | > $15,000 | 45 – 62 (Solid Stability) | EMA 9 > 21 + Volume > $20k |
 | **Bot 5** | **Moonshot Sniper** | Asymmetric risk/reward, menembak pam koin baru | +20% s.d +40% | -8% s.d -12% | > $3,000 | Fleksibel (< 72) | 5m Price Spike + MACD Cross |
 | **Bot 6** | **Hybrid Scalper** | Beli koreksi minor (dip), tp super cepat | +5% s.d +10% | -5% s.d -7% | > $5,000 | 32 – 52 (Pullback) | Menuju Lower BB |
+| **Bot 7** | **Autonomous AI Trader** | Autonomous agent (GLM-5.2), dynamic sizing ($5-$25), meta-regime & learning | +5% s.d +25% | -4% s.d -10% | > $5,000 | Adaptif AI | Multi-regime analysis |
 
 ---
 
@@ -46,3 +47,4 @@ Setiap bot menerima data candlestick (OHLCV) yang dihitung secara real-time dari
 - [Bot 4: Conservative Trend Follower](./bot4_conservative_trend_follower.md)
 - [Bot 5: High-Risk Moonshot Sniper](./bot5_high_risk_moonshot_sniper.md)
 - [Bot 6: Hybrid Reversion Scalper](./bot6_hybrid_reversion_scalper.md)
+- [Bot 7: Autonomous AI Trader (GLM-5.2)](./bot7_autonomous_ai_trader.md)

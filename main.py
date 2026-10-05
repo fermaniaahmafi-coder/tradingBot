@@ -105,8 +105,9 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
             
             # 2. Jika masih ada slot beli, scan token baru
             if portfolio.can_buy():
+                slots_info = f"Kas: ${portfolio.cash:.2f}" if bot_id == "bot7" else f"Sisa slot: {int(portfolio.cash // Config.POSITION_SIZE)}x"
                 print(f"[{bot_id.upper()} {time.strftime('%H:%M:%S')}] Mencari token potensial di Solana...")
-                log_event("SCAN", f"Memindai token (Sisa slot: {int(portfolio.cash // Config.POSITION_SIZE)}x)", bot_id=bot_id)
+                log_event("SCAN", f"Memindai token ({slots_info})", bot_id=bot_id)
                 
                 # Fetch tokens (scanner uses shared cache across all bots)
                 tokens = get_latest_tokens(limit=5)
@@ -128,15 +129,17 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
                         tp = decision.get("tp_multiplier", 1.25)
                         sl = decision.get("sl_multiplier", 0.85)
                         reason = decision.get("reason", "")
-                        print(f"-> Sinyal AI [{bot_id.upper()}]: BUY (TP: {tp}x, SL: {sl}x) Alasan: {reason}")
-                        log_event("AI_BUY", f"Sinyal BUY pada ${symbol} @ ${token['price_usd']:.6f} | TP: {tp}x, SL: {sl}x", {
+                        pos_size = decision.get("position_size", Config.POSITION_SIZE)
+                        print(f"-> Sinyal AI [{bot_id.upper()}]: BUY (Size: ${pos_size:.2f}, TP: {tp}x, SL: {sl}x) Alasan: {reason}")
+                        log_event("AI_BUY", f"Sinyal BUY pada ${symbol} @ ${token['price_usd']:.6f} | Size: ${pos_size:.2f} | TP: {tp}x, SL: {sl}x", {
                             "token": symbol,
                             "price": token["price_usd"],
+                            "position_size": pos_size,
                             "tp": tp,
                             "sl": sl,
                             "reason": reason
                         }, bot_id=bot_id)
-                        portfolio.buy(token, tp, sl)
+                        portfolio.buy(token, tp, sl, position_size=pos_size)
                     else:
                         reason = decision.get('reason', 'Tidak memenuhi kriteria persona')
                         print(f"-> Sinyal AI [{bot_id.upper()}]: SKIP ({reason})")

@@ -4,7 +4,7 @@ import time
 from config import Config
 from scanner import fetch_current_price
 from bot_logger import log_event
-from db_manager import get_wallet, set_wallet, get_positions, save_positions, add_trade, get_trades
+from db_manager import get_wallet, set_wallet, get_positions, save_positions, add_trade, get_trades, init_db
 
 class Portfolio:
     def __init__(self, bot_id="bot1"):
@@ -12,6 +12,10 @@ class Portfolio:
         self.cash = Config.INITIAL_BALANCE
         self.positions = []
         self.history = []
+        try:
+            init_db(self.bot_id)
+        except Exception:
+            pass
         self.load_state()
 
     def load_state(self):
@@ -35,22 +39,27 @@ class Portfolio:
         except Exception as e:
             print(f"[PORTFOLIO {self.bot_id}] Failed to save state: {e}")
 
-    def can_buy(self):
+    def can_buy(self, amount=None):
         self.cash = get_wallet(self.bot_id)
         self.positions = get_positions(self.bot_id)
+        min_amount = amount if amount is not None else (5.0 if self.bot_id == "bot7" else Config.POSITION_SIZE)
         return (
-            self.cash >= Config.POSITION_SIZE and 
+            self.cash >= min_amount and 
             len(self.positions) < Config.MAX_POSITIONS
         )
 
-    def buy(self, token, tp_multiplier, sl_multiplier):
-        if not self.can_buy():
+    def buy(self, token, tp_multiplier, sl_multiplier, position_size=None):
+        if position_size is not None and isinstance(position_size, (int, float)):
+            amount_usd = round(max(5.0, min(float(position_size), 25.0, self.cash)), 2)
+        else:
+            amount_usd = Config.POSITION_SIZE
+
+        if not self.can_buy(amount_usd):
             return False
         
         if any(p["address"] == token["address"] for p in self.positions):
             return False
 
-        amount_usd = Config.POSITION_SIZE
         buy_price = token["price_usd"]
         tokens_count = amount_usd / buy_price
         
@@ -72,14 +81,14 @@ class Portfolio:
         self.positions.append(position)
         self.save_state()
         
-        log_event("TRADE_BUY", f"Membeli ${position['symbol']} @ ${buy_price:.6f}", {
+        log_event("TRADE_BUY", f"Membeli ${position['symbol']} @ ${buy_price:.6f} (${amount_usd:.2f})", {
             "symbol": position["symbol"],
             "amount_usd": amount_usd,
             "buy_price": buy_price,
             "tp_price": position["target_tp_price"],
             "sl_price": position["target_sl_price"]
         }, bot_id=self.bot_id)
-        print(f"[PORTFOLIO {self.bot_id}] BUY: {token['symbol']} @ ${buy_price:.6f} | TP: ${position['target_tp_price']:.6f} | SL: ${position['target_sl_price']:.6f}")
+        print(f"[PORTFOLIO {self.bot_id}] BUY: {token['symbol']} @ ${buy_price:.6f} | Size: ${amount_usd:.2f} | TP: ${position['target_tp_price']:.6f} | SL: ${position['target_sl_price']:.6f}")
         return True
 
     def check_and_update_positions(self):

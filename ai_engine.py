@@ -83,6 +83,23 @@ STRATEGIES = {
 5. BUY HANYA JIKA SEMUA terpenuhi: (a) EMA 9 >= EMA 21 ATAU konsolidasi sehat, (b) MACD BULLISH atau baru cross-up, (c) RSI 35-55 (pullback sehat, bukan pucuk bukan jurang), (d) harga di Middle/Lower Bollinger Band area.
 6. Target Take Profit (TP): 1.08 - 1.12 (+8% s.d +12% hit-and-run).
 7. Stop Loss (SL): 0.93 - 0.95 (-7% s.d -5%)."""
+    },
+    "bot7": {
+        "name": "Autonomous AI Trader (GLM-5.2)",
+        "desc": "Autonomous Adaptive AI Agent didukung GLM-5.2: Dynamic sizing ($5-$25), adaptive TP/SL, meta-regime selection, dan belajar dari riwayat trade.",
+        "model": "cbai/glm-5.2",
+        "default_tp": 1.10,
+        "default_sl": 0.94,
+        "max_tp": 1.30,
+        "min_sl": 0.88,
+        "default_size": 10.0,
+        "prompt_rules": """
+1. Analisis kondisi token secara komprehensif (Tren, Likuiditas, Volume, RSI, MACD, Bollinger Bands).
+2. Tentukan Market Regime: SCALP (volatilitas stabil), MOMENTUM (breakout & lonjakan volume), atau REVERSAL (oversold bounce).
+3. Tentukan ukuran posisi secara dinamis (position_size: $5.00 s/d $25.00) dan skor keyakinan (confidence: 50-100%). Sizing lebih tinggi hanya saat sinyal sangat meyakinkan.
+4. Target Take Profit (TP): 1.05 - 1.25 (+5% s.d +25%).
+5. Stop Loss (SL): 0.90 - 0.96 (-10% s.d -4%).
+6. SKIP jika likuiditas < $5,000, volume 24h < $8,000, atau sells jauh mendominasi buys (indikasi dump)."""
     }
 }
 
@@ -109,7 +126,52 @@ def analyze_token(token_info, bot_id="bot1"):
 - MACD Trend: {tech.get('macd', {}).get('trend')}
 - Bollinger Bands: {tech.get('bollinger_bands', {}).get('position')}"""
 
-    prompt = f"""
+    learning_str = ""
+    if bot_id == "bot7":
+        try:
+            from db_manager import get_trades, get_stats
+            stats = get_stats(bot_id="bot7")
+            trades = get_trades(5, bot_id="bot7")
+            if stats.get("total_trades", 0) > 0:
+                win_rate = (stats["win_count"] / stats["total_trades"] * 100)
+                recent_history = []
+                for t in trades[-3:]:
+                    recent_history.append(f"- {t.get('symbol')}: PnL {t.get('pnl_pct', 0):+.1f}% ({t.get('reason', '')})")
+                recent_lines = "\n".join(recent_history)
+                learning_str = f"""
+RIWAYAT BELAJAR BOT7 (Self-Reflection):
+- Total Trades: {stats['total_trades']} | Win Rate: {win_rate:.1f}% | Net Profit: ${stats['total_profit']:+.2f}
+- 3 Trade Terakhir:
+{recent_lines}
+(Gunakan evaluasi ini untuk menyesuaikan toleransi risiko & ukuran posisi Anda.)
+"""
+        except Exception:
+            pass
+
+    if bot_id == "bot7":
+        prompt = f"""
+Anda adalah bot sniper memecoin profesional Solana dengan persona strategi: **{strat['name']}**.
+Deskripsi Strategi: {strat['desc']}
+{learning_str}
+Analisis data token berikut:
+Nama: {token_info.get('name')} ({token_info.get('symbol')})
+Harga USD: {token_info.get('price_usd')}
+Likuiditas USD: {token_info.get('liquidity_usd')}
+Volume 24h: {token_info.get('volume_24h')}
+Transaksi 5m: {token_info.get('txns_5m')}
+Perubahan Harga 5m: {token_info.get('price_change_5m')}%
+
+INDIKATOR TEKNIKAL:
+{tech_str}
+
+Panduan Keputusan Khusus Bot Ini:
+{strat['prompt_rules']}
+
+Tulis balasan HANYA dalam format JSON (tanpa markdown blok):
+{{"action": "BUY", "position_size": 10.0, "tp_multiplier": {strat['default_tp']}, "sl_multiplier": {strat['default_sl']}, "confidence": 80, "regime": "SCALP", "reason": "Penjelasan singkat berdasarkan persona strategi"}}
+"""
+    else:
+        prompt = f"""
 Anda adalah bot sniper memecoin profesional Solana dengan persona strategi: **{strat['name']}**.
 Deskripsi Strategi: {strat['desc']}
 
@@ -136,8 +198,9 @@ Tulis balasan HANYA dalam format JSON (tanpa markdown blok):
         "Authorization": f"Bearer {Config.AI_API_KEY}"
     }
     
+    ai_model = strat.get("model", Config.AI_MODEL)
     payload = {
-        "model": Config.AI_MODEL,
+        "model": ai_model,
         "messages": [
             {"role": "system", "content": "You output only valid JSON."},
             {"role": "user", "content": prompt}
@@ -176,6 +239,12 @@ Tulis balasan HANYA dalam format JSON (tanpa markdown blok):
             else:
                 result["sl_multiplier"] = strat["default_sl"] if result.get("action") == "BUY" else 0
                 
+            pos_size = result.get("position_size")
+            if isinstance(pos_size, (int, float)):
+                result["position_size"] = round(max(5.0, min(float(pos_size), 25.0)), 2)
+            else:
+                result["position_size"] = strat.get("default_size", Config.POSITION_SIZE)
+
             return result
         else:
             print(f"[{bot_id.upper()} AI] Error {res.status_code}: {res.text}")
