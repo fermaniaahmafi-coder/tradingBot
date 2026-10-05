@@ -99,10 +99,13 @@ STRATEGIES = {
    - Bollinger Bands (20,2): Cari area pantulan diskon di Lower/Middle Band. Waspadai / kurangi agresivitas jika harga sudah menyentuh Upper Band jenuh.
    - Stochastic Oscillator (5,3,3): Trigger pembalikan momentum cepat! Sinyal BUY sangat kuat saat %K menembus ke atas %D (%K > %D) dari area oversold (< 25-30).
    - RSI (14): Filter keselamatan. Hindari beli saat RSI > 70 (overbought ekstrim) atau < 25 (free-fall tanpa konfirmasi reversal).
-2. EVALUASI MOMENTUM (ANTI-PARALISIS PASCA-LOSS BERUNTUN):
-   - Jika token atau bot memiliki riwayat loss beruntun, JANGAN tolak jika momentum pembalikan arah baru terkonfirmasi valid!
-   - Jika 2–3 indikator (EMA Uptrend, Lower BB Bounce, Stochastic Bullish Cross, RSI sehat 35-65) terpenuhi: TETAP LAKUKAN BUY.
-   - Manajemen Risiko saat Kehati-hatian: Gunakan position size kecil ($5.00 - $8.00), Stop Loss ketat (-4% s.d -6%), dan target TP cepat (+6% s.d +10%).
+2. PENGAMATAN OVERSELL & SIAP-SIAP BELI DENGAN KEHATI-HATIAN:
+   - Jika token atau bot sedang diobservasi pasca-loss beruntun: AMATI terus sampai indikator masuk fase oversold & siap-siap memantul (Stochastic %K cross-up %D dari area < 30, harga di Lower/Middle Band, RSI 25-48).
+   - Saat konfirmasi pantulan oversold aman ini terdeteksi: SIAP-SIAP BELI! Lakukan BUY dengan kehati-hatian tinggi:
+     * Position size terukur ($5.00 - $7.00).
+     * Stop Loss ketat (-4% s.d -5%) agar aman dari dump susulan.
+     * Target Take Profit cepat (+6% s.d +10%).
+   - Jangan biarkan kehati-hatian membuat bot tidak membeli lagi saat momentum pemulihan terbentuk!
 3. DINAMIKA POSITION SIZING ($5.00 s/d $25.00):
    - $5 - $8: Kondisi pasar volatil / pasca-loss streak / confidence 50-65% (tetap ambil peluang!).
    - $10 - $15: Konfirmasi 2-3 indikator scalping standar / confidence 65-80%.

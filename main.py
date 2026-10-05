@@ -55,14 +55,69 @@ def update_blacklist_after_trade(symbol, profit_usd, blacklist):
         save_blacklist(blacklist)
         return entry["losses"] >= 3
 
+def check_oversold_readiness(token_info):
+    """
+    Evaluasi teknikal apakah koin dalam pengamatan sudah memasuki
+    fase oversold dan siap-siap beli dengan konfirmasi indikator kehati-hatian.
+    Kombinasi:
+    - Stochastic (5,3,3): Oversold (< 30) & mulai berbalik naik (%K > %D / bounce)
+    - Bollinger Bands: Harga di dekat Lower Band atau memantul ke Inside Bands
+    - RSI (14): Di zona diskon (25 - 48)
+    - Kehati-hatian: Transaksi jual tidak brutal (bukan dump), perubahan harga stabil
+    """
+    if not token_info or not token_info.get("technicals"):
+        return False, "Data teknikal belum lengkap"
+        
+    tech = token_info["technicals"]
+    stoch = tech.get("stochastic") or {}
+    bb = tech.get("bollinger_bands", {}).get("position", "")
+    rsi = tech.get("rsi", 50)
+    txns = token_info.get("txns_5m") or {}
+    price_change = token_info.get("price_change_5m", 0)
+    
+    # 1. Kriteria Oversold / Diskon
+    is_stoch_oversold = stoch.get("k", 50) < 30 or stoch.get("state") == "OVERSOLD"
+    is_stoch_turning_up = stoch.get("trend") == "BULLISH" or stoch.get("bounce_signal", False)
+    is_bb_discount = bb in ("NEAR_LOWER", "INSIDE_BANDS")
+    is_rsi_discount = 25 <= rsi <= 48
+    
+    # 2. Kehati-hatian (Safety against dump / falling knife)
+    buys = txns.get("buys", 0)
+    sells = txns.get("sells", 0)
+    not_dumping = sells == 0 or (buys / max(1, sells)) >= 0.5
+    not_crashing = price_change >= -4.0
+    
+    score = 0
+    reasons = []
+    if is_stoch_oversold and is_stoch_turning_up:
+        score += 2
+        reasons.append("Stoch oversold bounce")
+    elif is_stoch_turning_up:
+        score += 1
+        reasons.append("Stoch bullish cross")
+        
+    if is_bb_discount:
+        score += 1
+        reasons.append(f"BB {bb}")
+        
+    if is_rsi_discount:
+        score += 1
+        reasons.append(f"RSI {rsi} diskon")
+        
+    if not_dumping and not_crashing:
+        score += 1
+        reasons.append("Tekanan jual reda")
+        
+    ready = (score >= 3) and not_dumping and not_crashing
+    return ready, ", ".join(reasons)
+
 def is_blacklisted(symbol, blacklist, token_info=None):
     """
     Check if token is blacklisted (3+ consecutive losses).
-    Features:
-    1. Cooldown Timer: Max 1 hour (3600s) blacklisting duration.
-    2. Momentum Override: If 2+ momentum indicators confirm (EMA Uptrend,
-       Lower BB Bounce, Stochastic Bullish / Bounce, healthy RSI),
-       allow AI to evaluate and do not blindly hard-skip.
+    Menggunakan mode PENGAMATAN DINAMIS (bukan timer 1 jam statis):
+    Token yang loss beruntun diawasi hingga memasuki kondisi oversold &
+    terkonfirmasi pantulan indikator (Stochastic, BB, RSI, safety check).
+    Saat siap-siap beli, token otomatis diloloskan ke AI untuk dieksekusi hati-hati.
     """
     entry = blacklist.get(symbol)
     if not entry:
@@ -72,31 +127,13 @@ def is_blacklisted(symbol, blacklist, token_info=None):
     if losses < 3:
         return False
 
-    # 1. Cooldown Check (1 hour TTL)
-    if isinstance(entry, dict):
-        updated_at = entry.get("updated_at", 0)
-        if time.time() - updated_at > 3600:
-            return False
+    # Cek apakah token sudah memasuki area oversold & siap-siap beli
+    if token_info:
+        ready, reasons = check_oversold_readiness(token_info)
+        if ready:
+            return False  # Siap-siap beli! Loloskan ke AI
 
-    # 2. Momentum Override Check
-    if token_info and token_info.get("technicals"):
-        tech = token_info["technicals"]
-        stoch = tech.get("stochastic") or {}
-        stoch_ok = stoch.get("bounce_signal", False) or (stoch.get("trend") == "BULLISH" and stoch.get("k", 50) < 70)
-        ma_trend = tech.get("moving_averages", {}).get("trend")
-        bb_pos = tech.get("bollinger_bands", {}).get("position")
-        rsi = tech.get("rsi", 50)
-
-        momentum_score = 0
-        if ma_trend == "UPTREND": momentum_score += 1
-        if stoch_ok: momentum_score += 1
-        if bb_pos in ("NEAR_LOWER", "INSIDE_BANDS"): momentum_score += 1
-        if 35 <= rsi <= 65: momentum_score += 1
-
-        if momentum_score >= 2:
-            return False  # Momentum Override active! Allow AI evaluation.
-
-    return True
+    return True  # Masih dalam masa pengamatan / belum ada konfirmasi oversold aman
 
 # Track trade outcomes per bot session (for real-time blacklist updates)
 recent_trades = defaultdict(list)  # {bot_id: [(symbol, profit_usd), ...]}
@@ -158,18 +195,19 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
                     if not portfolio.can_buy():
                         break
                     
-                    # Check blacklist FIRST before AI analysis (supports Cooldown & Momentum Override)
+                    # Check blacklist: Pengamatan Dinamis (Menunggu Oversell Siap-siap Beli)
                     symbol = token.get("symbol", "UNKNOWN")
                     if is_blacklisted(symbol, blacklist, token_info=token):
                         loss_cnt = blacklist[symbol].get("losses", blacklist[symbol]) if isinstance(blacklist[symbol], dict) else blacklist[symbol]
-                        print(f"[{bot_id.upper()}] SKIP ${symbol} - Token blacklisted ({loss_cnt} consecutive losses, cooldown aktif)")
-                        log_event("BLACKLIST", f"Skipped ${symbol} (blacklisted: {loss_cnt} losses)", bot_id=bot_id)
+                        print(f"[{bot_id.upper()} PENGAMATAN] ${symbol} ({loss_cnt}x loss) masih diobservasi: Menunggu kondisi oversell siap-siap beli...")
+                        log_event("WATCHING", f"Observasi ${symbol} ({loss_cnt}x loss): Menunggu konfirmasi oversell & pantulan aman", bot_id=bot_id)
                         continue
                     elif symbol in blacklist:
                         loss_cnt = blacklist[symbol].get("losses", blacklist[symbol]) if isinstance(blacklist[symbol], dict) else blacklist[symbol]
                         if loss_cnt >= 3:
-                            print(f"[{bot_id.upper()}] MOMENTUM OVERRIDE: ${symbol} ({loss_cnt} losses sebelumnya) menunjukkan momentum baru, diteruskan ke AI!")
-                            log_event("MOMENTUM_OVERRIDE", f"${symbol} dievaluasi ulang via Momentum Override", bot_id=bot_id)
+                            ready, reasons = check_oversold_readiness(token)
+                            print(f"[{bot_id.upper()} SIAP-SIAP BELI] ${symbol} masuk area oversell ({reasons}), diteruskan ke AI untuk eksekusi hati-hati!")
+                            log_event("OVERSOLD_READY", f"${symbol} siap beli dari oversell ({reasons})", bot_id=bot_id)
 
                     print(f"[{bot_id.upper()}] Menganalisis {symbol} (${token['price_usd']:.6f})...")
                     decision = analyze_token(token, bot_id=bot_id)
