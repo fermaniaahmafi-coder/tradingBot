@@ -83,6 +83,27 @@ def calculate_technical_indicators(ohlcv_list):
              'NEAR_LOWER' if curr_price <= bb_lower * 1.05 else 'INSIDE_BANDS'
     )
     
+    # Stochastic Oscillator (5, 3, 3) for fast scalping momentum & reversal
+    highs = [float(c[2]) for c in sorted_candles]
+    lows = [float(c[3]) for c in sorted_candles]
+    k_vals = []
+    for idx in range(n):
+        start_idx = max(0, idx - 5 + 1)
+        hh = max(highs[start_idx : idx + 1])
+        ll = min(lows[start_idx : idx + 1])
+        if hh == ll:
+            k = 50.0
+        else:
+            k = ((closes[idx] - ll) / (hh - ll)) * 100.0
+        k_vals.append(k)
+        
+    curr_k = round(k_vals[-1], 1)
+    recent_k = k_vals[-3:]
+    curr_d = round(sum(recent_k) / len(recent_k), 1)
+    stoch_state = 'OVERSOLD' if curr_k < 20 else ('OVERBOUGHT' if curr_k > 80 else 'NEUTRAL')
+    stoch_trend = 'BULLISH' if curr_k >= curr_d else 'BEARISH'
+    stoch_bounce = bool(curr_k < 35 and curr_k > curr_d)
+
     return {
         'candles': n,
         'rsi': round(rsi, 1),
@@ -91,9 +112,18 @@ def calculate_technical_indicators(ohlcv_list):
             'trend': macd_trend
         },
         'moving_averages': {
-            'trend': ma_trend
+            'trend': ma_trend,
+            'ema_9': round(ema_9, 8),
+            'ema_21': round(ema_21, 8)
         },
         'bollinger_bands': {
             'position': bb_pos
+        },
+        'stochastic': {
+            'k': curr_k,
+            'd': curr_d,
+            'state': stoch_state,
+            'trend': stoch_trend,
+            'bounce_signal': stoch_bounce
         }
     }

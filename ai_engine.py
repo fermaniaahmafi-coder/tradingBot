@@ -85,21 +85,30 @@ STRATEGIES = {
 7. Stop Loss (SL): 0.93 - 0.95 (-7% s.d -5%)."""
     },
     "bot7": {
-        "name": "Autonomous AI Trader (GLM-5.2)",
-        "desc": "Autonomous Adaptive AI Agent didukung GLM-5.2: Dynamic sizing ($5-$25), adaptive TP/SL, meta-regime selection, dan belajar dari riwayat trade.",
+        "name": "Autonomous AI Scalper (GLM-5.2)",
+        "desc": "Adaptive Scalper & Reversal Agent (GLM-5.2): Sinergi EMA 9/21, Bollinger Bands, Stochastic (5,3,3), RSI 14, dynamic sizing ($5-$25), dan momentum override.",
         "model": "cbai/glm-5.2",
         "default_tp": 1.10,
         "default_sl": 0.94,
-        "max_tp": 1.30,
+        "max_tp": 1.28,
         "min_sl": 0.88,
         "default_size": 10.0,
         "prompt_rules": """
-1. Analisis kondisi token secara komprehensif (Tren, Likuiditas, Volume, RSI, MACD, Bollinger Bands).
-2. Tentukan Market Regime: SCALP (volatilitas stabil), MOMENTUM (breakout & lonjakan volume), atau REVERSAL (oversold bounce).
-3. Tentukan ukuran posisi secara dinamis (position_size: $5.00 s/d $25.00) dan skor keyakinan (confidence: 50-100%). Sizing lebih tinggi hanya saat sinyal sangat meyakinkan.
-4. Target Take Profit (TP): 1.05 - 1.25 (+5% s.d +25%).
-5. Stop Loss (SL): 0.90 - 0.96 (-10% s.d -4%).
-6. SKIP jika likuiditas < $5,000, volume 24h < $8,000, atau sells jauh mendominasi buys (indikasi dump)."""
+1. SINERGI INDIKATOR SCALPING (M1/M5):
+   - EMA 9/21: Bias tren utama. Prioritaskan BUY saat Bullish (Harga > EMA 9 > EMA 21) atau golden cross.
+   - Bollinger Bands (20,2): Cari area pantulan diskon di Lower/Middle Band. Waspadai / kurangi agresivitas jika harga sudah menyentuh Upper Band jenuh.
+   - Stochastic Oscillator (5,3,3): Trigger pembalikan momentum cepat! Sinyal BUY sangat kuat saat %K menembus ke atas %D (%K > %D) dari area oversold (< 25-30).
+   - RSI (14): Filter keselamatan. Hindari beli saat RSI > 70 (overbought ekstrim) atau < 25 (free-fall tanpa konfirmasi reversal).
+2. EVALUASI MOMENTUM (ANTI-PARALISIS PASCA-LOSS BERUNTUN):
+   - Jika token atau bot memiliki riwayat loss beruntun, JANGAN tolak jika momentum pembalikan arah baru terkonfirmasi valid!
+   - Jika 2–3 indikator (EMA Uptrend, Lower BB Bounce, Stochastic Bullish Cross, RSI sehat 35-65) terpenuhi: TETAP LAKUKAN BUY.
+   - Manajemen Risiko saat Kehati-hatian: Gunakan position size kecil ($5.00 - $8.00), Stop Loss ketat (-4% s.d -6%), dan target TP cepat (+6% s.d +10%).
+3. DINAMIKA POSITION SIZING ($5.00 s/d $25.00):
+   - $5 - $8: Kondisi pasar volatil / pasca-loss streak / confidence 50-65% (tetap ambil peluang!).
+   - $10 - $15: Konfirmasi 2-3 indikator scalping standar / confidence 65-80%.
+   - $18 - $25: Setup prima (EMA 9>21 + Stoch Bounce + BB Support + Volume buy dominan) / confidence > 80%.
+4. TARGET TP: 1.05 - 1.25 (+5% s.d +25%), SL: 0.90 - 0.96 (-10% s.d -4%).
+5. SKIP JIKA: Likuiditas < $5k, volume 24h < $8k, transaksi jual nol (honeypot), atau momentum bearish tegas."""
     }
 }
 
@@ -120,11 +129,16 @@ def analyze_token(token_info, bot_id="bot1"):
     tech = token_info.get('technicals')
     tech_str = "Data teknikal tidak tersedia (koin terlalu baru)."
     if tech:
+        stoch = tech.get('stochastic') or {}
+        stoch_line = f"- Stochastic (5,3,3): %K {stoch.get('k')}, %D {stoch.get('d')} (State: {stoch.get('state')}, Trend: {stoch.get('trend')}, Bounce Reversal: {stoch.get('bounce_signal')})" if stoch else ""
+        ma_info = tech.get('moving_averages', {})
+        ema_details = f"EMA 9: {ma_info.get('ema_9')}, EMA 21: {ma_info.get('ema_21')}" if 'ema_9' in ma_info else ""
         tech_str = f"""
 - RSI (14): {tech.get('rsi')} ({tech.get('rsi_state')})
-- Trend MA (EMA 9/21): {tech.get('moving_averages', {}).get('trend')}
+- Trend MA (EMA 9/21): {ma_info.get('trend')} ({ema_details})
+- Bollinger Bands (20,2): {tech.get('bollinger_bands', {}).get('position')}
 - MACD Trend: {tech.get('macd', {}).get('trend')}
-- Bollinger Bands: {tech.get('bollinger_bands', {}).get('position')}"""
+{stoch_line}"""
 
     learning_str = ""
     if bot_id == "bot7":

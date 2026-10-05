@@ -34,9 +34,10 @@ def save_blacklist(blacklist):
 def update_blacklist_after_trade(symbol, profit_usd, blacklist):
     """
     Update blacklist after a trade completes.
-    Increment counter on loss, reset on win.
+    Increment counter on loss with timestamp, reset on win.
     Returns True if token should be blacklisted.
     """
+    now = time.time()
     if profit_usd > 0:
         # Win - reset counter
         if symbol in blacklist:
@@ -44,16 +45,58 @@ def update_blacklist_after_trade(symbol, profit_usd, blacklist):
             save_blacklist(blacklist)
         return False
     else:
-        # Loss - increment counter
-        blacklist[symbol] = blacklist.get(symbol, 0) + 1
+        # Loss - increment counter with timestamp
+        entry = blacklist.get(symbol, {"losses": 0, "updated_at": now})
+        if isinstance(entry, int):
+            entry = {"losses": entry, "updated_at": now}
+        entry["losses"] = entry.get("losses", 0) + 1
+        entry["updated_at"] = now
+        blacklist[symbol] = entry
         save_blacklist(blacklist)
-        if blacklist[symbol] >= 3:
-            return True
+        return entry["losses"] >= 3
+
+def is_blacklisted(symbol, blacklist, token_info=None):
+    """
+    Check if token is blacklisted (3+ consecutive losses).
+    Features:
+    1. Cooldown Timer: Max 1 hour (3600s) blacklisting duration.
+    2. Momentum Override: If 2+ momentum indicators confirm (EMA Uptrend,
+       Lower BB Bounce, Stochastic Bullish / Bounce, healthy RSI),
+       allow AI to evaluate and do not blindly hard-skip.
+    """
+    entry = blacklist.get(symbol)
+    if not entry:
         return False
 
-def is_blacklisted(symbol, blacklist):
-    """Check if token is blacklisted (3+ consecutive losses)"""
-    return blacklist.get(symbol, 0) >= 3
+    losses = entry.get("losses", 0) if isinstance(entry, dict) else entry
+    if losses < 3:
+        return False
+
+    # 1. Cooldown Check (1 hour TTL)
+    if isinstance(entry, dict):
+        updated_at = entry.get("updated_at", 0)
+        if time.time() - updated_at > 3600:
+            return False
+
+    # 2. Momentum Override Check
+    if token_info and token_info.get("technicals"):
+        tech = token_info["technicals"]
+        stoch = tech.get("stochastic") or {}
+        stoch_ok = stoch.get("bounce_signal", False) or (stoch.get("trend") == "BULLISH" and stoch.get("k", 50) < 70)
+        ma_trend = tech.get("moving_averages", {}).get("trend")
+        bb_pos = tech.get("bollinger_bands", {}).get("position")
+        rsi = tech.get("rsi", 50)
+
+        momentum_score = 0
+        if ma_trend == "UPTREND": momentum_score += 1
+        if stoch_ok: momentum_score += 1
+        if bb_pos in ("NEAR_LOWER", "INSIDE_BANDS"): momentum_score += 1
+        if 35 <= rsi <= 65: momentum_score += 1
+
+        if momentum_score >= 2:
+            return False  # Momentum Override active! Allow AI evaluation.
+
+    return True
 
 # Track trade outcomes per bot session (for real-time blacklist updates)
 recent_trades = defaultdict(list)  # {bot_id: [(symbol, profit_usd), ...]}
@@ -76,8 +119,8 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
     
     # Load blacklist
     blacklist = load_blacklist()
-    blacklisted_count = sum(1 for v in blacklist.values() if v >= 3)
-    print(f"[{bot_id.upper()}] Loaded blacklist: {blacklisted_count} tokens blacklisted")
+    blacklisted_count = sum(1 for v in blacklist.values() if (v.get("losses", 0) if isinstance(v, dict) else v) >= 3)
+    print(f"[{bot_id.upper()}] Loaded blacklist: {blacklisted_count} tokens blacklisted (dengan Cooldown & Momentum Override)")
     
     count = 0
     last_position_count = len(portfolio.positions)
@@ -115,13 +158,19 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
                     if not portfolio.can_buy():
                         break
                     
-                    # Check blacklist FIRST before AI analysis
+                    # Check blacklist FIRST before AI analysis (supports Cooldown & Momentum Override)
                     symbol = token.get("symbol", "UNKNOWN")
-                    if is_blacklisted(symbol, blacklist):
-                        print(f"[{bot_id.upper()}] SKIP ${symbol} - Token blacklisted ({blacklist[symbol]} consecutive losses)")
-                        log_event("BLACKLIST", f"Skipped ${symbol} (blacklisted: {blacklist[symbol]} losses)", bot_id=bot_id)
+                    if is_blacklisted(symbol, blacklist, token_info=token):
+                        loss_cnt = blacklist[symbol].get("losses", blacklist[symbol]) if isinstance(blacklist[symbol], dict) else blacklist[symbol]
+                        print(f"[{bot_id.upper()}] SKIP ${symbol} - Token blacklisted ({loss_cnt} consecutive losses, cooldown aktif)")
+                        log_event("BLACKLIST", f"Skipped ${symbol} (blacklisted: {loss_cnt} losses)", bot_id=bot_id)
                         continue
-                    
+                    elif symbol in blacklist:
+                        loss_cnt = blacklist[symbol].get("losses", blacklist[symbol]) if isinstance(blacklist[symbol], dict) else blacklist[symbol]
+                        if loss_cnt >= 3:
+                            print(f"[{bot_id.upper()}] MOMENTUM OVERRIDE: ${symbol} ({loss_cnt} losses sebelumnya) menunjukkan momentum baru, diteruskan ke AI!")
+                            log_event("MOMENTUM_OVERRIDE", f"${symbol} dievaluasi ulang via Momentum Override", bot_id=bot_id)
+
                     print(f"[{bot_id.upper()}] Menganalisis {symbol} (${token['price_usd']:.6f})...")
                     decision = analyze_token(token, bot_id=bot_id)
                     
