@@ -85,33 +85,37 @@ STRATEGIES = {
 7. Stop Loss (SL): 0.93 - 0.95 (-7% s.d -5%)."""
     },
     "bot7": {
-        "name": "Autonomous AI Scalper (GLM-5.2)",
-        "desc": "Adaptive Scalper & Reversal Agent (GLM-5.2): Sinergi EMA 9/21, Bollinger Bands, Stochastic (5,3,3), RSI 14, dynamic sizing ($5-$25), dan momentum override.",
+        "name": "Autonomous AI Scalper (GLM-5.2 - Phase 3 On-Chain Sim)",
+        "desc": "Autonomous On-Chain Scalper (GLM-5.2): Sinergi EMA 9/21, Bollinger Bands, Stochastic (5,3,3), RSI 14, On-Chain Friction Defense (Gas $0.08 + DEX Swap 0.6% + Slippage), dan Pembelajaran Dinamis Rentang Jam (Golden vs Danger Hours).",
         "model": "cbai/glm-5.2",
         "default_tp": 1.10,
         "default_sl": 0.94,
-        "max_tp": 1.28,
+        "max_tp": 1.25,
         "min_sl": 0.88,
         "default_size": 10.0,
         "prompt_rules": """
-1. SINERGI INDIKATOR SCALPING (M1/M5):
-   - EMA 9/21: Bias tren utama. Prioritaskan BUY saat Bullish (Harga > EMA 9 > EMA 21) atau golden cross.
-   - Bollinger Bands (20,2): Cari area pantulan diskon di Lower/Middle Band. Waspadai / kurangi agresivitas jika harga sudah menyentuh Upper Band jenuh.
-   - Stochastic Oscillator (5,3,3): Trigger pembalikan momentum cepat! Sinyal BUY sangat kuat saat %K menembus ke atas %D (%K > %D) dari area oversold (< 25-30).
-   - RSI (14): Filter keselamatan. Hindari beli saat RSI > 70 (overbought ekstrim) atau < 25 (free-fall tanpa konfirmasi reversal).
-2. PENGAMATAN OVERSELL & SIAP-SIAP BELI DENGAN KEHATI-HATIAN:
-   - Jika token atau bot sedang diobservasi pasca-loss beruntun: AMATI terus sampai indikator masuk fase oversold & siap-siap memantul (Stochastic %K cross-up %D dari area < 30, harga di Lower/Middle Band, RSI 25-48).
-   - Saat konfirmasi pantulan oversold aman ini terdeteksi: SIAP-SIAP BELI! Lakukan BUY dengan kehati-hatian tinggi:
-     * Position size terukur ($5.00 - $7.00).
-     * Stop Loss ketat (-4% s.d -5%) agar aman dari dump susulan.
-     * Target Take Profit cepat (+6% s.d +10%).
-   - Jangan biarkan kehati-hatian membuat bot tidak membeli lagi saat momentum pemulihan terbentuk!
-3. DINAMIKA POSITION SIZING ($5.00 s/d $25.00):
-   - $5 - $8: Kondisi pasar volatil / pasca-loss streak / confidence 50-65% (tetap ambil peluang!).
-   - $10 - $15: Konfirmasi 2-3 indikator scalping standar / confidence 65-80%.
-   - $18 - $25: Setup prima (EMA 9>21 + Stoch Bounce + BB Support + Volume buy dominan) / confidence > 80%.
-4. TARGET TP: 1.05 - 1.25 (+5% s.d +25%), SL: 0.90 - 0.96 (-10% s.d -4%).
-5. SKIP JIKA: Likuiditas < $5k, volume 24h < $8k, transaksi jual nol (honeypot), atau momentum bearish tegas."""
+1. KESADARAN SIMULASI ON-CHAIN FASE 3 (HIGH-CONVICTION RULE):
+   - Jaringan Solana riil memotong gas fee ($0.04 beli + $0.04 jual), DEX fee (0.3%), dan AMM slippage per trade (~$0.10 round-trip).
+   - DILARANG OVERTRADING pada setup lemah / receh. HANYA BUY jika tingkat keyakinan (confidence) >= 70%.
+   - Jika sinyal tidak bulat atau momentum belum jelas, pilih SKIP untuk menghemat modal dari gas fee!
+2. SINERGI INDIKATOR SCALPING (M1/M5):
+   - EMA 9/21: Prioritaskan BUY saat Bullish (Harga > EMA 9 > EMA 21) atau golden cross segar.
+   - Bollinger Bands (20,2): Cari diskon di Lower/Middle Band. SKIP jika harga sudah mentok di Upper Band jenuh.
+   - Stochastic Oscillator (5,3,3): Kunci konfirmasi reversal! Sinyal BUY valid saat %K memotong ke atas %D (%K > %D) dari area oversold (< 25-30).
+   - RSI (14): Filter keselamatan. Aman di rentang 30-55. Mutlak SKIP jika RSI > 70 (overbought) atau < 25 (dump bebas tanpa pantulan).
+3. PEMBELAJARAN RENTANG JAM PASAR (HOURLY MARKET WINDOW):
+   - JAM BAHAYA (DANGER HOURS): Win Rate rendah (< 42%) atau rawan dump. Mode Proteksi:
+     * Wajib defensif: Sizing kecil ($5.00 - $6.00).
+     * Stop Loss ketat (-4% s.d -5%). Target Take Profit kilat (+6% s.d +8%).
+     * Jika tidak ada pantulan oversold kuat, mutlak SKIP!
+   - JAM EMAS (GOLDEN HOURS): Win Rate tinggi (>= 50%) & profit konsisten. Mode Ekspansi:
+     * Sizing optimal ($8.00 - $12.00).
+     * Beri ruang Take Profit lebih lebar (+10% s.d +20%) untuk memaksimalkan keuntungan tren.
+   - JAM NETRAL: Konfirmasi pantulan oversold (%K > %D), sizing $5.00 - $8.00.
+4. PENGAMATAN OVERSELL PASCA LOSS:
+   - Jika bot atau token baru mengalami loss: AMATI sampai Stochastic %K cross-up %D di area oversold < 30. Lalu SIAP-SIAP BELI dengan sizing hati-hati ($5-$7) dan SL ketat.
+5. TARGET TP: 1.05 - 1.25 (+5% s.d +25%), SL: 0.90 - 0.96 (-10% s.d -4%).
+6. SKIP JIKA: Likuiditas < $5k, volume 24h < $8k, transaksi jual nol (honeypot), atau momentum bearish tegas."""
     }
 }
 
@@ -240,6 +244,13 @@ Tulis balasan HANYA dalam format JSON (tanpa markdown blok):
 
             result = json.loads(content)
             
+            # Phase 3: On-Chain High-Conviction Guard (Cegah overtrading & hemat gas fee)
+            if bot_id == "bot7" and result.get("action") == "BUY":
+                confidence = result.get("confidence", 80)
+                if isinstance(confidence, (int, float)) and confidence < 70:
+                    result["action"] = "SKIP"
+                    result["reason"] = f"Keyakinan AI {confidence}% < 70% (Filter On-Chain Sim: hindari gas fee pada setup lemah)."
+
             # Enforce boundary clamping according to strategy bounds
             tp = result.get("tp_multiplier")
             if isinstance(tp, (int, float)):
@@ -264,6 +275,27 @@ Tulis balasan HANYA dalam format JSON (tanpa markdown blok):
                 result["position_size"] = round(max(5.0, min(float(pos_size), 25.0)), 2)
             else:
                 result["position_size"] = strat.get("default_size", Config.POSITION_SIZE)
+
+            # Penyesuaian Dinamis Real-Time Sesuai Rentang Jam Saat Ini untuk Bot 7
+            if bot_id == "bot7" and result.get("action") == "BUY":
+                try:
+                    from db_manager import get_hourly_analytics
+                    analytics = get_hourly_analytics(bot_id="bot7")
+                    from datetime import datetime, timezone
+                    now_wib_h = (datetime.now(timezone.utc).hour + 7) % 24
+                    hr_info = analytics["hourly_data"][now_wib_h]
+                    if hr_info.get("is_danger"):
+                        # Jam Rawan Dump: Batasi sizing maks $6, SL ketat, TP kilat
+                        result["position_size"] = min(result["position_size"], 6.0)
+                        if result["sl_multiplier"] < 0.95:
+                            result["sl_multiplier"] = 0.95
+                        if result["tp_multiplier"] > 1.10:
+                            result["tp_multiplier"] = 1.10
+                    elif hr_info.get("is_golden"):
+                        # Jam Emas: Boleh sizing hingga $12
+                        result["position_size"] = min(result["position_size"], 12.0)
+                except Exception:
+                    pass
 
             return result
         else:

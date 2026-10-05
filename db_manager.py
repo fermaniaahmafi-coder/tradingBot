@@ -21,7 +21,7 @@ def init_db(bot_id="bot1"):
             address TEXT PRIMARY KEY, name TEXT, symbol TEXT, buy_price REAL, tokens_count REAL, cost_usd REAL, current_price REAL, current_val REAL, target_tp_price REAL, target_sl_price REAL, opened_at REAL
         )''')
         conn.execute('''CREATE TABLE IF NOT EXISTS trades (
-            id INTEGER PRIMARY KEY AUTOINCREMENT, symbol TEXT, address TEXT, buy_price REAL, sell_price REAL, cost_usd REAL, proceeds REAL, profit_usd REAL, pnl_pct REAL, reason TEXT, opened_at REAL, closed_at REAL
+            id INTEGER PRIMARY KEY AUTOINCREMENT, symbol TEXT, address TEXT, buy_price REAL, sell_price REAL, cost_usd REAL, proceeds REAL, profit_usd REAL, pnl_pct REAL, reason TEXT, opened_at REAL, closed_at REAL, fee_usd REAL DEFAULT 0.0, slippage_pct REAL DEFAULT 0.0
         )''')
         conn.execute('''CREATE TABLE IF NOT EXISTS activities (
             id INTEGER PRIMARY KEY AUTOINCREMENT, timestamp TEXT, time_raw REAL, type TEXT, message TEXT, details TEXT
@@ -29,7 +29,15 @@ def init_db(bot_id="bot1"):
         conn.execute("CREATE INDEX IF NOT EXISTS idx_trades_closed_at ON trades(closed_at);")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_activities_time ON activities(time_raw DESC);")
         
+        # Schema migration: auto-add columns if missing
         cur = conn.cursor()
+        cur.execute("PRAGMA table_info(trades)")
+        existing_cols = [c[1] for c in cur.fetchall()]
+        if "fee_usd" not in existing_cols:
+            conn.execute("ALTER TABLE trades ADD COLUMN fee_usd REAL DEFAULT 0.0")
+        if "slippage_pct" not in existing_cols:
+            conn.execute("ALTER TABLE trades ADD COLUMN slippage_pct REAL DEFAULT 0.0")
+
         cur.execute("SELECT COUNT(*) FROM wallet WHERE id = 1")
         if cur.fetchone()[0] == 0:
             cur.execute("INSERT INTO wallet (id, cash, updated_at) VALUES (1, ?, ?)", (Config.INITIAL_BALANCE, time.time()))
@@ -69,12 +77,14 @@ def save_positions(positions, bot_id="bot1"):
 def add_trade(record, bot_id="bot1"):
     with get_conn(bot_id) as conn:
         conn.execute('''INSERT INTO trades 
-            (symbol, address, buy_price, sell_price, cost_usd, proceeds, profit_usd, pnl_pct, reason, opened_at, closed_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (
+            (symbol, address, buy_price, sell_price, cost_usd, proceeds, profit_usd, pnl_pct, reason, opened_at, closed_at, fee_usd, slippage_pct)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (
             record.get("symbol"), record.get("address"), record.get("buy_price"),
             record.get("sell_price"), record.get("cost_usd"), record.get("proceeds"),
             record.get("profit_usd"), record.get("pnl_pct"), record.get("reason"),
-            record.get("opened_at"), record.get("closed_at", time.time())
+            record.get("opened_at"), record.get("closed_at", time.time()),
+            float(record.get("fee_usd", 0.0) or 0.0),
+            float(record.get("slippage_pct", 0.0) or 0.0)
         ))
         conn.commit()
 
@@ -112,12 +122,13 @@ def get_recent_activities(limit=50, bot_id="bot1"):
 
 def get_stats(bot_id="bot1"):
     with get_conn(bot_id) as conn:
-        total = conn.execute("SELECT COUNT(*) as count, SUM(profit_usd) as total_profit, MAX(profit_usd) as max_profit, MIN(profit_usd) as min_profit FROM trades").fetchone()
+        total = conn.execute("SELECT COUNT(*) as count, SUM(profit_usd) as total_profit, MAX(profit_usd) as max_profit, MIN(profit_usd) as min_profit, SUM(fee_usd) as total_fees FROM trades").fetchone()
         wins = conn.execute("SELECT COUNT(*) as count FROM trades WHERE pnl_pct > 0").fetchone()["count"]
         losses = conn.execute("SELECT COUNT(*) as count FROM trades WHERE pnl_pct <= 0").fetchone()["count"]
         return {
             "total_trades": total["count"] or 0,
             "total_profit": float(total["total_profit"] or 0),
+            "total_fees": float(total["total_fees"] or 0) if total["total_fees"] is not None else 0.0,
             "win_count": wins,
             "loss_count": losses,
             "best_trade": float(total["max_profit"] or 0),
@@ -149,6 +160,7 @@ def get_hourly_analytics(bot_id="bot7", tz_offset=7):
             "wins": 0,
             "losses": 0,
             "profit": 0.0,
+            "fees": 0.0,
             "win_rate": 0.0,
             "trend": "BELUM ADA DATA",
             "is_golden": False,
@@ -162,7 +174,7 @@ def get_hourly_analytics(bot_id="bot7", tz_offset=7):
             continue
         try:
             with get_conn(b) as conn:
-                rows = conn.execute("SELECT opened_at, profit_usd, pnl_pct FROM trades").fetchall()
+                rows = conn.execute("SELECT opened_at, profit_usd, pnl_pct, fee_usd FROM trades").fetchall()
                 for r in rows:
                     opened_at = r["opened_at"]
                     if not opened_at:
@@ -171,12 +183,14 @@ def get_hourly_analytics(bot_id="bot7", tz_offset=7):
                     h = (dt.hour + tz_offset) % 24
                     profit = float(r["profit_usd"] or 0)
                     pnl = float(r["pnl_pct"] or 0)
+                    fee = float(r["fee_usd"] or 0) if "fee_usd" in r.keys() else 0.0
                     hourly[h]["trades"] += 1
                     if pnl > 0:
                         hourly[h]["wins"] += 1
                     else:
                         hourly[h]["losses"] += 1
                     hourly[h]["profit"] = round(hourly[h]["profit"] + profit, 2)
+                    hourly[h]["fees"] = round(hourly[h]["fees"] + fee, 2)
         except Exception:
             pass
 
@@ -211,7 +225,7 @@ def get_hourly_analytics(bot_id="bot7", tz_offset=7):
 
 def get_current_hourly_context(bot_id="bot7", tz_offset=7):
     """
-    Mengambil ringkasan tren pada jam saat ini untuk di-inject ke prompt AI.
+    Mengambil ringkasan tren & pembelajaran rentang jam saat ini untuk di-inject ke prompt AI.
     """
     from datetime import datetime, timezone
     now_utc = datetime.now(timezone.utc)
@@ -220,16 +234,24 @@ def get_current_hourly_context(bot_id="bot7", tz_offset=7):
     analytics = get_hourly_analytics(bot_id=bot_id, tz_offset=tz_offset)
     hr_data = analytics["hourly_data"][current_hour_wib]
     
+    golden_list = ", ".join(analytics["golden_hours"][:3]) or "Belum cukup data"
+    danger_list = ", ".join(analytics["danger_hours"][:3]) or "Belum cukup data"
+
     if hr_data["trades"] == 0:
-        return f"Jam {current_hour_wib:02d}:00 WIB | Belum ada riwayat trade pada jam ini. Mode eksplorasi hati-hati."
-        
-    trend_tag = hr_data["trend"]
-    advice = "Tren historis jam ini cenderung BULLISH/NAIK. Boleh lebih optimis mengejar TP." if hr_data["is_golden"] else (
-             "Tren historis jam ini RAWAN DUMP/VOLATILITAS TINGGI. Wajib SL ketat & utamakan TP kilat." if hr_data["is_danger"] else
-             "Tren historis jam ini NETRAL/KONSOLIDASI. Fokus pada pantulan oversold yang jelas."
-    )
+        base_desc = f"Jam {current_hour_wib:02d}:00 WIB | Belum ada riwayat trade pada jam ini. Mode eksplorasi hati-hati."
+        action_advice = "Eksplorasi hati-hati: prioritaskan konfirmasi teknikal 3 lapis."
+    else:
+        trend_tag = hr_data["trend"]
+        action_advice = (
+            "TREN NAIK (Golden Hour / Bullish). Boleh sizing optimal ($8-$12) dan biarkan TP hingga +10% s.d +20%." if hr_data["is_golden"] else
+            "RAWAN DUMP (Danger Hour / High Slippage). Mode Proteksi: Sizing kecil ($5-$6), SL ketat (-4% s.d -5%), prioritaskan TP kilat (+6% s.d +8%), atau SKIP jika indikator ragu." if hr_data["is_danger"] else
+            "NETRAL / KONSOLIDASI. Sizing $5-$8, wajib konfirmasi pantulan oversold (Stochastic %K > %D)."
+        )
+        base_desc = f"Jam Saat Ini: {current_hour_wib:02d}:00 WIB ({hr_data['trades']} trades historis, Win Rate: {hr_data['win_rate']}%, Net: ${hr_data['profit']:+.2f}). Status: {trend_tag}."
+
     return (
-        f"Jam Saat Ini: {current_hour_wib:02d}:00 WIB ({hr_data['trades']} trades historis, "
-        f"Win Rate: {hr_data['win_rate']}%, Net: ${hr_data['profit']:+.2f}). "
-        f"Status: {trend_tag}. {advice}"
+        f"{base_desc} {action_advice}\n"
+        f"- Peta Jam Emas Hari Ini (Golden): [{golden_list}]\n"
+        f"- Peta Jam Bahaya Hari Ini (Danger): [{danger_list}]\n"
+        f"- Aturan On-Chain Sim Fase 3: Setiap trade dikenakan gas fee Solana ($0.08 round-trip) + DEX LP Fee (0.6%) & AMM Slippage. Hindari overtrading receh, pilih hanya sinyal HIGH-CONVICTION (confidence >= 70%)."
     )
