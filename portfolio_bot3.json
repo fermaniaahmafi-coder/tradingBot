@@ -1,5 +1,5 @@
 {
-  "cash": 39.196959690600785,
+  "cash": 9.21382815089644,
   "positions": [
     {
       "address": "WoSEAj2AePRdEV4DhDwGeDCDZuEjigZnc5hDBNGYYrT",
@@ -8,8 +8,8 @@
       "buy_price": 0.0035,
       "tokens_count": 2857.142857142857,
       "cost_usd": 10.0,
-      "current_price": 0.003523,
-      "current_val": 10.065714285714286,
+      "current_price": 0.003519,
+      "current_val": 10.054285714285713,
       "target_tp_price": 0.003920000000000001,
       "target_sl_price": 0.00322,
       "opened_at": 1791217464.6596239

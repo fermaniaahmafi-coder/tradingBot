@@ -976,5 +976,44 @@
     "reason": "TAKE_PROFIT",
     "opened_at": 1791221495.1994987,
     "closed_at": 1791221623.735436
+  },
+  {
+    "symbol": "CFTC",
+    "address": "89XotSukKzS4r4QxFM8sKVVgKdhho1wkmxBnLsikspuJ",
+    "buy_price": 4.263e-05,
+    "sell_price": 3.907e-05,
+    "cost_usd": 10.0,
+    "proceeds": 9.164907342247243,
+    "profit_usd": -0.8350926577527567,
+    "pnl_pct": -8.350926577527563,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791229445.0004487,
+    "closed_at": 1791229460.0342464
+  },
+  {
+    "symbol": "ASCEND",
+    "address": "8co5NmKxHj6XJ8X6Yt6eqf54X19qgtKU5Qg29Ydjpump",
+    "buy_price": 3.533e-05,
+    "sell_price": 5.398e-05,
+    "cost_usd": 10.0,
+    "proceeds": 15.278799886781773,
+    "profit_usd": 5.278799886781773,
+    "pnl_pct": 52.787998867817706,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791229579.6764407,
+    "closed_at": 1791229603.46375
+  },
+  {
+    "symbol": "ASCEND",
+    "address": "8co5NmKxHj6XJ8X6Yt6eqf54X19qgtKU5Qg29Ydjpump",
+    "buy_price": 5.141e-05,
+    "sell_price": 4.119e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.012059910523245,
+    "profit_usd": -1.987940089476755,
+    "pnl_pct": -19.879400894767556,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791229830.3848076,
+    "closed_at": 1791230045.3765008
   }
 ]
