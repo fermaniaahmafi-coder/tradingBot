@@ -1,20 +1,18 @@
 {
-  "cash": 108.53,
+  "cash": 109.16487253918896,
   "positions": [
     {
-      "address": "49tVXDe7c44LGg95brseq1KfzFr4SvoYwDMrm1Xn7zC6",
-      "symbol": "SM",
-      "buy_price": 0.0002417,
-      "current_price": 0.0002579,
-      "tokens_count": 41373.6,
-      "amount_usd": 10.0,
-      "current_val": 10.67,
-      "profit_usd": 0.67,
-      "pnl_usd": 0.67,
-      "pnl_pct": 6.7,
-      "target_tp_price": 0.000261,
-      "target_sl_price": 0.0002272,
-      "buy_time": 1791190848
+      "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
+      "name": "Bio Acceleration",
+      "symbol": "BIO/ACC",
+      "buy_price": 3.464e-05,
+      "tokens_count": 288683.6027713626,
+      "cost_usd": 10.0,
+      "current_price": 3.394e-05,
+      "current_val": 9.797921478060045,
+      "target_tp_price": 3.8104000000000007e-05,
+      "target_sl_price": 3.1176e-05,
+      "opened_at": 1791190075.2658775
     }
   ]
 }

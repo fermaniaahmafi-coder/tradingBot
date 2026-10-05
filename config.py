@@ -16,6 +16,7 @@ class Config:
     MIN_LIQUIDITY = float(os.getenv("MIN_LIQUIDITY", "5000"))
     MIN_VOLUME_24H = float(os.getenv("MIN_VOLUME_24H", "10000"))
     
-    DB_PATH = "/home/trading/trading.db"
-    DATA_FILE = "/home/trading/portfolio.json"
-    HISTORY_FILE = "/home/trading/trade_history.json"
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DB_PATH = os.getenv("DB_PATH", "/home/trading/trading.db" if os.path.exists("/home/trading") else os.path.join(BASE_DIR, "trading.db"))
+    DATA_FILE = os.getenv("DATA_FILE", "/home/trading/portfolio.json" if os.path.exists("/home/trading") else os.path.join(BASE_DIR, "portfolio.json"))
+    HISTORY_FILE = os.getenv("HISTORY_FILE", "/home/trading/trade_history.json" if os.path.exists("/home/trading") else os.path.join(BASE_DIR, "trade_history.json"))
