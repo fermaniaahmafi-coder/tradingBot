@@ -1,18 +1,18 @@
 {
-  "cash": 6.721366662359846,
+  "cash": 7.397929197117882,
   "positions": [
     {
-      "address": "6c1yyJi2uy5kQ1CWcECMFPHp2SspfH1rxDr1Ecnjy9G",
-      "name": "CONDO",
-      "symbol": "CONDO",
-      "buy_price": 6.395e-05,
-      "tokens_count": 156372.1657544957,
+      "address": "6roVXGp6izrreewkZNbuAd5yZrzwLfX4Zmyh1U5nLeEp",
+      "name": "HODL",
+      "symbol": "HODL",
+      "buy_price": 2.506e-05,
+      "tokens_count": 399042.29848363926,
       "cost_usd": 10.0,
-      "current_price": 7.17e-05,
-      "current_val": 11.211884284597343,
-      "target_tp_price": 8.63325e-05,
-      "target_sl_price": 5.4357499999999996e-05,
-      "opened_at": 1791167819.732896
+      "current_price": 2.587e-05,
+      "current_val": 10.323224261771749,
+      "target_tp_price": 3.759e-05,
+      "target_sl_price": 1.7542e-05,
+      "opened_at": 1791172059.1912744
     }
   ]
 }

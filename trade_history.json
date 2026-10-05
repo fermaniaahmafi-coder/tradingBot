@@ -1486,5 +1486,41 @@
     "pnl_pct": -67.00652528548125,
     "reason": "STOP_LOSS",
     "closed_at": 1791167875.4924922
+  },
+  {
+    "symbol": "CONDO",
+    "address": "6c1yyJi2uy5kQ1CWcECMFPHp2SspfH1rxDr1Ecnjy9G",
+    "buy_price": 6.395e-05,
+    "sell_price": 9.635e-05,
+    "cost_usd": 10.0,
+    "proceeds": 15.066458170445662,
+    "profit_usd": 5.066458170445662,
+    "pnl_pct": 50.664581704456616,
+    "reason": "TAKE_PROFIT",
+    "closed_at": 1791171464.96757
+  },
+  {
+    "symbol": "Memedraft",
+    "address": "CewgsqVr5gfBE1bFhbCEtaTF2Cn54F8Xd8anWcqtpump",
+    "buy_price": 7.588e-05,
+    "sell_price": 6.092e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.028465998945704,
+    "profit_usd": -1.9715340010542963,
+    "pnl_pct": -19.715340010542963,
+    "reason": "STOP_LOSS",
+    "closed_at": 1791171516.7251966
+  },
+  {
+    "symbol": "Memedraft",
+    "address": "CewgsqVr5gfBE1bFhbCEtaTF2Cn54F8Xd8anWcqtpump",
+    "buy_price": 5.359e-05,
+    "sell_price": 4.063e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.581638365366673,
+    "profit_usd": -2.418361634633327,
+    "pnl_pct": -24.183616346333267,
+    "reason": "STOP_LOSS",
+    "closed_at": 1791171800.161077
   }
 ]
