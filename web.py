@@ -13,6 +13,83 @@ from auth import create_token, verify_token, login_required
 app = Flask(__name__)
 
 BOT_STATE_FILE = "bot_state.json"
+ENV_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+
+# Default values matching config.py
+ENV_DEFAULTS = {
+    "INITIAL_BALANCE": "100.0",
+    "POSITION_SIZE": "10.0",
+    "MAX_POSITIONS": "10",
+    "AI_BASE_URL": "http://127.0.0.1:20128/v1",
+    "AI_API_KEY": "",
+    "AI_MODEL": "trading",
+    "NETWORK": "solana",
+    "MIN_LIQUIDITY": "5000",
+    "MIN_VOLUME_24H": "10000",
+}
+
+
+def read_env_file():
+    """Read .env file and return dict of key=value pairs."""
+    env_vars = dict(ENV_DEFAULTS)
+    if os.path.exists(ENV_FILE):
+        try:
+            with open(ENV_FILE, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#"):
+                        continue
+                    if "=" in line:
+                        key, _, val = line.partition("=")
+                        env_vars[key.strip()] = val.strip()
+        except Exception:
+            pass
+    return env_vars
+
+
+def update_env_file(updates):
+    """Update specific keys in .env file. Preserves comments and ordering."""
+    # Read existing lines
+    lines = []
+    if os.path.exists(ENV_FILE):
+        try:
+            with open(ENV_FILE, "r") as f:
+                lines = f.readlines()
+        except Exception:
+            pass
+
+    # Parse existing keys and track which lines have which keys
+    updated_keys = set()
+    new_lines = []
+
+    for line in lines:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            new_lines.append(line)
+            continue
+        if "=" in stripped:
+            key, _, val = stripped.partition("=")
+            key = key.strip()
+            if key in updates:
+                new_lines.append(f"{key}={updates[key]}\n")
+                updated_keys.add(key)
+            else:
+                new_lines.append(line)
+        else:
+            new_lines.append(line)
+
+    # Append any keys that weren't in the file
+    for key, val in updates.items():
+        if key not in updated_keys:
+            new_lines.append(f"{key}={val}\n")
+
+    try:
+        with open(ENV_FILE, "w") as f:
+            f.writelines(new_lines)
+        return True
+    except Exception as e:
+        print(f"[Settings] Failed to write .env: {e}")
+        return False
 
 def get_bot_state():
     default_state = {
@@ -156,6 +233,88 @@ def transactions_page():
 @login_required
 def coin_detail(address):
     return render_template("coin.html")
+
+
+@app.route("/settings")
+@login_required
+def settings_page():
+    return render_template("settings.html")
+
+
+@app.route("/api/settings")
+@login_required
+def api_settings_get():
+    """Return current settings from .env file."""
+    env_vars = read_env_file()
+    return jsonify({
+        "ai_base_url": env_vars.get("AI_BASE_URL", ""),
+        "ai_model": env_vars.get("AI_MODEL", ""),
+        "ai_api_key": env_vars.get("AI_API_KEY", ""),
+        "position_size": float(env_vars.get("POSITION_SIZE", "10.0")),
+        "initial_balance": float(env_vars.get("INITIAL_BALANCE", "100.0")),
+        "min_liquidity": float(env_vars.get("MIN_LIQUIDITY", "5000")),
+        "min_volume_24h": float(env_vars.get("MIN_VOLUME_24H", "10000")),
+    })
+
+
+@app.route("/api/settings/ai", methods=["POST"])
+@login_required
+def api_settings_ai():
+    """Update AI configuration in .env file."""
+    data = request.get_json(silent=True) or {}
+    
+    updates = {}
+    if "ai_base_url" in data:
+        updates["AI_BASE_URL"] = data["ai_base_url"].strip()
+    if "ai_model" in data:
+        updates["AI_MODEL"] = data["ai_model"].strip()
+    if "ai_api_key" in data:
+        updates["AI_API_KEY"] = data["ai_api_key"].strip()
+    
+    if not updates:
+        return jsonify({"success": False, "error": "Tidak ada data untuk disimpan"}), 400
+    
+    success = update_env_file(updates)
+    if success:
+        log_event("CONFIG", f"Pengaturan AI diubah: {', '.join(updates.keys())}", bot_id="system")
+        return jsonify({
+            "success": True,
+            "message": "Pengaturan AI berhasil disimpan. Restart bot untuk menerapkan perubahan.",
+            "updated": list(updates.keys())
+        })
+    else:
+        return jsonify({"success": False, "error": "Gagal menyimpan ke file .env"}), 500
+
+
+@app.route("/api/settings/trading", methods=["POST"])
+@login_required
+def api_settings_trading():
+    """Update trading parameters in .env file."""
+    data = request.get_json(silent=True) or {}
+    
+    updates = {}
+    if "position_size" in data:
+        updates["POSITION_SIZE"] = str(float(data["position_size"]))
+    if "initial_balance" in data:
+        updates["INITIAL_BALANCE"] = str(float(data["initial_balance"]))
+    if "min_liquidity" in data:
+        updates["MIN_LIQUIDITY"] = str(float(data["min_liquidity"]))
+    if "min_volume_24h" in data:
+        updates["MIN_VOLUME_24H"] = str(float(data["min_volume_24h"]))
+    
+    if not updates:
+        return jsonify({"success": False, "error": "Tidak ada data untuk disimpan"}), 400
+    
+    success = update_env_file(updates)
+    if success:
+        log_event("CONFIG", f"Parameter trading diubah: {', '.join(updates.keys())}", bot_id="system")
+        return jsonify({
+            "success": True,
+            "message": "Parameter trading berhasil disimpan!",
+            "updated": list(updates.keys())
+        })
+    else:
+        return jsonify({"success": False, "error": "Gagal menyimpan ke file .env"}), 500
 
 
 @app.route("/api/bots")

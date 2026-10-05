@@ -1,18 +1,4 @@
 {
-  "cash": 114.30556695943135,
-  "positions": [
-    {
-      "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
-      "name": "UsePackz",
-      "symbol": "PACKZ",
-      "buy_price": 2.525e-05,
-      "tokens_count": 396039.603960396,
-      "cost_usd": 10.0,
-      "current_price": 2.605e-05,
-      "current_val": 10.316831683168317,
-      "target_tp_price": 2.727e-05,
-      "target_sl_price": 2.3735e-05,
-      "opened_at": 1791203189.73739
-    }
-  ]
+  "cash": 124.57060938395516,
+  "positions": []
 }
