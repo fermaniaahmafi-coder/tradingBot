@@ -69,18 +69,20 @@ STRATEGIES = {
 4. Stop Loss (SL): 0.88 - 0.92 (-12% s.d -8%)."""
     },
     "bot6": {
-        "name": "Hybrid Reversion Scalper (Dip-Scalper)",
-        "desc": "Kombinasi Micro-Scalper + Mean Reversion: Membeli saat pullback/dip sehat (RSI 32-52) dengan eksekusi TP cepat (5-10%) & SL ketat (5-7%).",
-        "default_tp": 1.08,
+        "name": "Selective Dip-Scalper (Bot1+Bot3 Fusion)",
+        "desc": "Fusion Bot1 Scalper + Bot3 Reversion: Entry HANYA saat uptrend terkonfirmasi (EMA 9>21) DAN pullback sehat (RSI 35-55). TP cepat 8-12%, SL ketat 5-7%. Likuiditas min $8k, blacklist token beracun.",
+        "default_tp": 1.10,
         "default_sl": 0.94,
-        "max_tp": 1.14,
+        "max_tp": 1.15,
         "min_sl": 0.91,
         "prompt_rules": """
-1. SKIP jika honeypot (sells = 0) atau dev dump ekstrem (sells jauh melebihi buys).
-2. BUY jika token sedang mengalami pullback/koreksi minor (RSI antara 32 - 52, atau harga di area Middle/Lower Bollinger Band) dengan likuiditas aktif (> $5k).
-3. BUY juga jika terjadi konsolidasi sehat setelah penurunan minor dan mulai stabil.
-4. Target Take Profit (TP): 1.05 - 1.10 (+5% s.d +10% hit-and-run cepat).
-5. Stop Loss (SL): 0.93 - 0.95 (-7% s.d -5%)."""
+1. SKIP jika RSI > 70 (Overbought) atau RSI < 28 (Free-fall, bukan pullback).
+2. SKIP jika MA Trend adalah DOWNTREND jelas (EMA 9 < EMA 21 dengan gap lebar).
+3. SKIP jika likuiditas < $8k, volume 24h < $12k, atau sells jauh mendominasi buys (dev dump).
+4. SKIP jika token ada di daftar hitam internal (sudah loss 3x berturut-turut).
+5. BUY HANYA JIKA SEMUA terpenuhi: (a) EMA 9 >= EMA 21 ATAU konsolidasi sehat, (b) MACD BULLISH atau baru cross-up, (c) RSI 35-55 (pullback sehat, bukan pucuk bukan jurang), (d) harga di Middle/Lower Bollinger Band area.
+6. Target Take Profit (TP): 1.08 - 1.12 (+8% s.d +12% hit-and-run).
+7. Stop Loss (SL): 0.93 - 0.95 (-7% s.d -5%)."""
     }
 }
 
