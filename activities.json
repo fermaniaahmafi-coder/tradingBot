@@ -1,1070 +1,1028 @@
 [
   {
-    "timestamp": "23:59:58",
-    "time_raw": 1791158398.3770323,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000031 | TP: 1.4x, SL: 0.7x",
-    "details": {
-      "token": "PLAGUE",
-      "price": 3.054e-05,
-      "tp": 1.4,
-      "sl": 0.7,
-      "reason": "Likuiditas rendah ($17k) namun rasio volume 24h sangat tinggi menunjukkan volatilitas aktif. Terdapat tekanan beli jangka pendek (9 buys vs 5 sells) di tengah koreksi minor (-3.26%), memberikan titik masuk ideal untuk strategi hit-and-run cepat sebelum potensi pantulan harga."
-    }
-  },
-  {
-    "timestamp": "23:59:49",
-    "time_raw": 1791158389.3907163,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $TENOR @ $0.000045 - Likuiditas terlalu tipis ($17.6k) dengan volume jual tinggi (945 sells dlm 5m) dan tren negatif (-7.53%), risiko slippage besar dan dump cascade terlalu tinggi.",
-    "details": {
-      "token": "TENOR",
-      "price": 4.509e-05,
-      "reason": "Likuiditas terlalu tipis ($17.6k) dengan volume jual tinggi (945 sells dlm 5m) dan tren negatif (-7.53%), risiko slippage besar dan dump cascade terlalu tinggi."
-    }
-  },
-  {
-    "timestamp": "23:59:40",
-    "time_raw": 1791158380.360485,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:59:25",
-    "time_raw": 1791158365.2915244,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000031 | TP: 1.4x, SL: 0.8x",
-    "details": {
-      "token": "PLAGUE",
-      "price": 3.054e-05,
-      "tp": 1.4,
-      "sl": 0.8,
-      "reason": "Rasio volume terhadap likuiditas cukup aktif (~5.7x), momentum 5m positif (+7.1%), dan dominasi tekanan beli (9 buys vs 5 sells) cocok untuk scalping cepat."
-    }
-  },
-  {
-    "timestamp": "23:59:19",
-    "time_raw": 1791158359.825384,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $TENOR @ $0.000038 - Likuiditas sangat rendah ($15.9k) dipadukan dengan penurunan harga ekstrem (-22.2%) dalam 5 menit terakhir. Meskipun aktivitas transaksi sangat tinggi, tekanan harga sangat negatif yang mengindikasikan dump besar-besaran atau potensi rug pull. Risiko slippage terlalu tinggi dan sangat berbahaya untuk menangkap pisau jatuh (catching a falling knife).",
-    "details": {
-      "token": "TENOR",
-      "price": 3.794e-05,
-      "reason": "Likuiditas sangat rendah ($15.9k) dipadukan dengan penurunan harga ekstrem (-22.2%) dalam 5 menit terakhir. Meskipun aktivitas transaksi sangat tinggi, tekanan harga sangat negatif yang mengindikasikan dump besar-besaran atau potensi rug pull. Risiko slippage terlalu tinggi dan sangat berbahaya untuk menangkap pisau jatuh (catching a falling knife)."
-    }
-  },
-  {
-    "timestamp": "23:59:06",
-    "time_raw": 1791158346.4230485,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:59:06",
-    "time_raw": 1791158346.420891,
+    "timestamp": "02:37:55",
+    "time_raw": 1791167875.4927473,
     "type": "TRADE_SELL",
-    "message": "Menjual $TENOR (STOP_LOSS) @ $0.000038 | PnL: -24.38%",
+    "message": "Menjual $XEET (STOP_LOSS) @ $0.000024 | PnL: -67.01%",
     "details": {
-      "symbol": "TENOR",
-      "sell_price": 3.794e-05,
-      "profit_usd": -2.4377117799481764,
-      "pnl_pct": -24.377117799481766,
+      "symbol": "XEET",
+      "sell_price": 2.427e-05,
+      "profit_usd": -6.700652528548123,
+      "pnl_pct": -67.00652528548125,
       "reason": "STOP_LOSS"
     }
   },
   {
-    "timestamp": "23:57:35",
-    "time_raw": 1791158255.553714,
+    "timestamp": "02:37:25",
+    "time_raw": 1791167845.3881178,
     "type": "TRADE_BUY",
-    "message": "Membeli $TENOR @ $0.000050",
+    "message": "Membeli $XEET @ $0.000074",
     "details": {
-      "symbol": "TENOR",
+      "symbol": "XEET",
       "amount_usd": 10.0,
-      "buy_price": 5.017e-05,
-      "tp_price": 6.772950000000001e-05,
-      "sl_price": 4.26445e-05
+      "buy_price": 7.356e-05,
+      "tp_price": 0.00011033999999999999,
+      "sl_price": 5.1491999999999994e-05
     }
   },
   {
-    "timestamp": "23:57:35",
-    "time_raw": 1791158255.5513332,
+    "timestamp": "02:37:25",
+    "time_raw": 1791167845.3854241,
     "type": "AI_BUY",
-    "message": "Sinyal BUY pada $TENOR @ $0.000050 | TP: 1.35x, SL: 0.85x",
+    "message": "Sinyal BUY pada $XEET @ $0.000074 | TP: 1.5x, SL: 0.7x",
     "details": {
-      "token": "TENOR",
-      "price": 5.017e-05,
-      "tp": 1.35,
-      "sl": 0.85,
-      "reason": "Aktivitas transaksi 5m sangat aktif dan didominasi pembeli (228 buy vs 170 sell) dengan kenaikan stabil +2.9%, ideal untuk quick scalp hit-and-run dengan likuiditas yang cukup."
-    }
-  },
-  {
-    "timestamp": "23:57:28",
-    "time_raw": 1791158248.5436304,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:57:13",
-    "time_raw": 1791158233.4724705,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $SP @ $0.000044 | TP: 1.5x, SL: 0.8x",
-    "details": {
-      "token": "SP",
-      "price": 4.384e-05,
-      "tp": 1.5,
-      "sl": 0.8,
-      "reason": "Momentum 5m positif (+8.04%) didukung rasio beli dominan (16 vs 3) dan likuiditas cukup ($18.5k) untuk strategi hit and run cepat sebelum overbought."
-    }
-  },
-  {
-    "timestamp": "23:57:06",
-    "time_raw": 1791158226.4402745,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000030 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "PLAGUE",
-      "price": 3.002e-05,
+      "token": "XEET",
+      "price": 7.356e-05,
       "tp": 1.5,
       "sl": 0.7,
-      "reason": "Momentum jangka pendek sangat kuat dengan tekanan beli 2:1 (14 buys vs 7 sells) dan kenaikan harga 11.34% dalam 5 menit. Rasio volume terhadap likuiditas tinggi menunjukkan volatilitas ekstrem yang ideal untuk strategi hit and run cepat, namun likuiditas rendah ($17k) mewajibkan stop-loss ketat untuk mencegah jebakan slippage."
+      "reason": "Aktivitas transaksi 5 menit sangat masif (3800+ txs) menunjukkan momentum dan hype yang tinggi. Likuiditas rendah ($23k) berbanding volume tinggi ($244k) menciptakan volatilitas ekstrem. Penurunan harga -6.39% dalam 5 menit terakhir memberikan titik entry ideal untuk strategi hit and run (buy the dip) sebelum pantulan cepat."
     }
   },
   {
-    "timestamp": "23:56:57",
-    "time_raw": 1791158217.344062,
+    "timestamp": "02:37:14",
+    "time_raw": 1791167834.7932277,
     "type": "SCAN",
     "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
     "details": {}
   },
   {
-    "timestamp": "23:56:42",
-    "time_raw": 1791158202.2764413,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $SP @ $0.000044 | TP: 1.4x, SL: 0.8x",
-    "details": {
-      "token": "SP",
-      "price": 4.35e-05,
-      "tp": 1.4,
-      "sl": 0.8,
-      "reason": "Momentum 5m menunjukkan tekanan beli kuat (16 buys vs 3 sells, +8.69%) dengan likuiditas memadai ($18.5k) untuk scalping cepat, gunakan SL ketat karena volume 24h masih relatif rendah."
-    }
-  },
-  {
-    "timestamp": "23:56:36",
-    "time_raw": 1791158196.0054746,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000030 | TP: 1.35x, SL: 0.85x",
-    "details": {
-      "token": "PLAGUE",
-      "price": 3.002e-05,
-      "tp": 1.35,
-      "sl": 0.85,
-      "reason": "Momentum jangka pendek positif (+11.34% dlm 5m), rasio buy:sell 2:1, serta rasio volume terhadap likuiditas cukup tinggi untuk eksekusi hit and run cepat."
-    }
-  },
-  {
-    "timestamp": "23:56:29",
-    "time_raw": 1791158189.3817403,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:56:14",
-    "time_raw": 1791158174.317218,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $SP @ $0.000044 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "SP",
-      "price": 4.35e-05,
-      "tp": 1.5,
-      "sl": 0.7,
-      "reason": "Tekanan beli jangka pendek sangat kuat (16 buy vs 3 sell) dengan kenaikan harga 8.69% dalam 5 menit terakhir. Likuiditas rendah ($18k) dan volume kecil membutuhkan eksekusi hit and run yang cepat untuk mengamankan profit dan menghindari risiko illiquidity atau rugpull."
-    }
-  },
-  {
-    "timestamp": "23:56:06",
-    "time_raw": 1791158166.7095282,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000032 | TP: 1.4x, SL: 0.8x",
-    "details": {
-      "token": "PLAGUE",
-      "price": 3.178e-05,
-      "tp": 1.4,
-      "sl": 0.8,
-      "reason": "Momentum jangka pendek sangat positif (+17.88% dalam 5m) didukung dominasi buy vs sell (13:5) dan rasio volume-ke-likuiditas tinggi, ideal untuk scalp hit and run cepat."
-    }
-  },
-  {
-    "timestamp": "23:55:59",
-    "time_raw": 1791158159.6101887,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:55:44",
-    "time_raw": 1791158144.5340774,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $SP @ $0.000043 | TP: 1.35x, SL: 0.85x",
-    "details": {
-      "token": "SP",
-      "price": 4.311e-05,
-      "tp": 1.35,
-      "sl": 0.85,
-      "reason": "Tekanan beli kuat dalam 5 menit terakhir (14 buy vs 3 sell) disertai kenaikan harga +7.72%. Likuiditas $18.4k mencukupi untuk eksekusi cepat hit-and-run sebelum momentum mereda."
-    }
-  },
-  {
-    "timestamp": "23:55:37",
-    "time_raw": 1791158137.9801357,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000032 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "PLAGUE",
-      "price": 3.157e-05,
-      "tp": 1.5,
-      "sl": 0.7,
-      "reason": "Momentum 5 menit sangat positif (+17.09%) dengan tekanan beli yang mendominasi (12 buys vs 5 sells). Volume 24 jam ($98k) yang jauh melebihi likuiditas ($17.5k) menunjukkan aktivitas trading yang tinggi dan volatilitas besar. Sangat cocok untuk scalping cepat (hit and run), namun likuiditas yang rendah memerlukan SL ketat (-30%) untuk menghindari risiko rugpull atau slippage parah."
-    }
-  },
-  {
-    "timestamp": "23:55:28",
-    "time_raw": 1791158128.3410332,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:55:28",
-    "time_raw": 1791158128.294897,
+    "timestamp": "02:37:14",
+    "time_raw": 1791167834.7655003,
     "type": "TRADE_SELL",
-    "message": "Menjual $root (STOP_LOSS) @ $0.000055 | PnL: -30.17%",
+    "message": "Menjual $XEET (STOP_LOSS) @ $0.000074 | PnL: -38.60%",
     "details": {
-      "symbol": "root",
-      "sell_price": 5.475e-05,
-      "profit_usd": -3.016581632653061,
-      "pnl_pct": -30.165816326530603,
+      "symbol": "XEET",
+      "sell_price": 7.356e-05,
+      "profit_usd": -3.859766277128548,
+      "pnl_pct": -38.59766277128548,
       "reason": "STOP_LOSS"
     }
   },
   {
-    "timestamp": "23:53:42",
-    "time_raw": 1791158022.6067874,
+    "timestamp": "02:36:59",
+    "time_raw": 1791167819.734359,
     "type": "TRADE_BUY",
-    "message": "Membeli $SP @ $0.000044",
+    "message": "Membeli $CONDO @ $0.000064",
     "details": {
-      "symbol": "SP",
+      "symbol": "CONDO",
       "amount_usd": 10.0,
-      "buy_price": 4.378e-05,
-      "tp_price": 5.9103e-05,
-      "sl_price": 3.58996e-05
+      "buy_price": 6.395e-05,
+      "tp_price": 8.63325e-05,
+      "sl_price": 5.4357499999999996e-05
     }
   },
   {
-    "timestamp": "23:53:42",
-    "time_raw": 1791158022.6048157,
+    "timestamp": "02:36:59",
+    "time_raw": 1791167819.7314932,
     "type": "AI_BUY",
-    "message": "Sinyal BUY pada $SP @ $0.000044 | TP: 1.35x, SL: 0.82x",
+    "message": "Sinyal BUY pada $CONDO @ $0.000064 | TP: 1.35x, SL: 0.85x",
     "details": {
-      "token": "SP",
-      "price": 4.378e-05,
+      "token": "CONDO",
+      "price": 6.395e-05,
       "tp": 1.35,
-      "sl": 0.82,
-      "reason": "Momentum 5 menit kuat dengan rasio transaksi 12 buy vs 1 sell dan lonjakan harga +13.18%. Likuiditas $18.5k memadai untuk eksekusi hit-and-run kilat dengan target profit cepat."
+      "sl": 0.85,
+      "reason": "Momentum 5m positif (+8.28%) didukung rasio buy dominan (8:3). Likuiditas $23k memadai untuk quick scalp hit-and-run dengan target cepat sebelum tekanan jual."
     }
   },
   {
-    "timestamp": "23:53:29",
-    "time_raw": 1791158009.7766778,
+    "timestamp": "02:36:51",
+    "time_raw": 1791167811.6444445,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $XEET @ $0.000129 | TP: 1.4x, SL: 0.8x",
+    "details": {
+      "token": "XEET",
+      "price": 0.0001288,
+      "tp": 1.4,
+      "sl": 0.8,
+      "reason": "Momentum 5 menit sangat agresif (+162%) didukung likuiditas $31k dan volume transaksi tinggi (1853 buy vs 1756 sell). Cocok untuk scalp hit-and-run cepat dengan TP 1.4x dan SL ketat 0.8x untuk mitigasi risiko dump."
+    }
+  },
+  {
+    "timestamp": "02:36:41",
+    "time_raw": 1791167801.4874895,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:36:26",
+    "time_raw": 1791167786.4594154,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $CONDO @ $0.000058 - Volume 24 jam sangat rendah ($15k) dan aktivitas transaksi 5 menit terlalu sepi (hanya 9 transaksi). Tidak ada momentum yang cukup untuk strategi hit and run, risiko likuiditas stagnan.",
+    "details": {
+      "token": "CONDO",
+      "price": 5.81e-05,
+      "reason": "Volume 24 jam sangat rendah ($15k) dan aktivitas transaksi 5 menit terlalu sepi (hanya 9 transaksi). Tidak ada momentum yang cukup untuk strategi hit and run, risiko likuiditas stagnan."
+    }
+  },
+  {
+    "timestamp": "02:36:18",
+    "time_raw": 1791167778.1249855,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $XEET @ $0.000124 - Harga sudah melonjak ekstrem (+152% dalam 5m) dengan rasio jual hampir seimbang dengan beli (1626 sells vs 1718 buys), menandakan potensi lokal top dan risiko dump tinggi pada likuiditas tipis ($30k).",
+    "details": {
+      "token": "XEET",
+      "price": 0.0001238,
+      "reason": "Harga sudah melonjak ekstrem (+152% dalam 5m) dengan rasio jual hampir seimbang dengan beli (1626 sells vs 1718 buys), menandakan potensi lokal top dan risiko dump tinggi pada likuiditas tipis ($30k)."
+    }
+  },
+  {
+    "timestamp": "02:36:03",
+    "time_raw": 1791167763.4068992,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:35:48",
+    "time_raw": 1791167748.3749437,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $CONDO @ $0.000058 - Penurunan harga 5m tajam (-14.99%) dengan volume transaksi rendah dan tekanan jual mendominasi (sells > buys), tidak memenuhi kriteria momentum positif untuk strategi hit and run.",
+    "details": {
+      "token": "CONDO",
+      "price": 5.798e-05,
+      "reason": "Penurunan harga 5m tajam (-14.99%) dengan volume transaksi rendah dan tekanan jual mendominasi (sells > buys), tidak memenuhi kriteria momentum positif untuk strategi hit and run."
+    }
+  },
+  {
+    "timestamp": "02:35:40",
+    "time_raw": 1791167740.8453863,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $XEET @ $0.000142 | TP: 1.5x, SL: 0.7x",
+    "details": {
+      "token": "XEET",
+      "price": 0.0001418,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Volume transaksi 5 menit sangat masif (hampir 3000 tx) dengan tekanan beli dominan dan lonjakan harga 189%. Likuiditas rendah ($33k) memicu volatilitas ekstrem. Sangat cocok untuk scalping cepat (hit and run) memanfaatkan FOMO, dengan SL ketat untuk mencegah kerugian dari potensi koreksi tajam atau rug pull."
+    }
+  },
+  {
+    "timestamp": "02:35:29",
+    "time_raw": 1791167729.1151912,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:35:14",
+    "time_raw": 1791167714.0860639,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $CONDO @ $0.000058 - Momentum bearish tajam (-14.99% dalam 5m), transaksi sangat sepi dengan dominasi jual, serta volume 24 jam lebih kecil dari likuiditas menandakan minat pasar yang memudar.",
+    "details": {
+      "token": "CONDO",
+      "price": 5.798e-05,
+      "reason": "Momentum bearish tajam (-14.99% dalam 5m), transaksi sangat sepi dengan dominasi jual, serta volume 24 jam lebih kecil dari likuiditas menandakan minat pasar yang memudar."
+    }
+  },
+  {
+    "timestamp": "02:35:07",
+    "time_raw": 1791167707.1771646,
     "type": "TRADE_BUY",
-    "message": "Membeli $PLAGUE @ $0.000028",
+    "message": "Membeli $XEET @ $0.000120",
     "details": {
-      "symbol": "PLAGUE",
+      "symbol": "XEET",
       "amount_usd": 10.0,
-      "buy_price": 2.823e-05,
-      "tp_price": 3.81105e-05,
-      "sl_price": 2.3148599999999997e-05
+      "buy_price": 0.0001198,
+      "tp_price": 0.00016772,
+      "sl_price": 9.584e-05
     }
   },
   {
-    "timestamp": "23:53:29",
-    "time_raw": 1791158009.7740586,
+    "timestamp": "02:35:07",
+    "time_raw": 1791167707.1746302,
     "type": "AI_BUY",
-    "message": "Sinyal BUY pada $PLAGUE @ $0.000028 | TP: 1.35x, SL: 0.82x",
+    "message": "Sinyal BUY pada $XEET @ $0.000120 | TP: 1.4x, SL: 0.8x",
     "details": {
-      "token": "PLAGUE",
-      "price": 2.823e-05,
-      "tp": 1.35,
-      "sl": 0.82,
-      "reason": "Rasio Volume/Likuiditas tinggi (~5.9x) dengan momentum mikro 5m positif (+3.59%) dan dominasi order beli (5B/3S), cocok untuk scalping cepat hit-and-run dengan target profit moderat."
+      "token": "XEET",
+      "price": 0.0001198,
+      "tp": 1.4,
+      "sl": 0.8,
+      "reason": "Momentum 5m sangat kuat (+144%) didukung volume tinggi dan aktivitas transaksi intensif, ideal untuk strategi hit and run dengan take profit cepat dan stop loss ketat."
     }
   },
   {
-    "timestamp": "23:53:22",
-    "time_raw": 1791158002.1676316,
+    "timestamp": "02:34:58",
+    "time_raw": 1791167698.3401632,
     "type": "SCAN",
     "message": "Memindai token Solana baru di DexScreener (Sisa slot: 2x)...",
     "details": {}
   },
   {
-    "timestamp": "23:53:07",
-    "time_raw": 1791157987.117843,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $pDOG @ $0.000009 - Penurunan harga ekstrem sebesar -82.28% dalam 5 menit dengan likuiditas yang sangat rendah ($9k) sangat mengindikasikan terjadinya rug pull atau developer dump. Risiko kehilangan modal hampir 100%.",
-    "details": {
-      "token": "pDOG",
-      "price": 8.694e-06,
-      "reason": "Penurunan harga ekstrem sebesar -82.28% dalam 5 menit dengan likuiditas yang sangat rendah ($9k) sangat mengindikasikan terjadinya rug pull atau developer dump. Risiko kehilangan modal hampir 100%."
-    }
-  },
-  {
-    "timestamp": "23:52:58",
-    "time_raw": 1791157978.8007598,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $Army @ $0.000120 - Tekanan jual 5m mendominasi (24 sell vs 17 buy) meski harga naik 10.08%, mengindikasikan potensi distribusi dan risiko dump pada likuiditas yang relatif tipis ($33.6k).",
-    "details": {
-      "token": "Army",
-      "price": 0.0001196,
-      "reason": "Tekanan jual 5m mendominasi (24 sell vs 17 buy) meski harga naik 10.08%, mengindikasikan potensi distribusi dan risiko dump pada likuiditas yang relatif tipis ($33.6k)."
-    }
-  },
-  {
-    "timestamp": "23:52:50",
-    "time_raw": 1791157970.732537,
-    "type": "TRADE_BUY",
-    "message": "Membeli $root @ $0.000078",
-    "details": {
-      "symbol": "root",
-      "amount_usd": 10.0,
-      "buy_price": 7.84e-05,
-      "tp_price": 0.00010975999999999998,
-      "sl_price": 5.879999999999999e-05
-    }
-  },
-  {
-    "timestamp": "23:52:50",
-    "time_raw": 1791157970.7305424,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $root @ $0.000078 | TP: 1.4x, SL: 0.75x",
-    "details": {
-      "token": "root",
-      "price": 7.84e-05,
-      "tp": 1.4,
-      "sl": 0.75,
-      "reason": "Peluang hit and run rebound pasca koreksi tajam (-46.87% dalam 5m). Jumlah transaksi beli masih sangat agresif (1930 buys vs 1342 sells) dengan volume tinggi, cocok untuk scalp cepat dengan stop loss ketat."
-    }
-  },
-  {
-    "timestamp": "23:52:44",
-    "time_raw": 1791157964.0237088,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $SP @ $0.000041 - Likuiditas ($18k) dan volume 24 jam ($2.4k) sangat rendah. Aktivitas transaksi 5 menit hanya 4 tx, menunjukkan tidak ada momentum atau hype. Risiko slippage dan jebakan likuiditas terlalu tinggi untuk strategi hit and run.",
-    "details": {
-      "token": "SP",
-      "price": 4.058e-05,
-      "reason": "Likuiditas ($18k) dan volume 24 jam ($2.4k) sangat rendah. Aktivitas transaksi 5 menit hanya 4 tx, menunjukkan tidak ada momentum atau hype. Risiko slippage dan jebakan likuiditas terlalu tinggi untuk strategi hit and run."
-    }
-  },
-  {
-    "timestamp": "23:52:34",
-    "time_raw": 1791157954.7491047,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 3x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:52:19",
-    "time_raw": 1791157939.7252278,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $pDOG @ $0.000012 - Penurunan ekstrem -79.97% dalam 5 menit mengindikasikan dev dump atau rug pull. Likuiditas $10.4k terlalu tipis dan berisiko tinggi slippage parah.",
-    "details": {
-      "token": "pDOG",
-      "price": 1.164e-05,
-      "reason": "Penurunan ekstrem -79.97% dalam 5 menit mengindikasikan dev dump atau rug pull. Likuiditas $10.4k terlalu tipis dan berisiko tinggi slippage parah."
-    }
-  },
-  {
-    "timestamp": "23:52:12",
-    "time_raw": 1791157932.1193829,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $Army @ $0.000118 - Harga sudah mengalami kenaikan tajam (+30.75% dalam 5m) dan jumlah penjualan (29) mulai melampaui pembelian (26), mengindikasikan risiko tinggi terjadinya aksi profit taking/dump lokal.",
-    "details": {
-      "token": "Army",
-      "price": 0.0001183,
-      "reason": "Harga sudah mengalami kenaikan tajam (+30.75% dalam 5m) dan jumlah penjualan (29) mulai melampaui pembelian (26), mengindikasikan risiko tinggi terjadinya aksi profit taking/dump lokal."
-    }
-  },
-  {
-    "timestamp": "23:52:01",
-    "time_raw": 1791157921.7834837,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $root @ $0.000066 - Likuiditas sangat rendah ($22k) dengan harga anjlok -55% dalam 5 menit. Meskipun jumlah transaksi buy lebih tinggi, penurunan harga yang ekstrem menandakan whale atau dev sedang melakukan dumping (sell volume jauh lebih besar). Risiko rugpull atau dead coin terlalu tinggi.",
-    "details": {
-      "token": "root",
-      "price": 6.641e-05,
-      "reason": "Likuiditas sangat rendah ($22k) dengan harga anjlok -55% dalam 5 menit. Meskipun jumlah transaksi buy lebih tinggi, penurunan harga yang ekstrem menandakan whale atau dev sedang melakukan dumping (sell volume jauh lebih besar). Risiko rugpull atau dead coin terlalu tinggi."
-    }
-  },
-  {
-    "timestamp": "23:51:52",
-    "time_raw": 1791157912.1906798,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 3x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:51:52",
-    "time_raw": 1791157912.188187,
+    "timestamp": "02:34:58",
+    "time_raw": 1791167698.3375423,
     "type": "TRADE_SELL",
-    "message": "Menjual $root (STOP_LOSS) @ $0.000066 | PnL: -37.47%",
+    "message": "Menjual $XEET (TAKE_PROFIT) @ $0.000120 | PnL: +71.66%",
     "details": {
-      "symbol": "root",
-      "sell_price": 6.641e-05,
-      "profit_usd": -3.746704331450095,
-      "pnl_pct": -37.46704331450095,
-      "reason": "STOP_LOSS"
+      "symbol": "XEET",
+      "sell_price": 0.0001198,
+      "profit_usd": 7.165783063476141,
+      "pnl_pct": 71.65783063476144,
+      "reason": "TAKE_PROFIT"
     }
   },
   {
-    "timestamp": "23:51:37",
-    "time_raw": 1791157897.1450906,
+    "timestamp": "02:34:43",
+    "time_raw": 1791167683.3096373,
     "type": "AI_SKIP",
-    "message": "Lewatkan $pDOG @ $0.000013 - Penurunan ekstrem -75.97% dalam 5 menit dengan likuiditas rendah ($11.1k) mengindikasikan dump masif atau potensi rug pull, risiko exit liquidity sangat tinggi.",
+    "message": "Lewatkan $CONDO @ $0.000058 - Likuiditas ($21k) dan volume 24 jam ($15k) sangat rendah. Aktivitas transaksi 5 menit sangat minim (hanya 10 transaksi) dengan tren harga yang turun tajam (-14.78%). Tidak ada momentum atau tekanan beli yang memadai untuk strategi hit and run.",
     "details": {
-      "token": "pDOG",
-      "price": 1.349e-05,
-      "reason": "Penurunan ekstrem -75.97% dalam 5 menit dengan likuiditas rendah ($11.1k) mengindikasikan dump masif atau potensi rug pull, risiko exit liquidity sangat tinggi."
+      "token": "CONDO",
+      "price": 5.812e-05,
+      "reason": "Likuiditas ($21k) dan volume 24 jam ($15k) sangat rendah. Aktivitas transaksi 5 menit sangat minim (hanya 10 transaksi) dengan tren harga yang turun tajam (-14.78%). Tidak ada momentum atau tekanan beli yang memadai untuk strategi hit and run."
     }
   },
   {
-    "timestamp": "23:51:29",
-    "time_raw": 1791157889.9287264,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $Army @ $0.000118 | TP: 1.35x, SL: 0.85x",
-    "details": {
-      "token": "Army",
-      "price": 0.0001183,
-      "tp": 1.35,
-      "sl": 0.85,
-      "reason": "Volume 24h sangat tinggi terhadap likuiditas dengan momentum 5m positif (+15.92%), cocok untuk hit-and-run scalp. SL dipasang ketat karena rasio buy/sell seimbang (35/33) yang mengindikasikan potensi aksi ambil untung."
-    }
-  },
-  {
-    "timestamp": "23:51:22",
-    "time_raw": 1791157882.0874636,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $root @ $0.000124 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "root",
-      "price": 0.0001243,
-      "tp": 1.5,
-      "sl": 0.7,
-      "reason": "Momentum sangat kuat dengan tekanan beli tinggi (2077 buys vs 1432 sells dalam 5 menit) dan lonjakan harga 43.03%. Likuiditas rendah ($31k) dengan rasio volume tinggi memicu volatilitas ekstrem, sangat ideal untuk strategi hit and run cepat sebelum fase koreksi atau taking profit massal."
-    }
-  },
-  {
-    "timestamp": "23:51:12",
-    "time_raw": 1791157872.0856297,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 3x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:50:57",
-    "time_raw": 1791157857.0421975,
+    "timestamp": "02:34:32",
+    "time_raw": 1791167672.5699494,
     "type": "AI_SKIP",
-    "message": "Lewatkan $pDOG @ $0.000016 - Penurunan harga ekstrem -72.21% dalam 5 menit dengan likuiditas tipis ($11.9k) mengindikasikan dump besar atau potensi rug pull. Risiko falling knife terlalu tinggi untuk strategi hit and run.",
+    "message": "Lewatkan $XEET @ $0.000085 - Error calling AI",
     "details": {
-      "token": "pDOG",
-      "price": 1.56e-05,
-      "reason": "Penurunan harga ekstrem -72.21% dalam 5 menit dengan likuiditas tipis ($11.9k) mengindikasikan dump besar atau potensi rug pull. Risiko falling knife terlalu tinggi untuk strategi hit and run."
-    }
-  },
-  {
-    "timestamp": "23:50:50",
-    "time_raw": 1791157850.6182384,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $Army @ $0.000121 | TP: 1.4x, SL: 0.8x",
-    "details": {
-      "token": "Army",
-      "price": 0.0001208,
-      "tp": 1.4,
-      "sl": 0.8,
-      "reason": "Rasio volume terhadap likuiditas sangat tinggi dengan momentum 5m positif (+18.33%) dan transaksi aktif, ideal untuk quick scalp hit-and-run."
-    }
-  },
-  {
-    "timestamp": "23:50:43",
-    "time_raw": 1791157843.1527746,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $root @ $0.000138 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "root",
-      "price": 0.0001383,
-      "tp": 1.5,
-      "sl": 0.7,
-      "reason": "Tekanan beli sangat masif (1946 buys vs 1361 sells) dan momentum harga ekstrem (+59.23%) dalam 5 menit terakhir. Rasio volume terhadap likuiditas sangat tinggi, ideal untuk strategi hit and run cepat sebelum potensi taking profit massal atau dump."
-    }
-  },
-  {
-    "timestamp": "23:50:32",
-    "time_raw": 1791157832.3481047,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 3x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:50:17",
-    "time_raw": 1791157817.2865894,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $pDOG @ $0.000021 - Likuiditas tipis ($13.6k) disertai penurunan tajam -60.14% dalam 5 menit mengindikasikan dump masif (potensi rug pull/whale exit). Menangkap pisau jatuh (falling knife) terlalu berisiko untuk strategi hit and run.",
-    "details": {
-      "token": "pDOG",
-      "price": 2.059e-05,
-      "reason": "Likuiditas tipis ($13.6k) disertai penurunan tajam -60.14% dalam 5 menit mengindikasikan dump masif (potensi rug pull/whale exit). Menangkap pisau jatuh (falling knife) terlalu berisiko untuk strategi hit and run."
-    }
-  },
-  {
-    "timestamp": "23:50:09",
-    "time_raw": 1791157809.0547807,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $Army @ $0.000120 | TP: 1.35x, SL: 0.85x",
-    "details": {
-      "token": "Army",
-      "price": 0.0001199,
-      "tp": 1.35,
-      "sl": 0.85,
-      "reason": "Momentum 5 menit kuat (+16.23%) didukung rasio volume terhadap likuiditas yang sangat tinggi. Rasio buy/sell yang seimbang memerlukan strategi hit and run dengan take profit cepat dan stop loss ketat."
-    }
-  },
-  {
-    "timestamp": "23:50:01",
-    "time_raw": 1791157801.8494604,
-    "type": "TRADE_BUY",
-    "message": "Membeli $root @ $0.000106",
-    "details": {
-      "symbol": "root",
-      "amount_usd": 10.0,
-      "buy_price": 0.0001062,
-      "tp_price": 0.00015930000000000002,
-      "sl_price": 7.434e-05
-    }
-  },
-  {
-    "timestamp": "23:50:01",
-    "time_raw": 1791157801.8468418,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $root @ $0.000106 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "root",
-      "price": 0.0001062,
-      "tp": 1.5,
-      "sl": 0.7,
-      "reason": "Momentum FOMO sangat ekstrem dengan dominasi buy (2391 buys vs 1803 sells) dalam 5 menit terakhir. Rasio volume terhadap likuiditas sangat tinggi, menciptakan volatilitas yang sempurna untuk strategi hit and run cepat sebelum terjadi koreksi dari pump 112%."
-    }
-  },
-  {
-    "timestamp": "23:49:51",
-    "time_raw": 1791157791.6427093,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 4x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:49:51",
-    "time_raw": 1791157791.640598,
-    "type": "TRADE_SELL",
-    "message": "Menjual $pDOG (STOP_LOSS) @ $0.000021 | PnL: -42.85%",
-    "details": {
-      "symbol": "pDOG",
-      "sell_price": 2.059e-05,
-      "profit_usd": -4.285317790729947,
-      "pnl_pct": -42.85317790729947,
-      "reason": "STOP_LOSS"
-    }
-  },
-  {
-    "timestamp": "23:49:36",
-    "time_raw": 1791157776.5930526,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000012 - Likuiditas sangat tipis ($7.9k) dengan tekanan jual mendominasi (168 sells vs 121 buys) dan harga dump -29.46% dalam 5m, mengindikasikan death spiral atau risiko rug pull tinggi.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.176e-05,
-      "reason": "Likuiditas sangat tipis ($7.9k) dengan tekanan jual mendominasi (168 sells vs 121 buys) dan harga dump -29.46% dalam 5m, mengindikasikan death spiral atau risiko rug pull tinggi."
-    }
-  },
-  {
-    "timestamp": "23:49:30",
-    "time_raw": 1791157770.3941462,
-    "type": "TRADE_BUY",
-    "message": "Membeli $pDOG @ $0.000036",
-    "details": {
-      "symbol": "pDOG",
-      "amount_usd": 10.0,
-      "buy_price": 3.603e-05,
-      "tp_price": 4.86405e-05,
-      "sl_price": 2.8824e-05
-    }
-  },
-  {
-    "timestamp": "23:49:30",
-    "time_raw": 1791157770.3917706,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $pDOG @ $0.000036 | TP: 1.35x, SL: 0.8x",
-    "details": {
-      "token": "pDOG",
-      "price": 3.603e-05,
-      "tp": 1.35,
-      "sl": 0.8,
-      "reason": "Koreksi tajam -28.55% dalam 5m diimbangi tingginya minat beli (639 buys vs 538 sells), membuka peluang bounce cepat untuk strategi scalp hit and run."
-    }
-  },
-  {
-    "timestamp": "23:49:23",
-    "time_raw": 1791157763.1122048,
-    "type": "TRADE_BUY",
-    "message": "Membeli $Army @ $0.000122",
-    "details": {
-      "symbol": "Army",
-      "amount_usd": 10.0,
-      "buy_price": 0.0001225,
-      "tp_price": 0.00018375,
-      "sl_price": 8.575e-05
-    }
-  },
-  {
-    "timestamp": "23:49:23",
-    "time_raw": 1791157763.1099217,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $Army @ $0.000122 | TP: 1.5x, SL: 0.7x",
-    "details": {
-      "token": "Army",
-      "price": 0.0001225,
-      "tp": 1.5,
-      "sl": 0.7,
-      "reason": "Volume 24 jam sangat tinggi dibandingkan likuiditas ($34k), menunjukkan hype dan volatilitas ekstrem. Momentum 5 menit positif (+14.81%) dengan dominasi buy. Cocok untuk strategi hit and run cepat dengan target profit 50% dan stop loss 30% untuk meminimalisir risiko slippage pada likuiditas rendah."
-    }
-  },
-  {
-    "timestamp": "23:49:14",
-    "time_raw": 1791157754.1106043,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:49:14",
-    "time_raw": 1791157754.1087742,
-    "type": "TRADE_SELL",
-    "message": "Menjual $pDOG (STOP_LOSS) @ $0.000036 | PnL: -19.27%",
-    "details": {
-      "symbol": "pDOG",
-      "sell_price": 3.603e-05,
-      "profit_usd": -1.9269549630293525,
-      "pnl_pct": -19.269549630293522,
-      "reason": "STOP_LOSS"
-    }
-  },
-  {
-    "timestamp": "23:48:59",
-    "time_raw": 1791157739.0867481,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000011 - Tekanan jual masif (329 sells vs 192 buys) disertai dump ekstrem -52.42% dalam 5 menit dan likuiditas sangat tipis ($7.6k), risiko tinggi rug pull atau dead coin.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.117e-05,
-      "reason": "Tekanan jual masif (329 sells vs 192 buys) disertai dump ekstrem -52.42% dalam 5 menit dan likuiditas sangat tipis ($7.6k), risiko tinggi rug pull atau dead coin."
-    }
-  },
-  {
-    "timestamp": "23:48:52",
-    "time_raw": 1791157732.5391026,
-    "type": "TRADE_BUY",
-    "message": "Membeli $pDOG @ $0.000045",
-    "details": {
-      "symbol": "pDOG",
-      "amount_usd": 10.0,
-      "buy_price": 4.463e-05,
-      "tp_price": 6.02505e-05,
-      "sl_price": 3.7935499999999996e-05
-    }
-  },
-  {
-    "timestamp": "23:48:52",
-    "time_raw": 1791157732.5365129,
-    "type": "AI_BUY",
-    "message": "Sinyal BUY pada $pDOG @ $0.000045 | TP: 1.35x, SL: 0.85x",
-    "details": {
-      "token": "pDOG",
-      "price": 4.463e-05,
-      "tp": 1.35,
-      "sl": 0.85,
-      "reason": "Aktivitas 5m sangat tinggi dengan dominasi transaksi beli (580 buys vs 452 sells) saat koreksi -11.51%, peluang ideal untuk scalp pantulan harga cepat (hit and run)."
-    }
-  },
-  {
-    "timestamp": "23:48:46",
-    "time_raw": 1791157726.4926295,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $Army @ $0.000109 - Error calling AI",
-    "details": {
-      "token": "Army",
-      "price": 0.0001087,
+      "token": "XEET",
+      "price": 8.501e-05,
       "reason": "Error calling AI"
     }
   },
   {
-    "timestamp": "23:48:30",
-    "time_raw": 1791157710.293776,
+    "timestamp": "02:34:16",
+    "time_raw": 1791167656.3722293,
     "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
     "details": {}
   },
   {
-    "timestamp": "23:48:15",
-    "time_raw": 1791157695.290967,
+    "timestamp": "02:34:01",
+    "time_raw": 1791167641.344773,
     "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000008 - Likuiditas sangat tipis ($6.2k) dengan tekanan jual ekstrem (326 sells vs 178 buys) dan dump -65.71% dalam 5 menit mengindikasikan rug pull atau capitulation aktif.",
+    "message": "Lewatkan $CONDO @ $0.000058 - Momentum 5m negatif (-14.78%), volume 24h sangat rendah ($15.2k), serta aktivitas transaksi lesu (hanya 10 tx/5m). Risiko dump lanjutan tinggi untuk strategi hit and run.",
     "details": {
-      "token": "YAPITAL",
-      "price": 8.054e-06,
-      "reason": "Likuiditas sangat tipis ($6.2k) dengan tekanan jual ekstrem (326 sells vs 178 buys) dan dump -65.71% dalam 5 menit mengindikasikan rug pull atau capitulation aktif."
+      "token": "CONDO",
+      "price": 5.812e-05,
+      "reason": "Momentum 5m negatif (-14.78%), volume 24h sangat rendah ($15.2k), serta aktivitas transaksi lesu (hanya 10 tx/5m). Risiko dump lanjutan tinggi untuk strategi hit and run."
     }
   },
   {
-    "timestamp": "23:48:06",
-    "time_raw": 1791157686.5654042,
+    "timestamp": "02:33:53",
+    "time_raw": 1791167633.5374825,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $XEET @ $0.000091 | TP: 1.5x, SL: 0.7x",
+    "details": {
+      "token": "XEET",
+      "price": 9.093e-05,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Momentum sangat tinggi dengan lebih dari 1500 transaksi (797 buys) dalam 5 menit terakhir. Lonjakan harga 85% dan likuiditas rendah ($26k) menunjukkan volatilitas ekstrem yang ideal untuk scalping cepat (hit and run), namun membutuhkan stop-loss ketat untuk mencegah jebakan dump."
+    }
+  },
+  {
+    "timestamp": "02:33:41",
+    "time_raw": 1791167621.545905,
     "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
     "details": {}
   },
   {
-    "timestamp": "23:47:51",
-    "time_raw": 1791157671.562801,
+    "timestamp": "02:33:26",
+    "time_raw": 1791167606.5137725,
     "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000008 - Likuiditas sangat rendah ($6.2k), tekanan jual mendominasi (326 sells vs 178 buys), dan harga anjlok -65.71% dalam 5 menit, mengindikasikan risiko dump parah atau rug pull (falling knife).",
+    "message": "Lewatkan $CONDO @ $0.000058 - Tekanan jual tinggi (9 sell vs 5 buy) dengan penurunan tajam -17.86% dalam 5 menit terakhir serta volume 24h yang rendah mengindikasikan risiko dump berkelanjutan.",
     "details": {
-      "token": "YAPITAL",
-      "price": 8.054e-06,
-      "reason": "Likuiditas sangat rendah ($6.2k), tekanan jual mendominasi (326 sells vs 178 buys), dan harga anjlok -65.71% dalam 5 menit, mengindikasikan risiko dump parah atau rug pull (falling knife)."
+      "token": "CONDO",
+      "price": 5.818e-05,
+      "reason": "Tekanan jual tinggi (9 sell vs 5 buy) dengan penurunan tajam -17.86% dalam 5 menit terakhir serta volume 24h yang rendah mengindikasikan risiko dump berkelanjutan."
     }
   },
   {
-    "timestamp": "23:47:43",
-    "time_raw": 1791157663.9978106,
+    "timestamp": "02:33:19",
+    "time_raw": 1791167599.8365953,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $XEET @ $0.000073 - Harga sudah mengalami lonjakan ekstrem (+47.93% dalam 5m) dan jumlah sell (554) mulai melampaui buy (548), mengindikasikan risiko tinggi terjadinya aksi ambil untung/dump lokal.",
+    "details": {
+      "token": "XEET",
+      "price": 7.27e-05,
+      "reason": "Harga sudah mengalami lonjakan ekstrem (+47.93% dalam 5m) dan jumlah sell (554) mulai melampaui buy (548), mengindikasikan risiko tinggi terjadinya aksi ambil untung/dump lokal."
+    }
+  },
+  {
+    "timestamp": "02:33:08",
+    "time_raw": 1791167588.5994706,
     "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
     "details": {}
   },
   {
-    "timestamp": "23:47:28",
-    "time_raw": 1791157648.995045,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000007 - Penurunan harga ekstrem sebesar -83.69% dalam 5 menit dengan tekanan jual yang jauh lebih tinggi (559 sells vs 367 buys) dan likuiditas sangat rendah ($5.7k) sangat mengindikasikan terjadinya rug pull atau developer dump. Risiko terjebak tanpa bisa exit sangat tinggi.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 7.141e-06,
-      "reason": "Penurunan harga ekstrem sebesar -83.69% dalam 5 menit dengan tekanan jual yang jauh lebih tinggi (559 sells vs 367 buys) dan likuiditas sangat rendah ($5.7k) sangat mengindikasikan terjadinya rug pull atau developer dump. Risiko terjebak tanpa bisa exit sangat tinggi."
-    }
-  },
-  {
-    "timestamp": "23:47:19",
-    "time_raw": 1791157639.6984365,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:47:04",
-    "time_raw": 1791157624.6952329,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000007 - Dump ekstrem -83.83% dalam 5 menit dengan likuiditas sangat tipis ($5.6k) dan tekanan jual tinggi (540 sells vs 354 buys), mengindikasikan potensi rug pull atau dev dump yang tidak layak di-snipe.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 7.08e-06,
-      "reason": "Dump ekstrem -83.83% dalam 5 menit dengan likuiditas sangat tipis ($5.6k) dan tekanan jual tinggi (540 sells vs 354 buys), mengindikasikan potensi rug pull atau dev dump yang tidak layak di-snipe."
-    }
-  },
-  {
-    "timestamp": "23:46:56",
-    "time_raw": 1791157616.8082302,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:46:41",
-    "time_raw": 1791157601.805203,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000013 - Dump ekstrem -67.25% dalam 5 menit dengan tekanan jual mendominasi (655 sells) dan likuiditas sangat tipis ($8.4k) mengindikasikan risiko tinggi rug pull atau falling knife.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.287e-05,
-      "reason": "Dump ekstrem -67.25% dalam 5 menit dengan tekanan jual mendominasi (655 sells) dan likuiditas sangat tipis ($8.4k) mengindikasikan risiko tinggi rug pull atau falling knife."
-    }
-  },
-  {
-    "timestamp": "23:46:32",
-    "time_raw": 1791157592.5086439,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:46:17",
-    "time_raw": 1791157577.5056527,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000013 - Penurunan harga ekstrem (-67.15%) dalam 5 menit dengan likuiditas sangat rendah ($8.4k) dan dominasi transaksi jual mengindikasikan potensi rug pull atau dev dump. Risiko terlalu tinggi untuk entry.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.291e-05,
-      "reason": "Penurunan harga ekstrem (-67.15%) dalam 5 menit dengan likuiditas sangat rendah ($8.4k) dan dominasi transaksi jual mengindikasikan potensi rug pull atau dev dump. Risiko terlalu tinggi untuk entry."
-    }
-  },
-  {
-    "timestamp": "23:46:09",
-    "time_raw": 1791157569.222504,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $normie @ $0.000011 - Dump ekstrem -77.56% dalam 5 menit dan likuiditas sangat tipis ($7.7k) mengindikasikan potensi rug pull atau dev dump; risiko likuiditas terkunci dan slippage terlalu tinggi untuk sniper.",
-    "details": {
-      "token": "normie",
-      "price": 1.121e-05,
-      "reason": "Dump ekstrem -77.56% dalam 5 menit dan likuiditas sangat tipis ($7.7k) mengindikasikan potensi rug pull atau dev dump; risiko likuiditas terkunci dan slippage terlalu tinggi untuk sniper."
-    }
-  },
-  {
-    "timestamp": "23:46:02",
-    "time_raw": 1791157562.0530756,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:45:47",
-    "time_raw": 1791157547.0504637,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000015 - Likuiditas sangat tipis ($9.4k) disertai dump tajam -61.43% dalam 5 menit, mengindikasikan tekanan jual masif atau potensi rug pull/dump dev dengan risiko slippage tinggi.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.545e-05,
-      "reason": "Likuiditas sangat tipis ($9.4k) disertai dump tajam -61.43% dalam 5 menit, mengindikasikan tekanan jual masif atau potensi rug pull/dump dev dengan risiko slippage tinggi."
-    }
-  },
-  {
-    "timestamp": "23:45:40",
-    "time_raw": 1791157540.7588987,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $normie @ $0.000011 - Likuiditas sangat rendah ($7.6k) dan harga anjlok -77.8% dalam 5 menit terakhir. Indikasi kuat terjadinya rug pull atau massive dump. Risiko terlalu tinggi (catching a falling knife).",
-    "details": {
-      "token": "normie",
-      "price": 1.109e-05,
-      "reason": "Likuiditas sangat rendah ($7.6k) dan harga anjlok -77.8% dalam 5 menit terakhir. Indikasi kuat terjadinya rug pull atau massive dump. Risiko terlalu tinggi (catching a falling knife)."
-    }
-  },
-  {
-    "timestamp": "23:45:31",
-    "time_raw": 1791157531.080514,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:45:16",
-    "time_raw": 1791157516.0776236,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000016 - Likuiditas sangat tipis (<$10k) dengan penurunan harga ekstrem -59% dalam 5 menit menandakan aksi dump besar/rug pull. Menangkap pisau jatuh dengan likuiditas serendah ini memiliki risiko slippage fatal.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.642e-05,
-      "reason": "Likuiditas sangat tipis (<$10k) dengan penurunan harga ekstrem -59% dalam 5 menit menandakan aksi dump besar/rug pull. Menangkap pisau jatuh dengan likuiditas serendah ini memiliki risiko slippage fatal."
-    }
-  },
-  {
-    "timestamp": "23:45:08",
-    "time_raw": 1791157508.970184,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $normie @ $0.000014 - Likuiditas sangat tipis ($8.9k) disertai dump parah -71.59% dalam 5 menit mengindikasikan potensi rug pull atau dev dumping yang sangat berisiko.",
-    "details": {
-      "token": "normie",
-      "price": 1.419e-05,
-      "reason": "Likuiditas sangat tipis ($8.9k) disertai dump parah -71.59% dalam 5 menit mengindikasikan potensi rug pull atau dev dumping yang sangat berisiko."
-    }
-  },
-  {
-    "timestamp": "23:45:01",
-    "time_raw": 1791157501.2022295,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:44:46",
-    "time_raw": 1791157486.1992016,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000017 - Likuiditas sangat rendah ($9.8k) dipadukan dengan penurunan harga ekstrem (-63.14%) dalam 5 menit terakhir. Jumlah transaksi yang sangat tinggi (2500+ dalam 5 menit) mengindikasikan wash trading oleh bot atau proses rug pull/dumping sedang berlangsung. Risiko terlalu besar untuk menangkap pisau jatuh (catching a falling knife).",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.663e-05,
-      "reason": "Likuiditas sangat rendah ($9.8k) dipadukan dengan penurunan harga ekstrem (-63.14%) dalam 5 menit terakhir. Jumlah transaksi yang sangat tinggi (2500+ dalam 5 menit) mengindikasikan wash trading oleh bot atau proses rug pull/dumping sedang berlangsung. Risiko terlalu besar untuk menangkap pisau jatuh (catching a falling knife)."
-    }
-  },
-  {
-    "timestamp": "23:44:38",
-    "time_raw": 1791157478.0864215,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $normie @ $0.000017 - Dump ekstrem -66.6% dalam 5 menit mengindikasikan aksi jual massal atau potensi rug pull, ditambah likuiditas yang sangat tipis (<$10k) sehingga risiko slippage dan likuidasi total terlalu tinggi.",
-    "details": {
-      "token": "normie",
-      "price": 1.669e-05,
-      "reason": "Dump ekstrem -66.6% dalam 5 menit mengindikasikan aksi jual massal atau potensi rug pull, ditambah likuiditas yang sangat tipis (<$10k) sehingga risiko slippage dan likuidasi total terlalu tinggi."
-    }
-  },
-  {
-    "timestamp": "23:44:29",
-    "time_raw": 1791157469.2744951,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:44:14",
-    "time_raw": 1791157454.2719378,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000013 - Penurunan ekstrem -71.51% dalam 5 menit dan likuiditas sangat tipis ($8.3k) menandakan potensi rug pull atau death spiral yang berisiko tinggi.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 1.285e-05,
-      "reason": "Penurunan ekstrem -71.51% dalam 5 menit dan likuiditas sangat tipis ($8.3k) menandakan potensi rug pull atau death spiral yang berisiko tinggi."
-    }
-  },
-  {
-    "timestamp": "23:44:07",
-    "time_raw": 1791157447.639855,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $normie @ $0.000012 - Likuiditas sangat rendah ($8K) dan harga anjlok -75.53% dalam 5 menit. Indikasi kuat terjadinya rug pull atau dev dump. Risiko slippage dan kerugian total terlalu tinggi untuk strategi hit and run.",
-    "details": {
-      "token": "normie",
-      "price": 1.222e-05,
-      "reason": "Likuiditas sangat rendah ($8K) dan harga anjlok -75.53% dalam 5 menit. Indikasi kuat terjadinya rug pull atau dev dump. Risiko slippage dan kerugian total terlalu tinggi untuk strategi hit and run."
-    }
-  },
-  {
-    "timestamp": "23:43:58",
-    "time_raw": 1791157438.2739172,
-    "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 5x)...",
-    "details": {}
-  },
-  {
-    "timestamp": "23:43:58",
-    "time_raw": 1791157438.2719069,
+    "timestamp": "02:33:08",
+    "time_raw": 1791167588.571585,
     "type": "TRADE_SELL",
-    "message": "Menjual $normie (STOP_LOSS) @ $0.000012 | PnL: -69.76%",
+    "message": "Menjual $Factory (STOP_LOSS) @ $0.000008 | PnL: -23.15%",
     "details": {
-      "symbol": "normie",
-      "sell_price": 1.222e-05,
-      "profit_usd": -6.975996040584014,
-      "pnl_pct": -69.75996040584013,
+      "symbol": "Factory",
+      "sell_price": 7.977e-06,
+      "profit_usd": -2.315028901734105,
+      "pnl_pct": -23.150289017341045,
       "reason": "STOP_LOSS"
     }
   },
   {
-    "timestamp": "23:43:43",
-    "time_raw": 1791157423.2510521,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $YAPITAL @ $0.000025 - Harga anjlok tajam -49.15% dalam 5 menit menandakan whale dump atau potensi rug pull, ditambah likuiditas sangat tipis ($12.5k) yang berisiko tinggi slippage parah.",
-    "details": {
-      "token": "YAPITAL",
-      "price": 2.487e-05,
-      "reason": "Harga anjlok tajam -49.15% dalam 5 menit menandakan whale dump atau potensi rug pull, ditambah likuiditas sangat tipis ($12.5k) yang berisiko tinggi slippage parah."
-    }
-  },
-  {
-    "timestamp": "23:43:33",
-    "time_raw": 1791157413.0271893,
+    "timestamp": "02:32:53",
+    "time_raw": 1791167573.5450513,
     "type": "TRADE_BUY",
-    "message": "Membeli $normie @ $0.000040",
+    "message": "Membeli $XEET @ $0.000070",
     "details": {
-      "symbol": "normie",
+      "symbol": "XEET",
       "amount_usd": 10.0,
-      "buy_price": 4.041e-05,
-      "tp_price": 5.2533e-05,
-      "sl_price": 3.43485e-05
+      "buy_price": 6.979e-05,
+      "tp_price": 0.00010468499999999999,
+      "sl_price": 4.8852999999999995e-05
     }
   },
   {
-    "timestamp": "23:43:33",
-    "time_raw": 1791157413.025241,
+    "timestamp": "02:32:53",
+    "time_raw": 1791167573.542658,
     "type": "AI_BUY",
-    "message": "Sinyal BUY pada $normie @ $0.000040 | TP: 1.3x, SL: 0.85x",
+    "message": "Sinyal BUY pada $XEET @ $0.000070 | TP: 1.5x, SL: 0.7x",
     "details": {
-      "token": "normie",
-      "price": 4.041e-05,
+      "token": "XEET",
+      "price": 6.979e-05,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Momentum sangat kuat dengan lonjakan harga 42.02% dan aktivitas tinggi (530 transaksi) dalam 5 menit terakhir. Likuiditas rendah ($22k) berisiko tinggi, sehingga wajib menggunakan strategi hit and run cepat untuk mengamankan profit sebelum potensi dump."
+    }
+  },
+  {
+    "timestamp": "02:32:37",
+    "time_raw": 1791167557.5123878,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:32:22",
+    "time_raw": 1791167542.47887,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $CONDO @ $0.000058 - Tekanan jual dominan dalam 5 menit terakhir (8 jual vs 3 beli) dengan penurunan harga signifikan -18.62%, serta volume perdagangan yang rendah mengindikasikan risiko dump/rug pull.",
+    "details": {
+      "token": "CONDO",
+      "price": 5.803e-05,
+      "reason": "Tekanan jual dominan dalam 5 menit terakhir (8 jual vs 3 beli) dengan penurunan harga signifikan -18.62%, serta volume perdagangan yang rendah mengindikasikan risiko dump/rug pull."
+    }
+  },
+  {
+    "timestamp": "02:32:06",
+    "time_raw": 1791167526.4506905,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:32:06",
+    "time_raw": 1791167526.4120588,
+    "type": "TRADE_SELL",
+    "message": "Menjual $MEMEAGENCY (STOP_LOSS) @ $0.000911 | PnL: -30.27%",
+    "details": {
+      "symbol": "MEMEAGENCY",
+      "sell_price": 0.0009107,
+      "profit_usd": -3.0267993874425736,
+      "pnl_pct": -30.267993874425734,
+      "reason": "STOP_LOSS"
+    }
+  },
+  {
+    "timestamp": "02:28:35",
+    "time_raw": 1791167315.6392488,
+    "type": "TRADE_BUY",
+    "message": "Membeli $Factory @ $0.000010",
+    "details": {
+      "symbol": "Factory",
+      "amount_usd": 10.0,
+      "buy_price": 1.038e-05,
+      "tp_price": 1.4013000000000001e-05,
+      "sl_price": 8.5116e-06
+    }
+  },
+  {
+    "timestamp": "02:28:35",
+    "time_raw": 1791167315.636824,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $Factory @ $0.000010 | TP: 1.35x, SL: 0.82x",
+    "details": {
+      "token": "Factory",
+      "price": 1.038e-05,
+      "tp": 1.35,
+      "sl": 0.82,
+      "reason": "Rasio volume terhadap likuiditas sangat tinggi dengan momentum transaksi 5m positif (buys > sells, +2.25%). Likuiditas tipis ($7.3k) mewajibkan TP cepat dan SL ketat untuk mengamankan profit."
+    }
+  },
+  {
+    "timestamp": "02:28:29",
+    "time_raw": 1791167309.426594,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $CONDO @ $0.000071 - Likuiditas rendah ($24k) dan volume 24 jam sangat kecil ($14k) menunjukkan tidak ada momentum. Data transaksi 5 menit terakhir menunjukkan tekanan jual yang lebih tinggi (13 sells vs 7 buys). Risiko slippage tinggi dan tidak cocok untuk strategi hit and run.",
+    "details": {
+      "token": "CONDO",
+      "price": 7.083e-05,
+      "reason": "Likuiditas rendah ($24k) dan volume 24 jam sangat kecil ($14k) menunjukkan tidak ada momentum. Data transaksi 5 menit terakhir menunjukkan tekanan jual yang lebih tinggi (13 sells vs 7 buys). Risiko slippage tinggi dan tidak cocok untuk strategi hit and run."
+    }
+  },
+  {
+    "timestamp": "02:28:19",
+    "time_raw": 1791167299.1931057,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:28:04",
+    "time_raw": 1791167284.148178,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000010 - Likuiditas sangat tipis ($7.2k) disertai penurunan tajam -50.37% dalam 5 menit menandakan potensi dump developer atau rug pull; risiko menangkap pisau jatuh dengan slippage ekstrem.",
+    "details": {
+      "token": "Factory",
+      "price": 1.018e-05,
+      "reason": "Likuiditas sangat tipis ($7.2k) disertai penurunan tajam -50.37% dalam 5 menit menandakan potensi dump developer atau rug pull; risiko menangkap pisau jatuh dengan slippage ekstrem."
+    }
+  },
+  {
+    "timestamp": "02:27:57",
+    "time_raw": 1791167277.2091095,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $CONDO @ $0.000071 - Tekanan jual mendominasi (12 sells vs 6 buys) dengan penurunan harga -10.51% dalam 5 menit terakhir serta rasio volume 24h yang rendah terhadap likuiditas. Momentum bearish berisiko tinggi untuk strategi hit and run.",
+    "details": {
+      "token": "CONDO",
+      "price": 7.13e-05,
+      "reason": "Tekanan jual mendominasi (12 sells vs 6 buys) dengan penurunan harga -10.51% dalam 5 menit terakhir serta rasio volume 24h yang rendah terhadap likuiditas. Momentum bearish berisiko tinggi untuk strategi hit and run."
+    }
+  },
+  {
+    "timestamp": "02:27:49",
+    "time_raw": 1791167269.5851223,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:27:34",
+    "time_raw": 1791167254.5483663,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000010 - Likuiditas sangat rendah ($7k) dikombinasikan dengan penurunan harga ekstrem -52.2% dalam 5 menit mengindikasikan potensi rug pull atau dev dump. Risiko terlalu tinggi untuk strategi hit and run.",
+    "details": {
+      "token": "Factory",
+      "price": 9.805e-06,
+      "reason": "Likuiditas sangat rendah ($7k) dikombinasikan dengan penurunan harga ekstrem -52.2% dalam 5 menit mengindikasikan potensi rug pull atau dev dump. Risiko terlalu tinggi untuk strategi hit and run."
+    }
+  },
+  {
+    "timestamp": "02:27:22",
+    "time_raw": 1791167242.646036,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:27:07",
+    "time_raw": 1791167227.6129055,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000010 - Likuiditas sangat tipis ($7.4k) dengan dump agresif -27.42% dalam 5 menit terakhir, risiko slippage ekstrem dan rug pull terlalu tinggi untuk hit and run.",
+    "details": {
+      "token": "Factory",
+      "price": 1.041e-05,
+      "reason": "Likuiditas sangat tipis ($7.4k) dengan dump agresif -27.42% dalam 5 menit terakhir, risiko slippage ekstrem dan rug pull terlalu tinggi untuk hit and run."
+    }
+  },
+  {
+    "timestamp": "02:26:58",
+    "time_raw": 1791167218.5586145,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:26:43",
+    "time_raw": 1791167203.5280788,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000010 - Tekanan jual dominan (408 sells vs 318 buys) dengan dump tajam -29.92% dalam 5m dan likuiditas tipis ($7.2k), risiko rugpull atau falling knife sangat tinggi.",
+    "details": {
+      "token": "Factory",
+      "price": 1.005e-05,
+      "reason": "Tekanan jual dominan (408 sells vs 318 buys) dengan dump tajam -29.92% dalam 5m dan likuiditas tipis ($7.2k), risiko rugpull atau falling knife sangat tinggi."
+    }
+  },
+  {
+    "timestamp": "02:26:34",
+    "time_raw": 1791167194.433472,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:26:19",
+    "time_raw": 1791167179.404917,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000009 - Likuiditas sangat rendah ($6.8k) dipadukan dengan penurunan harga ekstrem (-72.01%) dalam 5 menit dan dominasi tekanan jual (404 sells vs 309 buys) mengindikasikan kemungkinan rug pull atau dump besar-besaran. Risiko terlalu tinggi untuk entry.",
+    "details": {
+      "token": "Factory",
+      "price": 9.212e-06,
+      "reason": "Likuiditas sangat rendah ($6.8k) dipadukan dengan penurunan harga ekstrem (-72.01%) dalam 5 menit dan dominasi tekanan jual (404 sells vs 309 buys) mengindikasikan kemungkinan rug pull atau dump besar-besaran. Risiko terlalu tinggi untuk entry."
+    }
+  },
+  {
+    "timestamp": "02:26:09",
+    "time_raw": 1791167169.771531,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:25:54",
+    "time_raw": 1791167154.7370121,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000009 - Likuiditas sangat rendah ($6.8k) disertai dump parah -72% dalam 5 menit dan dominasi sell pressure, mengindikasikan potensi rug pull atau death spiral.",
+    "details": {
+      "token": "Factory",
+      "price": 9.212e-06,
+      "reason": "Likuiditas sangat rendah ($6.8k) disertai dump parah -72% dalam 5 menit dan dominasi sell pressure, mengindikasikan potensi rug pull atau death spiral."
+    }
+  },
+  {
+    "timestamp": "02:25:45",
+    "time_raw": 1791167145.853464,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:25:30",
+    "time_raw": 1791167130.822347,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000008 - Harga anjlok -89.67% dalam 5m dengan tekanan jual masif (629 sells) dan likuiditas sangat tipis ($6.2k), mengindikasikan potensi rugpull atau developer dump.",
+    "details": {
+      "token": "Factory",
+      "price": 8.02e-06,
+      "reason": "Harga anjlok -89.67% dalam 5m dengan tekanan jual masif (629 sells) dan likuiditas sangat tipis ($6.2k), mengindikasikan potensi rugpull atau developer dump."
+    }
+  },
+  {
+    "timestamp": "02:25:22",
+    "time_raw": 1791167122.5001104,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:25:07",
+    "time_raw": 1791167107.4700494,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000009 - Likuiditas sangat rendah ($6.9k) dipadukan dengan penurunan harga ekstrem -88.02% dalam 5 menit dan dominasi tekanan jual (602 sells vs 427 buys). Indikasi kuat terjadinya rug pull atau massive dump, risiko terlalu tinggi untuk entry.",
+    "details": {
+      "token": "Factory",
+      "price": 9.307e-06,
+      "reason": "Likuiditas sangat rendah ($6.9k) dipadukan dengan penurunan harga ekstrem -88.02% dalam 5 menit dan dominasi tekanan jual (602 sells vs 427 buys). Indikasi kuat terjadinya rug pull atau massive dump, risiko terlalu tinggi untuk entry."
+    }
+  },
+  {
+    "timestamp": "02:24:56",
+    "time_raw": 1791167096.0407703,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:24:41",
+    "time_raw": 1791167081.0114915,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000010 - Dump ekstrem -88.43% dalam 5 menit dengan tekanan jual tinggi (742 sells) dan likuiditas tersisa sangat rendah ($7.4k), mengindikasikan potensi rug pull atau developer dump.",
+    "details": {
+      "token": "Factory",
+      "price": 1.044e-05,
+      "reason": "Dump ekstrem -88.43% dalam 5 menit dengan tekanan jual tinggi (742 sells) dan likuiditas tersisa sangat rendah ($7.4k), mengindikasikan potensi rug pull atau developer dump."
+    }
+  },
+  {
+    "timestamp": "02:24:32",
+    "time_raw": 1791167072.555994,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:24:17",
+    "time_raw": 1791167057.5249178,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000014 - Terjadi dump ekstrem sebesar -84.59% dalam 5 menit dengan tekanan jual tinggi (715 sells) dan likuiditas sangat tipis ($8.9k), mengindikasikan dev dump atau rug pull yang berisiko tinggi.",
+    "details": {
+      "token": "Factory",
+      "price": 1.391e-05,
+      "reason": "Terjadi dump ekstrem sebesar -84.59% dalam 5 menit dengan tekanan jual tinggi (715 sells) dan likuiditas sangat tipis ($8.9k), mengindikasikan dev dump atau rug pull yang berisiko tinggi."
+    }
+  },
+  {
+    "timestamp": "02:24:08",
+    "time_raw": 1791167048.3759596,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:23:53",
+    "time_raw": 1791167033.348832,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000019 - Penurunan harga ekstrim sebesar -82.98% dalam 5 menit terakhir dengan tekanan jual yang lebih tinggi (908 sells vs 817 buys) dan likuiditas sangat rendah ($10k). Indikasi kuat terjadinya rug pull atau massive developer dump. Risiko terlalu tinggi untuk entry.",
+    "details": {
+      "token": "Factory",
+      "price": 1.864e-05,
+      "reason": "Penurunan harga ekstrim sebesar -82.98% dalam 5 menit terakhir dengan tekanan jual yang lebih tinggi (908 sells vs 817 buys) dan likuiditas sangat rendah ($10k). Indikasi kuat terjadinya rug pull atau massive developer dump. Risiko terlalu tinggi untuk entry."
+    }
+  },
+  {
+    "timestamp": "02:23:41",
+    "time_raw": 1791167021.0597897,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:23:26",
+    "time_raw": 1791167006.0278158,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000019 - Dump ekstrem sebesar -82.98% dalam 5 menit dengan dominasi jual tinggi dan likuiditas sangat tipis ($10.6k), mengindikasikan potensi rug pull atau dump terminal yang terlalu berisiko.",
+    "details": {
+      "token": "Factory",
+      "price": 1.864e-05,
+      "reason": "Dump ekstrem sebesar -82.98% dalam 5 menit dengan dominasi jual tinggi dan likuiditas sangat tipis ($10.6k), mengindikasikan potensi rug pull atau dump terminal yang terlalu berisiko."
+    }
+  },
+  {
+    "timestamp": "02:23:17",
+    "time_raw": 1791166997.7448173,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:23:17",
+    "time_raw": 1791166997.7426167,
+    "type": "TRADE_SELL",
+    "message": "Menjual $TEXCAT (STOP_LOSS) @ $0.000032 | PnL: -48.76%",
+    "details": {
+      "symbol": "TEXCAT",
+      "sell_price": 3.172e-05,
+      "profit_usd": -4.876433532547246,
+      "pnl_pct": -48.76433532547245,
+      "reason": "STOP_LOSS"
+    }
+  },
+  {
+    "timestamp": "02:23:02",
+    "time_raw": 1791166982.6913369,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000012 - Harga anjlok drastis -88.6% dalam 5 menit dengan likuiditas sangat tipis ($8.3k) dan dominasi order jual, mengindikasikan dump masif atau potensi rug pull.",
+    "details": {
+      "token": "Factory",
+      "price": 1.248e-05,
+      "reason": "Harga anjlok drastis -88.6% dalam 5 menit dengan likuiditas sangat tipis ($8.3k) dan dominasi order jual, mengindikasikan dump masif atau potensi rug pull."
+    }
+  },
+  {
+    "timestamp": "02:22:54",
+    "time_raw": 1791166974.6013834,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:22:39",
+    "time_raw": 1791166959.3217025,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $TEXCAT @ $0.000067 | TP: 1.5x, SL: 0.7x",
+    "details": {
+      "token": "TEXCAT",
+      "price": 6.745e-05,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Volume 24 jam yang tinggi dibandingkan likuiditas ($22k) dan dominasi buy (190 vs 156) dalam 5 menit terakhir menunjukkan momentum bullish yang kuat. Volatilitas tinggi ini sangat ideal untuk eksekusi strategi hit and run cepat sebelum terjadi koreksi."
+    }
+  },
+  {
+    "timestamp": "02:22:28",
+    "time_raw": 1791166948.0943375,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000013 - Penurunan ekstrem -82.23% dalam 5 menit mengindikasikan rug pull atau dump besar-besaran. Likuiditas tersisa sangat rendah ($8.6k) dengan tekanan jual tinggi, sangat berisiko terjebak.",
+    "details": {
+      "token": "Factory",
+      "price": 1.312e-05,
+      "reason": "Penurunan ekstrem -82.23% dalam 5 menit mengindikasikan rug pull atau dump besar-besaran. Likuiditas tersisa sangat rendah ($8.6k) dengan tekanan jual tinggi, sangat berisiko terjebak."
+    }
+  },
+  {
+    "timestamp": "02:22:18",
+    "time_raw": 1791166938.7973256,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:22:03",
+    "time_raw": 1791166923.7339952,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $TEXCAT @ $0.000068 | TP: 1.4x, SL: 0.8x",
+    "details": {
+      "token": "TEXCAT",
+      "price": 6.807e-05,
+      "tp": 1.4,
+      "sl": 0.8,
+      "reason": "Volume 24 jam sangat aktif dibanding likuiditas ($22.4k), didukung rasio transaksi 5 menit yang positif (178 buy vs 142 sell) dan momentum kenaikan sehat (+5.18%) untuk quick scalping."
+    }
+  },
+  {
+    "timestamp": "02:21:56",
+    "time_raw": 1791166916.7990963,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000011 - Likuiditas sangat rendah ($7.8k) dan harga anjlok drastis -84.71% dalam 5 menit terakhir dengan dominasi tekanan jual. Indikasi kuat terjadinya rug pull atau dump besar-besaran.",
+    "details": {
+      "token": "Factory",
+      "price": 1.129e-05,
+      "reason": "Likuiditas sangat rendah ($7.8k) dan harga anjlok drastis -84.71% dalam 5 menit terakhir dengan dominasi tekanan jual. Indikasi kuat terjadinya rug pull atau dump besar-besaran."
+    }
+  },
+  {
+    "timestamp": "02:21:47",
+    "time_raw": 1791166907.4124563,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:21:32",
+    "time_raw": 1791166892.354643,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $TEXCAT @ $0.000075 | TP: 1.45x, SL: 0.8x",
+    "details": {
+      "token": "TEXCAT",
+      "price": 7.495e-05,
+      "tp": 1.45,
+      "sl": 0.8,
+      "reason": "Momentum 5m sangat kuat (+28.38%) dengan dominasi tekanan beli (216 vs 145) serta rasio volume terhadap likuiditas yang tinggi, ideal untuk scalp cepat hit-and-run dengan SL ketat."
+    }
+  },
+  {
+    "timestamp": "02:21:25",
+    "time_raw": 1791166885.4506528,
+    "type": "AI_SKIP",
+    "message": "Lewatkan $Factory @ $0.000034 - Penurunan harga drastis -50.78% dalam 5 menit dengan likuiditas sangat rendah ($15k) mengindikasikan risiko tinggi terjadinya rug pull atau dev dump.",
+    "details": {
+      "token": "Factory",
+      "price": 3.37e-05,
+      "reason": "Penurunan harga drastis -50.78% dalam 5 menit dengan likuiditas sangat rendah ($15k) mengindikasikan risiko tinggi terjadinya rug pull atau dev dump."
+    }
+  },
+  {
+    "timestamp": "02:21:17",
+    "time_raw": 1791166877.3700554,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:21:17",
+    "time_raw": 1791166877.367765,
+    "type": "TRADE_SELL",
+    "message": "Menjual $Factory (STOP_LOSS) @ $0.000034 | PnL: -58.86%",
+    "details": {
+      "symbol": "Factory",
+      "sell_price": 3.37e-05,
+      "profit_usd": -5.885728238310341,
+      "pnl_pct": -58.8572823831034,
+      "reason": "STOP_LOSS"
+    }
+  },
+  {
+    "timestamp": "02:20:01",
+    "time_raw": 1791166801.9362922,
+    "type": "TRADE_BUY",
+    "message": "Membeli $Factory @ $0.000082",
+    "details": {
+      "symbol": "Factory",
+      "amount_usd": 10.0,
+      "buy_price": 8.191e-05,
+      "tp_price": 0.000122865,
+      "sl_price": 5.733699999999999e-05
+    }
+  },
+  {
+    "timestamp": "02:20:01",
+    "time_raw": 1791166801.9329493,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $Factory @ $0.000082 | TP: 1.5x, SL: 0.7x",
+    "details": {
+      "token": "Factory",
+      "price": 8.191e-05,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Momentum FOMO sangat tinggi dengan lebih dari 2200 transaksi dalam 5 menit terakhir dan dominasi buy. Likuiditas rendah ($24k) memicu volatilitas ekstrem, sangat ideal untuk strategi hit and run cepat mengambil profit 50% sebelum risiko koreksi tajam akibat pump 76%."
+    }
+  },
+  {
+    "timestamp": "02:19:50",
+    "time_raw": 1791166790.087155,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:19:50",
+    "time_raw": 1791166790.0588558,
+    "type": "TRADE_SELL",
+    "message": "Menjual $SI (TAKE_PROFIT) @ $0.000071 | PnL: +53.71%",
+    "details": {
+      "symbol": "SI",
+      "sell_price": 7.103e-05,
+      "profit_usd": 5.371131789655919,
+      "pnl_pct": 53.711317896559194,
+      "reason": "TAKE_PROFIT"
+    }
+  },
+  {
+    "timestamp": "02:16:48",
+    "time_raw": 1791166608.9568837,
+    "type": "TRADE_BUY",
+    "message": "Membeli $TEXCAT @ $0.000062",
+    "details": {
+      "symbol": "TEXCAT",
+      "amount_usd": 10.0,
+      "buy_price": 6.191e-05,
+      "tp_price": 8.35785e-05,
+      "sl_price": 4.9528e-05
+    }
+  },
+  {
+    "timestamp": "02:16:48",
+    "time_raw": 1791166608.9540808,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $TEXCAT @ $0.000062 | TP: 1.35x, SL: 0.8x",
+    "details": {
+      "token": "TEXCAT",
+      "price": 6.191e-05,
+      "tp": 1.35,
+      "sl": 0.8,
+      "reason": "Momentum 5m sangat kuat (+71.4%) dengan dominasi buyer 2:1 dan turnover volume tinggi. Cocok untuk quick scalp hit-and-run dengan SL ketat mengingat likuiditas tipis."
+    }
+  },
+  {
+    "timestamp": "02:16:36",
+    "time_raw": 1791166596.358105,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:16:21",
+    "time_raw": 1791166581.2991982,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $SI @ $0.000058 | TP: 1.35x, SL: 0.85x",
+    "details": {
+      "token": "SI",
+      "price": 5.831e-05,
+      "tp": 1.35,
+      "sl": 0.85,
+      "reason": "Momentum 5m positif (+10.36%) dengan dominasi tekanan beli (66 buys vs 55 sells) dan rasio volume terhadap likuiditas sangat tinggi ($710k vol / $21k liq), ideal untuk strategi hit and run cepat dengan stop loss ketat."
+    }
+  },
+  {
+    "timestamp": "02:16:12",
+    "time_raw": 1791166572.120131,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:15:56",
+    "time_raw": 1791166556.8293486,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $SI @ $0.000057 | TP: 1.5x, SL: 0.7x",
+    "details": {
+      "token": "SI",
+      "price": 5.686e-05,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Rasio volume terhadap likuiditas sangat tinggi ($709k vol / $21k liq) menunjukkan volatilitas ekstrem dan aktivitas masif. Tekanan beli 5 menit lebih dominan dengan tren positif +7.6%, sangat ideal untuk strategi hit and run cepat, namun likuiditas rendah membutuhkan eksekusi take profit dan stop loss yang disiplin."
+    }
+  },
+  {
+    "timestamp": "02:15:43",
+    "time_raw": 1791166543.1951604,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:15:28",
+    "time_raw": 1791166528.137451,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $SI @ $0.000057 | TP: 1.3x, SL: 0.85x",
+    "details": {
+      "token": "SI",
+      "price": 5.672e-05,
       "tp": 1.3,
       "sl": 0.85,
-      "reason": "Aktivitas 5m sangat tinggi (>1100 transaksi) dengan dominasi buy (672 vs 502). Koreksi -19.13% membuka peluang rebound cepat (hit and run) dengan SL ketat."
+      "reason": "Volume 24 jam sangat aktif dibanding likuiditas, didukung momentum 5m positif (+8.4%) dan dominasi buy order (64 buys vs 53 sells) yang ideal untuk quick scalp hit-and-run."
     }
   },
   {
-    "timestamp": "23:43:22",
-    "time_raw": 1791157402.3537135,
+    "timestamp": "02:15:20",
+    "time_raw": 1791166520.1245809,
     "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 6x)...",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
     "details": {}
   },
   {
-    "timestamp": "23:43:07",
-    "time_raw": 1791157387.3505936,
+    "timestamp": "02:15:05",
+    "time_raw": 1791166505.0603256,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $SI @ $0.000054 | TP: 1.4x, SL: 0.8x",
+    "details": {
+      "token": "SI",
+      "price": 5.432e-05,
+      "tp": 1.4,
+      "sl": 0.8,
+      "reason": "Rasio volume/likuiditas sangat tinggi ($709k vol vs $20.5k liq) menunjukkan aktivitas tinggi. Transaksi 5m aktif dengan dominasi buy (60/52) dan momentum positif stabil (+3.83%), ideal untuk scalp hit and run cepat."
+    }
+  },
+  {
+    "timestamp": "02:14:56",
+    "time_raw": 1791166496.4935424,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:14:41",
+    "time_raw": 1791166481.4326577,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $SI @ $0.000053 | TP: 1.5x, SL: 0.7x",
+    "details": {
+      "token": "SI",
+      "price": 5.269e-05,
+      "tp": 1.5,
+      "sl": 0.7,
+      "reason": "Rasio volume 24h terhadap likuiditas sangat tinggi (sekitar 35x) menunjukkan volatilitas dan aktivitas trading yang ekstrem. Tekanan beli dalam 5 menit terakhir lebih dominan (63 buys vs 54 sells) dengan momentum harga positif (+2.4%), sangat ideal untuk strategi hit and run cepat sebelum likuiditas terkuras."
+    }
+  },
+  {
+    "timestamp": "02:14:32",
+    "time_raw": 1791166472.7332013,
+    "type": "SCAN",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
+    "details": {}
+  },
+  {
+    "timestamp": "02:14:17",
+    "time_raw": 1791166457.6761782,
     "type": "AI_SKIP",
-    "message": "Lewatkan $memepad @ $0.000015 - Likuiditas sangat rendah (<$10k) dan harga anjlok -50.22% hanya dalam 5 menit meskipun jumlah transaksi buy lebih banyak. Ini adalah indikasi kuat adanya whale atau developer yang sedang melakukan dumping (potensi rug pull). Risiko slippage dan kerugian total terlalu tinggi.",
+    "message": "Lewatkan $SI @ $0.000046 - Likuiditas sangat rendah ($18.7k) dengan rasio volume tidak wajar, ditambah penurunan harga -10.19% dalam 5m yang mengindikasikan tekanan jual whale/distribusi.",
     "details": {
-      "token": "memepad",
-      "price": 1.491e-05,
-      "reason": "Likuiditas sangat rendah (<$10k) dan harga anjlok -50.22% hanya dalam 5 menit meskipun jumlah transaksi buy lebih banyak. Ini adalah indikasi kuat adanya whale atau developer yang sedang melakukan dumping (potensi rug pull). Risiko slippage dan kerugian total terlalu tinggi."
+      "token": "SI",
+      "price": 4.621e-05,
+      "reason": "Likuiditas sangat rendah ($18.7k) dengan rasio volume tidak wajar, ditambah penurunan harga -10.19% dalam 5m yang mengindikasikan tekanan jual whale/distribusi."
     }
   },
   {
-    "timestamp": "23:42:56",
-    "time_raw": 1791157376.62863,
+    "timestamp": "02:14:06",
+    "time_raw": 1791166446.6685822,
     "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 6x)...",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 1x)...",
     "details": {}
   },
   {
-    "timestamp": "23:42:41",
-    "time_raw": 1791157361.6258202,
-    "type": "AI_SKIP",
-    "message": "Lewatkan $memepad @ $0.000016 - Likuiditas terlalu tipis ($9.6k) dan terjadi dump tajam -49.63% dalam 5 menit, mengindikasikan dev/whale dump atau potensi rug pull yang berisiko tinggi terhadap slippage ekstrem.",
+    "timestamp": "02:13:51",
+    "time_raw": 1791166431.6170127,
+    "type": "TRADE_BUY",
+    "message": "Membeli $SI @ $0.000046",
     "details": {
-      "token": "memepad",
-      "price": 1.623e-05,
-      "reason": "Likuiditas terlalu tipis ($9.6k) dan terjadi dump tajam -49.63% dalam 5 menit, mengindikasikan dev/whale dump atau potensi rug pull yang berisiko tinggi terhadap slippage ekstrem."
+      "symbol": "SI",
+      "amount_usd": 10.0,
+      "buy_price": 4.621e-05,
+      "tp_price": 6.0073e-05,
+      "sl_price": 3.92785e-05
     }
   },
   {
-    "timestamp": "23:42:29",
-    "time_raw": 1791157349.2287486,
+    "timestamp": "02:13:51",
+    "time_raw": 1791166431.6147213,
+    "type": "AI_BUY",
+    "message": "Sinyal BUY pada $SI @ $0.000046 | TP: 1.3x, SL: 0.85x",
+    "details": {
+      "token": "SI",
+      "price": 4.621e-05,
+      "tp": 1.3,
+      "sl": 0.85,
+      "reason": "Volume 24h tinggi dibandingkan likuiditas dan koreksi 5m (-10.19%) diimbangi transaksi buy/sell yang seimbang (52/49), membuka peluang quick bounce hit and run."
+    }
+  },
+  {
+    "timestamp": "02:13:43",
+    "time_raw": 1791166423.7896206,
     "type": "SCAN",
-    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 6x)...",
+    "message": "Memindai token Solana baru di DexScreener (Sisa slot: 2x)...",
     "details": {}
-  },
-  {
-    "timestamp": "23:42:29",
-    "time_raw": 1791157349.2266636,
-    "type": "TRADE_SELL",
-    "message": "Menjual $memepad (STOP_LOSS) @ $0.000016 | PnL: -29.13%",
-    "details": {
-      "symbol": "memepad",
-      "sell_price": 1.623e-05,
-      "profit_usd": -2.9126637554585164,
-      "pnl_pct": -29.126637554585162,
-      "reason": "STOP_LOSS"
-    }
   }
 ]
