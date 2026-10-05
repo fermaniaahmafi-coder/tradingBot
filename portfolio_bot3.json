@@ -1,18 +1,31 @@
 {
-  "cash": 96.62262518740705,
+  "cash": 93.65545022504713,
   "positions": [
     {
-      "address": "2us1WG1j2UCqDy3T3rRZKoW3jHTfQRQvJ9AsGk9Jpump",
-      "name": "Isaac feels pain",
-      "symbol": "ISAAC",
-      "buy_price": 1.802e-05,
-      "tokens_count": 554938.9567147613,
+      "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
+      "name": "Crime Pays",
+      "symbol": "CRIME",
+      "buy_price": 2.96e-05,
+      "tokens_count": 337837.8378378378,
       "cost_usd": 10.0,
-      "current_price": 1.76e-05,
-      "current_val": 9.7669256381798,
-      "target_tp_price": 2.0182400000000002e-05,
-      "target_sl_price": 1.65784e-05,
-      "opened_at": 1791201603.8802583
+      "current_price": 2.96e-05,
+      "current_val": 10.0,
+      "target_tp_price": 3.3152000000000004e-05,
+      "target_sl_price": 2.7232000000000003e-05,
+      "opened_at": 1791203117.5454218
+    },
+    {
+      "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
+      "name": "\u02da \u0f18 \u0cc0\u22c6\uff61\u02da",
+      "symbol": "Apiary",
+      "buy_price": 4.127e-05,
+      "tokens_count": 242306.76035861397,
+      "cost_usd": 10.0,
+      "current_price": 4.127e-05,
+      "current_val": 10.0,
+      "target_tp_price": 4.6222400000000007e-05,
+      "target_sl_price": 3.796840000000001e-05,
+      "opened_at": 1791203125.7898545
     }
   ]
 }

@@ -67,6 +67,20 @@ STRATEGIES = {
 2. BUY jika ada indikasi lonjakan harga cepat (price_change_5m positif) dan MACD baru saja cross ke atas.
 3. Target Take Profit (TP): 1.20 - 1.40 (+20% s.d +40%).
 4. Stop Loss (SL): 0.88 - 0.92 (-12% s.d -8%)."""
+    },
+    "bot6": {
+        "name": "Hybrid Reversion Scalper (Dip-Scalper)",
+        "desc": "Kombinasi Micro-Scalper + Mean Reversion: Membeli saat pullback/dip sehat (RSI 32-52) dengan eksekusi TP cepat (5-10%) & SL ketat (5-7%).",
+        "default_tp": 1.08,
+        "default_sl": 0.94,
+        "max_tp": 1.14,
+        "min_sl": 0.91,
+        "prompt_rules": """
+1. SKIP jika honeypot (sells = 0) atau dev dump ekstrem (sells jauh melebihi buys).
+2. BUY jika token sedang mengalami pullback/koreksi minor (RSI antara 32 - 52, atau harga di area Middle/Lower Bollinger Band) dengan likuiditas aktif (> $5k).
+3. BUY juga jika terjadi konsolidasi sehat setelah penurunan minor dan mulai stabil.
+4. Target Take Profit (TP): 1.05 - 1.10 (+5% s.d +10% hit-and-run cepat).
+5. Stop Loss (SL): 0.93 - 0.95 (-7% s.d -5%)."""
     }
 }
 

@@ -23,8 +23,8 @@ Dokumen ini adalah panduan strategis (master blueprint) pengembangan jangka pend
 ## Fase 1: Pondasi Multi-Bot & Paper Trading (Status: SELESAI)
 > **Fokus:** Validasi logika, kestabilan infrastruktur, dan isolasi data.
 
-- [x] **Arsitektur 5 Persona Bot Simultan:**
-  - Bot 1 (Micro-Scalper), Bot 2 (Breakout Momentum), Bot 3 (Dip Buyer), Bot 4 (Conservative Trend), Bot 5 (Moonshot Sniper).
+- [x] **Arsitektur 6 Persona Bot Simultan:**
+  - Bot 1 (Micro-Scalper), Bot 2 (Breakout Momentum), Bot 3 (Dip Buyer), Bot 4 (Conservative Trend), Bot 5 (Moonshot Sniper), Bot 6 (Hybrid Reversion Scalper).
 - [x] **Shared Market Cache & Rate-Limit Shield:**
   - Mengurangi beban request ke DexScreener dan GeckoTerminal dengan TTL cache 25 detik.
 - [x] **Isolasi Database & Multi-Service Systemd:**

@@ -665,6 +665,25 @@
                     </div>
                 </div>
 
+                
+                <!-- Bot Selector -->
+                <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: 12px; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <label style="font-weight: 700; font-size: 14px; color: var(--text-dark);">Pilih Persona Bot:</label>
+                        <select id="bot-selector" onchange="changeBot()" style="padding: 8px 16px; border: 1px solid var(--border-light); border-radius: 8px; font-weight: 600; font-size: 14px; color: var(--text-dark); background: #f8fafc; cursor: pointer; outline: none; min-width: 250px;">
+                            <option value="bot1">Bot 1: Micro-Scalper</option>
+                            <option value="bot2">Bot 2: Breakout Momentum</option>
+                            <option value="bot3">Bot 3: Mean Reversion / Dip Buyer</option>
+                            <option value="bot4">Bot 4: Conservative Trend Follower</option>
+                            <option value="bot5">Bot 5: Moonshot Sniper</option>
+                            <option value="bot6">Bot 6: Hybrid Reversion Scalper</option>
+                        </select>
+                    </div>
+                    <div style="font-size: 12px; font-weight: 600; color: var(--text-secondary);" id="bot-desc-text">
+                        Pilih bot untuk melihat analisis & riwayat khusus bot tersebut.
+                    </div>
+                </div>
+
                 <!-- 8 Metric Cards Grid -->
                 <div class="metrics-grid-eight">
                     <!-- Net Profit -->

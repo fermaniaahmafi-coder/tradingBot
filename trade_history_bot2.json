@@ -63,5 +63,83 @@
     "reason": "STOP_LOSS",
     "opened_at": 1791201564.9970903,
     "closed_at": 1791201580.0642736
+  },
+  {
+    "symbol": "TIT",
+    "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
+    "buy_price": 7.483e-05,
+    "sell_price": 4.797e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.410530535881332,
+    "profit_usd": -3.589469464118668,
+    "pnl_pct": -35.89469464118669,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791202087.2865758,
+    "closed_at": 1791202120.6037405
+  },
+  {
+    "symbol": "Sensei",
+    "address": "CDZpLf9dfXFPcVYfhd5cpCfYAvZ19ZSnHvF8Whyb4Y7u",
+    "buy_price": 1.045e-05,
+    "sell_price": 1.256e-05,
+    "cost_usd": 10.0,
+    "proceeds": 12.019138755980862,
+    "profit_usd": 2.019138755980862,
+    "pnl_pct": 20.191387559808614,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791202188.7962592,
+    "closed_at": 1791202250.284625
+  },
+  {
+    "symbol": "TIT",
+    "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
+    "buy_price": 4.716e-05,
+    "sell_price": 6.689e-05,
+    "cost_usd": 10.0,
+    "proceeds": 14.183630195080577,
+    "profit_usd": 4.1836301950805765,
+    "pnl_pct": 41.83630195080577,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791202229.4518003,
+    "closed_at": 1791202250.3180623
+  },
+  {
+    "symbol": "Apiary",
+    "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
+    "buy_price": 5.602e-05,
+    "sell_price": 3.448e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.154944662620492,
+    "profit_usd": -3.8450553373795078,
+    "pnl_pct": -38.450553373795074,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791202427.8311458,
+    "closed_at": 1791202496.1336856
+  },
+  {
+    "symbol": "TIT",
+    "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
+    "buy_price": 7.267e-05,
+    "sell_price": 5.27e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.251960919223889,
+    "profit_usd": -2.7480390807761106,
+    "pnl_pct": -27.480390807761108,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791202601.8832915,
+    "closed_at": 1791202622.1360323
+  },
+  {
+    "symbol": "TIT",
+    "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
+    "buy_price": 6.192e-05,
+    "sell_price": 3.898e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.295219638242894,
+    "profit_usd": -3.7047803617571056,
+    "pnl_pct": -37.047803617571056,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791202721.115271,
+    "closed_at": 1791202743.3481524
   }
 ]
