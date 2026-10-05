@@ -206,8 +206,7 @@
     "pnl_pct": 19.570011025358326,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791183670.9599044,
-    "closed_at": 1791183719.485107,
-    "id": 15
+    "closed_at": 1791183719.485107
   },
   {
     "symbol": "SIF",
@@ -220,8 +219,7 @@
     "pnl_pct": 36.760411864146306,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791183729.7416656,
-    "closed_at": 1791183752.4630105,
-    "id": 16
+    "closed_at": 1791183752.4630105
   },
   {
     "symbol": "KKK",
@@ -234,8 +232,7 @@
     "pnl_pct": 19.23240938166311,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791185037.7122235,
-    "closed_at": 1791185118.681453,
-    "id": 17
+    "closed_at": 1791185118.681453
   },
   {
     "symbol": "KKK",
@@ -248,8 +245,7 @@
     "pnl_pct": -9.92489270386266,
     "reason": "STOP_LOSS",
     "opened_at": 1791185136.5018408,
-    "closed_at": 1791185168.4915378,
-    "id": 18
+    "closed_at": 1791185168.4915378
   },
   {
     "symbol": "KKK",
@@ -262,8 +258,7 @@
     "pnl_pct": -12.090530077427035,
     "reason": "STOP_LOSS",
     "opened_at": 1791185184.9423087,
-    "closed_at": 1791185215.7084582,
-    "id": 19
+    "closed_at": 1791185215.7084582
   },
   {
     "symbol": "clanker",
@@ -276,8 +271,7 @@
     "pnl_pct": -32.7992277992278,
     "reason": "STOP_LOSS",
     "opened_at": 1791185274.0924072,
-    "closed_at": 1791185321.7989097,
-    "id": 20
+    "closed_at": 1791185321.7989097
   },
   {
     "symbol": "$T800",
@@ -290,8 +284,7 @@
     "pnl_pct": -9.769810119868465,
     "reason": "STOP_LOSS",
     "opened_at": 1791184283.505846,
-    "closed_at": 1791185471.833947,
-    "id": 21
+    "closed_at": 1791185471.833947
   },
   {
     "symbol": "KKK",
@@ -304,8 +297,7 @@
     "pnl_pct": 9.693760073681776,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791185745.9321842,
-    "closed_at": 1791185882.1082852,
-    "id": 22
+    "closed_at": 1791185882.1082852
   },
   {
     "symbol": "KKK",
@@ -318,8 +310,7 @@
     "pnl_pct": 10.852225020990764,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791185898.7922132,
-    "closed_at": 1791185958.0832608,
-    "id": 23
+    "closed_at": 1791185958.0832608
   },
   {
     "symbol": "INFLUENCR",
@@ -332,8 +323,7 @@
     "pnl_pct": -13.28731665228645,
     "reason": "STOP_LOSS",
     "opened_at": 1791185891.0967987,
-    "closed_at": 1791186003.2560532,
-    "id": 24
+    "closed_at": 1791186003.2560532
   },
   {
     "symbol": "KKK",
@@ -346,8 +336,7 @@
     "pnl_pct": -19.268069533394332,
     "reason": "STOP_LOSS",
     "opened_at": 1791186027.7991538,
-    "closed_at": 1791186241.8896983,
-    "id": 25
+    "closed_at": 1791186241.8896983
   },
   {
     "symbol": "$T800",
@@ -360,8 +349,7 @@
     "pnl_pct": 20.735223450264296,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791185594.0688615,
-    "closed_at": 1791186948.5457585,
-    "id": 26
+    "closed_at": 1791186948.5457585
   },
   {
     "symbol": "elves",
@@ -374,8 +362,7 @@
     "pnl_pct": -17.48826291079812,
     "reason": "STOP_LOSS",
     "opened_at": 1791189057.0508232,
-    "closed_at": 1791189153.3462884,
-    "id": 27
+    "closed_at": 1791189153.3462884
   },
   {
     "symbol": "BIO/ACC",
@@ -388,8 +375,7 @@
     "pnl_pct": 9.858130229174243,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791189369.8376465,
-    "closed_at": 1791189391.1766865,
-    "id": 28
+    "closed_at": 1791189391.1766865
   },
   {
     "symbol": "BIO/ACC",
@@ -402,8 +388,7 @@
     "pnl_pct": -12.384105960264895,
     "reason": "STOP_LOSS",
     "opened_at": 1791189405.1362035,
-    "closed_at": 1791189552.5941832,
-    "id": 29
+    "closed_at": 1791189552.5941832
   },
   {
     "symbol": "BIO/ACC",
@@ -416,8 +401,7 @@
     "pnl_pct": 11.18669690098261,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791189560.245499,
-    "closed_at": 1791189646.7758923,
-    "id": 30
+    "closed_at": 1791189646.7758923
   },
   {
     "symbol": "BIO/ACC",
@@ -430,7 +414,84 @@
     "pnl_pct": 24.77906186267845,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791189654.497519,
-    "closed_at": 1791189707.8732243,
-    "id": 31
+    "closed_at": 1791189707.8732243
+  },
+  {
+    "symbol": "BIO/ACC",
+    "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
+    "buy_price": 3.464e-05,
+    "sell_price": 2.932e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.46420323325635,
+    "profit_usd": -1.5357967667436494,
+    "pnl_pct": -15.35796766743649,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791190075.2658775,
+    "closed_at": 1791190257.7606094
+  },
+  {
+    "symbol": "BIO/ACC",
+    "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
+    "buy_price": 2.327e-05,
+    "sell_price": 2.536e-05,
+    "cost_usd": 10.0,
+    "proceeds": 10.898152127202408,
+    "profit_usd": 0.8981521272024082,
+    "pnl_pct": 8.981521272024075,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791190804.6090724,
+    "closed_at": 1791190828.7129793
+  },
+  {
+    "symbol": "BIO/ACC",
+    "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
+    "buy_price": 2.536e-05,
+    "sell_price": 2.745e-05,
+    "cost_usd": 10.0,
+    "proceeds": 10.824132492113565,
+    "profit_usd": 0.8241324921135647,
+    "pnl_pct": 8.241324921135641,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791190841.9135783,
+    "closed_at": 1791191359.8107975
+  },
+  {
+    "symbol": "Instincat",
+    "address": "DLPm9yqR3qGFayetLKTqVtQm1nRfmFBFvntAQfzpump",
+    "buy_price": 0.0002257,
+    "sell_price": 0.0002851,
+    "cost_usd": 10.0,
+    "proceeds": 12.631812140008861,
+    "profit_usd": 2.6318121400088614,
+    "pnl_pct": 26.3181214000886,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791192166.2280893,
+    "closed_at": 1791192181.261652
+  },
+  {
+    "symbol": "Instincat",
+    "address": "DLPm9yqR3qGFayetLKTqVtQm1nRfmFBFvntAQfzpump",
+    "buy_price": 0.0002851,
+    "sell_price": 0.0002429,
+    "cost_usd": 10.0,
+    "proceeds": 8.519817607856892,
+    "profit_usd": -1.4801823921431083,
+    "pnl_pct": -14.801823921431076,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791192197.8468387,
+    "closed_at": 1791192244.5961204
+  },
+  {
+    "symbol": "super",
+    "address": "7aXoZaSN2BhsqG4hUdcmA7Arkc6N652oK86sYcbvpump",
+    "buy_price": 5.451e-05,
+    "sell_price": 4.228e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.756374977068428,
+    "profit_usd": -2.243625022931572,
+    "pnl_pct": -22.436250229315714,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791192545.785736,
+    "closed_at": 1791192599.2839355
   }
 ]

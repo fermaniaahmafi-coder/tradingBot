@@ -1,18 +1,18 @@
 {
-  "cash": 109.16487253918896,
+  "cash": 108.25936511669548,
   "positions": [
     {
-      "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
-      "name": "Bio Acceleration",
-      "symbol": "BIO/ACC",
-      "buy_price": 3.464e-05,
-      "tokens_count": 288683.6027713626,
+      "address": "25moUjJpSN73D9NPwD4VmcyR4FVTWiYaL9XPKkdta5iP",
+      "name": "Pneumonic Plague",
+      "symbol": "PLAGUE",
+      "buy_price": 8.674e-05,
+      "tokens_count": 115287.06479133041,
       "cost_usd": 10.0,
-      "current_price": 3.394e-05,
-      "current_val": 9.797921478060045,
-      "target_tp_price": 3.8104000000000007e-05,
-      "target_sl_price": 3.1176e-05,
-      "opened_at": 1791190075.2658775
+      "current_price": 8.403e-05,
+      "current_val": 9.687572054415494,
+      "target_tp_price": 9.367920000000001e-05,
+      "target_sl_price": 8.15356e-05,
+      "opened_at": 1791192333.489789
     }
   ]
 }
