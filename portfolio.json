@@ -1,31 +1,44 @@
 {
-  "cash": 72.37143170097303,
+  "cash": 14.484368763544865,
   "positions": [
     {
-      "address": "Fah6hS4tEx8MeHmDo4W3CVkbS7A2DiAZFzkXAfaDpump",
-      "name": "ALLINCAT",
-      "symbol": "ALLINCAT",
-      "buy_price": 4.562e-05,
-      "tokens_count": 219202.10434020165,
+      "address": "6o8QVhkARAchGLeNSfH82juqLzTYNLWzRDfVUi2FUmvM",
+      "name": "SHIB Army",
+      "symbol": "Army",
+      "buy_price": 0.0001225,
+      "tokens_count": 81632.6530612245,
       "cost_usd": 10.0,
-      "current_price": 4.382e-05,
-      "current_val": 9.605436212187636,
-      "target_tp_price": 4.926960000000001e-05,
-      "target_sl_price": 4.2882799999999995e-05,
-      "opened_at": 1791146483.9021807
+      "current_price": 0.000178,
+      "current_val": 14.53061224489796,
+      "target_tp_price": 0.00018375,
+      "target_sl_price": 8.575e-05,
+      "opened_at": 1791157763.1112478
     },
     {
-      "address": "FA3YtURjye6H3EGCXGgXjCVjeggkRE4bURdvCK9Kpump",
-      "name": "HEARTBEAT",
-      "symbol": "BEAT",
-      "buy_price": 6.869e-05,
-      "tokens_count": 145581.5984859514,
+      "address": "fKZGW5c7kgVN8FbFKZohEnmUdUsrdimZ4BBHQYp2eEj",
+      "name": "Pneumonic Plague",
+      "symbol": "PLAGUE",
+      "buy_price": 2.823e-05,
+      "tokens_count": 354233.08537017356,
       "cost_usd": 10.0,
-      "current_price": 6.779e-05,
-      "current_val": 9.868976561362645,
-      "target_tp_price": 7.41852e-05,
-      "target_sl_price": 6.45686e-05,
-      "opened_at": 1791146931.5977237
+      "current_price": 3.054e-05,
+      "current_val": 10.818278427205101,
+      "target_tp_price": 3.81105e-05,
+      "target_sl_price": 2.3148599999999997e-05,
+      "opened_at": 1791158009.7755668
+    },
+    {
+      "address": "5nkEwLHNagMERJWWuiaFsuRukLvauWkoVTRxZ5TNP4eL",
+      "name": "Super Pepe",
+      "symbol": "SP",
+      "buy_price": 4.378e-05,
+      "tokens_count": 228414.8012791229,
+      "cost_usd": 10.0,
+      "current_price": 4.512e-05,
+      "current_val": 10.306075833714026,
+      "target_tp_price": 5.9103e-05,
+      "target_sl_price": 3.58996e-05,
+      "opened_at": 1791158022.605956
     }
   ]
 }

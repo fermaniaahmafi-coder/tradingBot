@@ -602,7 +602,7 @@ HTML_TEMPLATE = """
                         const pnlPct = ((p.current_price - p.buy_price) / p.buy_price) * 100;
                         const pnlClass = pnlPct >= 0 ? 'text-green' : 'text-red';
                         html += `
-                            <div class="pos-item">
+                            <div class="pos-item" onclick="window.location.href='/coin/${p.address}'" style="cursor: pointer;">
                                 <div class="pos-token">
                                     <div class="pos-symbol">${p.symbol} <span class="tag tag-blue">${p.name.substring(0, 14)}</span></div>
                                     <div class="pos-meta">Entry: ${formatPrice(p.buy_price)} &bull; Target TP: ${formatPrice(p.target_tp_price)} &bull; Target SL: ${formatPrice(p.target_sl_price)}</div>
@@ -632,7 +632,7 @@ HTML_TEMPLATE = """
                             ? '<span class="tag tag-green">TP</span>' 
                             : '<span class="tag tag-red">SL</span>';
                         html += `
-                            <div class="pos-item">
+                            <div class="pos-item" onclick="window.location.href='/coin/${h.address}'" style="cursor: pointer;">
                                 <div class="pos-token">
                                     <div class="pos-symbol">${h.symbol} ${badge}</div>
                                     <div class="pos-meta">Beli: ${formatPrice(h.buy_price)} &bull; Jual: ${formatPrice(h.sell_price)}</div>
@@ -704,6 +704,203 @@ HTML_TEMPLATE = """
 
         setInterval(fetchStatus, 3000);
         fetchStatus();
+    </script>
+</body>
+</html>
+"""
+
+
+COIN_TEMPLATE = """
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Koin - Hermes Trading Sniper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19; --surface: #121826; --surface-hover: #182235;
+            --border: #1e293b; --text-primary: #f8fafc; --text-secondary: #94a3b8;
+            --emerald: #10b981; --rose: #f43f5e; --blue: #3b82f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text-primary); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .btn-back { background: var(--surface); border: 1px solid var(--border); color: var(--text-primary); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .btn-back:hover { background: var(--surface-hover); }
+        .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .chart-container { width: 100%; height: 550px; border-radius: 8px; overflow: hidden; }
+        .stat-group { margin-bottom: 15px; }
+        .stat-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .stat-val { font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+        .text-green { color: var(--emerald); } .text-red { color: var(--rose); }
+        .btn-danger { background: rgba(244, 63, 94, 0.1); color: var(--rose); border: 1px solid rgba(244,63,94,0.3); padding: 12px; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .btn-danger:hover { background: rgba(244, 63, 94, 0.2); }
+        .gauge-bar { width: 100%; height: 8px; background: #334155; border-radius: 4px; margin-top: 25px; position: relative; }
+        .gauge-marker { position: absolute; top: -16px; font-size: 11px; font-weight: bold; transform: translateX(-50%); white-space: nowrap; }
+        .gauge-marker.entry { color: #f8fafc; } .gauge-marker.tp { color: var(--emerald); right: 0; transform: translateX(50%); } .gauge-marker.sl { color: var(--rose); left: 0; transform: translateX(-50%); }
+        .gauge-current { position: absolute; top: -6px; width: 12px; height: 20px; background: var(--blue); border-radius: 4px; transform: translateX(-50%); box-shadow: 0 0 10px var(--blue); transition: left 0.5s; }
+        .gauge-label-bottom { position: absolute; top: 16px; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--text-secondary); transform: translateX(-50%); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="btn-back">← Kembali</a>
+            <h2>Detail <span id="coin-symbol">Memuat...</span></h2>
+        </div>
+        <div class="grid">
+            <div class="card" style="padding: 0;">
+                <div id="chart-wrapper" class="chart-container">
+                    <div style="padding: 20px; color: var(--text-secondary);">Memuat chart DexScreener...</div>
+                </div>
+            </div>
+            <div class="card" id="details-panel">
+                <div style="color: var(--text-secondary);">Memuat data token...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const address = window.location.pathname.split('/').pop();
+        
+        async function fetchDetails() {
+            try {
+                const res = await fetch(`/api/coin/${address}`);
+                const data = await res.json();
+                
+                document.getElementById('coin-symbol').textContent = data.symbol || address.substring(0,6);
+                
+                // Embed chart once
+                const chartWrapper = document.getElementById('chart-wrapper');
+                if (chartWrapper.innerHTML.includes('Memuat') && data.pair_address) {
+                    chartWrapper.innerHTML = `<iframe src="https://dexscreener.com/solana/${data.pair_address}?embed=1&theme=dark&trades=0&info=0" width="100%" height="100%" frameborder="0"></iframe>`;
+                }
+
+                let html = '';
+                
+                if (data.status === 'ACTIVE') {
+                    const pnlPct = ((data.current_price - data.buy_price) / data.buy_price) * 100;
+                    const pnlClass = pnlPct >= 0 ? 'text-green' : 'text-red';
+                    
+                    // Gauge Math
+                    let range = data.target_tp_price - data.target_sl_price;
+                    let currentPos = data.current_price - data.target_sl_price;
+                    let pctLeft = (currentPos / range) * 100;
+                    pctLeft = Math.max(0, Math.min(100, pctLeft));
+                    let entryPos = ((data.buy_price - data.target_sl_price) / range) * 100;
+
+                    html += `
+                        <div style="margin-bottom: 20px;">
+                            <span style="background: rgba(59, 130, 246, 0.2); color: var(--blue); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">POSISI AKTIF</span>
+                        </div>
+                        
+                        <div class="stat-group">
+                            <div class="stat-label">Harga Saat Ini (Live)</div>
+                            <div class="stat-val ${pnlClass}">$${data.current_price.toFixed(8)} (${pnlPct >= 0 ? '+' : ''}${pnlPct.toFixed(2)}%)</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 20px; margin-bottom: 25px;">
+                            <div class="stat-group">
+                                <div class="stat-label">Entry Price</div>
+                                <div class="stat-val" style="font-size:14px;">$${data.buy_price.toFixed(8)}</div>
+                            </div>
+                            <div class="stat-group">
+                                <div class="stat-label">Value Saat Ini</div>
+                                <div class="stat-val ${pnlClass}" style="font-size:14px;">$${data.current_val.toFixed(2)}</div>
+                            </div>
+                        </div>
+
+                        <div class="gauge-bar" style="margin-bottom: 40px;">
+                            <div class="gauge-marker sl" style="left: 0;">SL (-6%)</div>
+                            <div class="gauge-label-bottom" style="left: 0;">$${data.target_sl_price.toFixed(8)}</div>
+                            
+                            <div class="gauge-marker tp" style="left: 100%;">TP (+8%)</div>
+                            <div class="gauge-label-bottom" style="left: 100%;">$${data.target_tp_price.toFixed(8)}</div>
+                            
+                            <div class="gauge-marker entry" style="left: ${entryPos}%;">Entry</div>
+                            
+                            <div class="gauge-current" style="left: ${pctLeft}%;"></div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border); margin: 20px 0;">
+                        
+                        <div style="display: flex; gap: 20px;">
+                            <div class="stat-group">
+                                <div class="stat-label">24h Volume</div>
+                                <div class="stat-val" style="font-size:14px;">$${data.volume_24h ? data.volume_24h.toLocaleString(undefined, {maximumFractionDigits:0}) : '0'}</div>
+                            </div>
+                            <div class="stat-group">
+                                <div class="stat-label">Liquidity</div>
+                                <div class="stat-val" style="font-size:14px;">$${data.liquidity_usd ? data.liquidity_usd.toLocaleString(undefined, {maximumFractionDigits:0}) : '0'}</div>
+                            </div>
+                        </div>
+
+                        <button class="btn-danger" onclick="sellNow()">Jual Sekarang (Manual Close)</button>
+                    `;
+                } else if (data.status === 'CLOSED') {
+                    const isWin = data.profit_usd >= 0;
+                    const pnlClass = isWin ? 'text-green' : 'text-red';
+                    html += `
+                        <div style="margin-bottom: 20px;">
+                            <span style="background: rgba(100, 116, 139, 0.2); color: var(--text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">RIWAYAT (${data.reason})</span>
+                        </div>
+                        <div class="stat-group">
+                            <div class="stat-label">Entry Price</div>
+                            <div class="stat-val" style="font-size:14px;">$${data.buy_price.toFixed(8)}</div>
+                        </div>
+                        <div class="stat-group">
+                            <div class="stat-label">Exit Price</div>
+                            <div class="stat-val" style="font-size:14px;">$${data.sell_price.toFixed(8)}</div>
+                        </div>
+                        <div class="stat-group">
+                            <div class="stat-label">Profit/Loss</div>
+                            <div class="stat-val ${pnlClass}">${isWin ? '+' : ''}$${data.profit_usd.toFixed(2)} (${isWin ? '+' : ''}${data.pnl_pct.toFixed(2)}%)</div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="stat-group">
+                            <div class="stat-label">Harga Saat Ini</div>
+                            <div class="stat-val">$${(data.current_price || 0).toFixed(8)}</div>
+                        </div>
+                        <div class="stat-group">
+                            <div class="stat-label">Status</div>
+                            <div class="stat-val" style="font-size:14px;">Tidak ada posisi aktif/riwayat.</div>
+                        </div>
+                    `;
+                }
+
+                if (data.dex_url) {
+                    html += `<div style="margin-top: 20px; text-align: center;"><a href="${data.dex_url}" target="_blank" style="color: var(--blue); font-size: 14px; text-decoration: none;">Buka di DexScreener ↗</a></div>`;
+                }
+                
+                document.getElementById('details-panel').innerHTML = html;
+                
+            } catch (err) {
+                console.error("Fetch error:", err);
+            }
+        }
+
+        async function sellNow() {
+            if(confirm('Yakin ingin menutup posisi secara manual pada harga pasar saat ini?')) {
+                try {
+                    const res = await fetch(`/api/control/sell/${address}`, { method: 'POST' });
+                    const result = await res.json();
+                    alert(result.message || 'Berhasil');
+                    fetchDetails();
+                } catch (e) {
+                    alert('Gagal mengeksekusi');
+                }
+            }
+        }
+
+        setInterval(fetchDetails, 3000);
+        fetchDetails();
     </script>
 </body>
 </html>
@@ -784,6 +981,88 @@ def api_control(action):
         return jsonify({"success": True, "message": "Portofolio direset & bot direstart!"})
     else:
         return jsonify({"error": "Unknown action"}), 400
+
+
+@app.route("/coin/<address>")
+def coin_detail(address):
+    return render_template_string(COIN_TEMPLATE)
+
+from scanner import get_token_details
+@app.route("/api/coin/<address>")
+def api_coin(address):
+    # Cari di posisi
+    positions = []
+    history = []
+    if os.path.exists(Config.DATA_FILE):
+        try:
+            with open(Config.DATA_FILE, "r") as f:
+                data = json.load(f)
+                positions = data.get("positions", [])
+        except: pass
+    if os.path.exists(Config.HISTORY_FILE):
+        try:
+            with open(Config.HISTORY_FILE, "r") as f:
+                history = json.load(f)
+        except: pass
+        
+    pos = next((p for p in positions if p["address"] == address), None)
+    hist = next((h for h in reversed(history) if h["address"] == address), None)
+    
+    # Ambil detail market live dari DexScreener
+    live_data = get_token_details(address)
+    
+    result = {
+        "address": address,
+        "symbol": "Unknown",
+        "current_price": 0,
+    }
+    
+    if live_data:
+        result.update({
+            "pair_address": live_data.get("pair_address"),
+            "current_price": live_data.get("price_usd", 0),
+            "symbol": live_data.get("symbol", "UNKNOWN"),
+            "dex_url": live_data.get("dex_url"),
+            "volume_24h": live_data.get("volume_24h"),
+            "liquidity_usd": live_data.get("liquidity_usd"),
+        })
+        
+    if pos:
+        result.update(pos)
+        if live_data: result["current_val"] = pos["tokens_count"] * live_data["price_usd"]
+        result["status"] = "ACTIVE"
+    elif hist:
+        result.update(hist)
+        result["status"] = "CLOSED"
+        # Jika gak dapat live_data, fallback pair buat chart dari hist gak ada, tapi kita bisa pakai address token
+        if not live_data: result["pair_address"] = address
+    else:
+        result["status"] = "NOT_OWNED"
+        if not live_data: result["pair_address"] = address
+        
+    return jsonify(result)
+
+@app.route("/api/control/sell/<address>", methods=["POST"])
+def api_control_sell(address):
+    # Trigger script / code untuk manual sell
+    # Karena portfolio jalan di process terpisah, kita manipulasi target_sl_price jadi current_price
+    # supaya bot mendeteksi SL dan menjualnya di iterasi berikutnya (max 15 detik).
+    if os.path.exists(Config.DATA_FILE):
+        try:
+            with open(Config.DATA_FILE, "r+") as f:
+                data = json.load(f)
+                for p in data.get("positions", []):
+                    if p["address"] == address:
+                        # Set SL & TP ke harga sekarang agar loop bot berikutnya lgsg jual!
+                        p["target_sl_price"] = 9999999999  # Paksa hit SL
+                        p["target_tp_price"] = 0  
+                f.seek(0)
+                json.dump(data, f, indent=2)
+                f.truncate()
+            return jsonify({"success": True, "message": "Perintah jual dikirim! Bot akan menutup posisi dalam 15 detik."})
+        except:
+            return jsonify({"error": "Gagal read/write portfolio"}), 500
+    return jsonify({"error": "Portfolio tidak ditemukan"}), 404
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050)
