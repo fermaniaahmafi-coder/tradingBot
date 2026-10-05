@@ -73,10 +73,19 @@ Tulis balasan HANYA dalam format JSON (tanpa markdown blok):
             result = json.loads(content)
             
             # Enforce strict bounds (Risk Management Override)
-            if "tp_multiplier" in result and result["tp_multiplier"] > 1.20:
-                result["tp_multiplier"] = 1.10  # Max TP 10%
-            if "sl_multiplier" in result and result["sl_multiplier"] < 0.85:
-                result["sl_multiplier"] = 0.90  # Max SL -10%
+            tp = result.get("tp_multiplier")
+            if isinstance(tp, (int, float)):
+                if tp > 1.20:
+                    result["tp_multiplier"] = 1.10  # Max TP 10%
+            else:
+                result["tp_multiplier"] = 1.08 if result.get("action") == "BUY" else 0
+                
+            sl = result.get("sl_multiplier")
+            if isinstance(sl, (int, float)):
+                if sl < 0.85:
+                    result["sl_multiplier"] = 0.90  # Max SL -10%
+            else:
+                result["sl_multiplier"] = 0.94 if result.get("action") == "BUY" else 0
                 
             return result
 
