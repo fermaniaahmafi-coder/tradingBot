@@ -895,7 +895,17 @@
     </div>
 
     <script>
-        let allTrades = [];
+        
+        let currentBot = localStorage.getItem('hermes_active_bot') || 'bot1';
+        document.getElementById('bot-selector').value = currentBot;
+
+        function changeBot() {
+            currentBot = document.getElementById('bot-selector').value;
+            localStorage.setItem('hermes_active_bot', currentBot);
+            loadData();
+        }
+        
+let allTrades = [];
         let currentFilter = 'all';
         let searchQuery = '';
         let selectedTrade = null;
@@ -913,7 +923,7 @@
 
         async function loadTransactions() {
             try {
-                const res = await fetch('/api/status');
+                const res = await fetch(`/api/status?bot=${currentBot}`);
                 const data = await res.json();
                 allTrades = (data.history || []).slice().reverse();
 

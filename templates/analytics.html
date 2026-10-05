@@ -922,7 +922,7 @@
                 
                 // If endpoint didn't provide all trades, fallback to status
                 if (rawTrades.length < (rawData.total_trades || 0)) {
-                    const stRes = await fetch('/api/status');
+                    const stRes = await fetch(`/api/status?bot=${currentBot}`);
                     const stData = await stRes.json();
                     if (stData.history && stData.history.length > 0) {
                         rawTrades = stData.history;

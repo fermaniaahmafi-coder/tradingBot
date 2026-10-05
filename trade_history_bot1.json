@@ -196,6 +196,7 @@
     "closed_at": 1791182577.7288508
   },
   {
+    "id": 15,
     "symbol": "SIF",
     "address": "3vDRTeMiZE9Hg3oMvuXgKnQhAREMJxZrv1B4RWb3PAut",
     "buy_price": 5.442e-05,
@@ -209,6 +210,7 @@
     "closed_at": 1791183719.485107
   },
   {
+    "id": 16,
     "symbol": "SIF",
     "address": "3vDRTeMiZE9Hg3oMvuXgKnQhAREMJxZrv1B4RWb3PAut",
     "buy_price": 6.507e-05,
@@ -222,6 +224,7 @@
     "closed_at": 1791183752.4630105
   },
   {
+    "id": 17,
     "symbol": "KKK",
     "address": "6NX2tVJBvAzNeN3bQK295KdUGMjPWP3oKqwCoW9Zpump",
     "buy_price": 4.69e-05,
@@ -235,6 +238,7 @@
     "closed_at": 1791185118.681453
   },
   {
+    "id": 18,
     "symbol": "KKK",
     "address": "6NX2tVJBvAzNeN3bQK295KdUGMjPWP3oKqwCoW9Zpump",
     "buy_price": 5.592e-05,
@@ -248,6 +252,7 @@
     "closed_at": 1791185168.4915378
   },
   {
+    "id": 19,
     "symbol": "KKK",
     "address": "6NX2tVJBvAzNeN3bQK295KdUGMjPWP3oKqwCoW9Zpump",
     "buy_price": 5.037e-05,
@@ -261,6 +266,7 @@
     "closed_at": 1791185215.7084582
   },
   {
+    "id": 20,
     "symbol": "clanker",
     "address": "Fa4zQx81PhdJFBvtqAMM4jjLe6GjisGWgJYx54hy9V3s",
     "buy_price": 5.18e-05,
@@ -274,6 +280,7 @@
     "closed_at": 1791185321.7989097
   },
   {
+    "id": 21,
     "symbol": "$T800",
     "address": "3M4EPrHdBxxRDCb8q2RTDQ3oDTi3QGi3iMgVxifqpump",
     "buy_price": 9.427e-06,
@@ -287,6 +294,7 @@
     "closed_at": 1791185471.833947
   },
   {
+    "id": 22,
     "symbol": "KKK",
     "address": "6NX2tVJBvAzNeN3bQK295KdUGMjPWP3oKqwCoW9Zpump",
     "buy_price": 4.343e-05,
@@ -300,6 +308,7 @@
     "closed_at": 1791185882.1082852
   },
   {
+    "id": 23,
     "symbol": "KKK",
     "address": "6NX2tVJBvAzNeN3bQK295KdUGMjPWP3oKqwCoW9Zpump",
     "buy_price": 4.764e-05,
@@ -313,6 +322,7 @@
     "closed_at": 1791185958.0832608
   },
   {
+    "id": 24,
     "symbol": "INFLUENCR",
     "address": "39hidrKSdmHiQ5gSoifbdj5ZKmsUWXJsw6k6MA7Upump",
     "buy_price": 0.0001159,
@@ -326,6 +336,7 @@
     "closed_at": 1791186003.2560532
   },
   {
+    "id": 25,
     "symbol": "KKK",
     "address": "6NX2tVJBvAzNeN3bQK295KdUGMjPWP3oKqwCoW9Zpump",
     "buy_price": 5.465e-05,
@@ -339,6 +350,7 @@
     "closed_at": 1791186241.8896983
   },
   {
+    "id": 26,
     "symbol": "$T800",
     "address": "3M4EPrHdBxxRDCb8q2RTDQ3oDTi3QGi3iMgVxifqpump",
     "buy_price": 8.324e-06,
@@ -352,6 +364,7 @@
     "closed_at": 1791186948.5457585
   },
   {
+    "id": 27,
     "symbol": "elves",
     "address": "8BjfeA3Ze1fzMceENXnjLrJKg4RJXbBUz9Drhrikpump",
     "buy_price": 5.112e-05,
@@ -365,6 +378,7 @@
     "closed_at": 1791189153.3462884
   },
   {
+    "id": 28,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 2.749e-05,
@@ -378,6 +392,7 @@
     "closed_at": 1791189391.1766865
   },
   {
+    "id": 29,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 3.02e-05,
@@ -391,6 +406,7 @@
     "closed_at": 1791189552.5941832
   },
   {
+    "id": 30,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 2.646e-05,
@@ -404,6 +420,7 @@
     "closed_at": 1791189646.7758923
   },
   {
+    "id": 31,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 2.942e-05,
@@ -417,6 +434,7 @@
     "closed_at": 1791189707.8732243
   },
   {
+    "id": 32,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 3.464e-05,
@@ -430,6 +448,7 @@
     "closed_at": 1791190257.7606094
   },
   {
+    "id": 33,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 2.327e-05,
@@ -443,6 +462,7 @@
     "closed_at": 1791190828.7129793
   },
   {
+    "id": 34,
     "symbol": "BIO/ACC",
     "address": "G4w3q5QukWTbxSc9UPg6jjurJ4Wai5XTHf656HyRBqT1",
     "buy_price": 2.536e-05,
@@ -456,6 +476,7 @@
     "closed_at": 1791191359.8107975
   },
   {
+    "id": 35,
     "symbol": "Instincat",
     "address": "DLPm9yqR3qGFayetLKTqVtQm1nRfmFBFvntAQfzpump",
     "buy_price": 0.0002257,
@@ -469,6 +490,7 @@
     "closed_at": 1791192181.261652
   },
   {
+    "id": 36,
     "symbol": "Instincat",
     "address": "DLPm9yqR3qGFayetLKTqVtQm1nRfmFBFvntAQfzpump",
     "buy_price": 0.0002851,
@@ -482,6 +504,7 @@
     "closed_at": 1791192244.5961204
   },
   {
+    "id": 37,
     "symbol": "super",
     "address": "7aXoZaSN2BhsqG4hUdcmA7Arkc6N652oK86sYcbvpump",
     "buy_price": 5.451e-05,
@@ -493,5 +516,157 @@
     "reason": "STOP_LOSS",
     "opened_at": 1791192545.785736,
     "closed_at": 1791192599.2839355
+  },
+  {
+    "id": 38,
+    "symbol": "super",
+    "address": "5QUVJLxHh3LifU654zdJiWHLfiAJqedTkTn9SqSX5KEG",
+    "buy_price": 0.000107,
+    "sell_price": 9.4e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.785046728971961,
+    "profit_usd": -1.2149532710280386,
+    "pnl_pct": -12.149532710280377,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791193788.0104673,
+    "closed_at": 1791193825.5825038
+  },
+  {
+    "id": 39,
+    "symbol": "PLAGUE",
+    "address": "25moUjJpSN73D9NPwD4VmcyR4FVTWiYaL9XPKkdta5iP",
+    "buy_price": 8.674e-05,
+    "sell_price": 9.784e-05,
+    "cost_usd": 10.0,
+    "proceeds": 11.279686419183767,
+    "profit_usd": 1.2796864191837667,
+    "pnl_pct": 12.796864191837676,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791192333.489789,
+    "closed_at": 1791194303.2771475
+  },
+  {
+    "id": 40,
+    "symbol": "Stompy",
+    "address": "Bfduu8HUJZLoP5XgMHdLsm6m9dYdANng63gAwPw91fH6",
+    "buy_price": 5.426e-05,
+    "sell_price": 4.442e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.18650939918909,
+    "profit_usd": -1.8134906008109102,
+    "pnl_pct": -18.134906008109105,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791196408.5299313,
+    "closed_at": 1791196430.4709706
+  },
+  {
+    "id": 41,
+    "symbol": "Stompy",
+    "address": "Bfduu8HUJZLoP5XgMHdLsm6m9dYdANng63gAwPw91fH6",
+    "buy_price": 4.785e-05,
+    "sell_price": 6.583e-05,
+    "cost_usd": 10.0,
+    "proceeds": 13.757575757575758,
+    "profit_usd": 3.757575757575758,
+    "pnl_pct": 37.57575757575758,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791196808.7299132,
+    "closed_at": 1791197043.647098
+  },
+  {
+    "id": 42,
+    "symbol": "quarantinu",
+    "address": "H8oe2SCksJcYzhPeS4TsbteusgZW5k7QaZ4boKyq8C7U",
+    "buy_price": 5.48e-05,
+    "sell_price": 4.707e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.589416058394162,
+    "profit_usd": -1.4105839416058377,
+    "pnl_pct": -14.105839416058386,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791198628.888854,
+    "closed_at": 1791198650.863892
+  },
+  {
+    "id": 43,
+    "symbol": "Stompy",
+    "address": "9KAPRaT35wY9FF1NYhfKyLtt9sq3CgGtB6ChrMgVSTNK",
+    "buy_price": 0.0006335,
+    "sell_price": 0.0007699,
+    "cost_usd": 10.0,
+    "proceeds": 12.153117600631413,
+    "profit_usd": 2.153117600631413,
+    "pnl_pct": 21.53117600631414,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791198745.3240275,
+    "closed_at": 1791198760.353489
+  },
+  {
+    "id": 44,
+    "symbol": "quarantinu",
+    "address": "H8oe2SCksJcYzhPeS4TsbteusgZW5k7QaZ4boKyq8C7U",
+    "buy_price": 5.56e-05,
+    "sell_price": 6.309e-05,
+    "cost_usd": 10.0,
+    "proceeds": 11.34712230215827,
+    "profit_usd": 1.3471223021582706,
+    "pnl_pct": 13.471223021582718,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791198772.061749,
+    "closed_at": 1791198794.3660538
+  },
+  {
+    "id": 45,
+    "symbol": "Stompy",
+    "address": "9KAPRaT35wY9FF1NYhfKyLtt9sq3CgGtB6ChrMgVSTNK",
+    "buy_price": 0.0007699,
+    "sell_price": 0.0007081,
+    "cost_usd": 10.0,
+    "proceeds": 9.197298350435121,
+    "profit_usd": -0.8027016495648791,
+    "pnl_pct": -8.027016495648784,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791198779.3292933,
+    "closed_at": 1791198794.3990133
+  },
+  {
+    "id": 46,
+    "symbol": "ANY",
+    "address": "9aQwx5QQSpvrntr7EvHqRNbAqKrLUd9WaiqHGZoppump",
+    "buy_price": 8.899e-05,
+    "sell_price": 0.0001291,
+    "cost_usd": 10.0,
+    "proceeds": 14.507248005393864,
+    "profit_usd": 4.507248005393864,
+    "pnl_pct": 45.072480053938634,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791199612.0864332,
+    "closed_at": 1791199667.8642867
+  },
+  {
+    "symbol": "BOND",
+    "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
+    "buy_price": 1.95e-05,
+    "sell_price": 2.322e-05,
+    "cost_usd": 10.0,
+    "proceeds": 11.907692307692308,
+    "profit_usd": 1.907692307692308,
+    "pnl_pct": 19.076923076923087,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791201096.4116766,
+    "closed_at": 1791201145.4594007
+  },
+  {
+    "symbol": "BOND",
+    "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
+    "buy_price": 2.322e-05,
+    "sell_price": 1.867e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.040482342807923,
+    "profit_usd": -1.9595176571920767,
+    "pnl_pct": -19.595176571920767,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791201164.097085,
+    "closed_at": 1791201179.132056
   }
 ]

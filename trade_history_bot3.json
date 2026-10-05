@@ -1,0 +1,54 @@
+[
+  {
+    "symbol": "-\u203f-",
+    "address": "2RqV5SWJ5FnCzkqB4XYS9jSeQAozEjUBeV8Ety3rpump",
+    "buy_price": 3.778e-05,
+    "sell_price": 4.833e-05,
+    "cost_usd": 10.0,
+    "proceeds": 12.792482795129697,
+    "profit_usd": 2.792482795129697,
+    "pnl_pct": 27.924827951296976,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791200907.156459,
+    "closed_at": 1791200922.2216291
+  },
+  {
+    "symbol": "BOND",
+    "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
+    "buy_price": 2.5e-05,
+    "sell_price": 1.617e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.468,
+    "profit_usd": -3.532,
+    "pnl_pct": -35.32000000000001,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791200819.0643156,
+    "closed_at": 1791200985.6396697
+  },
+  {
+    "symbol": "BOND",
+    "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
+    "buy_price": 1.617e-05,
+    "sell_price": 1.95e-05,
+    "cost_usd": 10.0,
+    "proceeds": 12.059369202226344,
+    "profit_usd": 2.0593692022263443,
+    "pnl_pct": 20.593692022263454,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791201002.8313158,
+    "closed_at": 1791201081.4417944
+  },
+  {
+    "symbol": "BOND",
+    "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
+    "buy_price": 1.857e-05,
+    "sell_price": 2.468e-05,
+    "cost_usd": 10.0,
+    "proceeds": 13.29025309639203,
+    "profit_usd": 3.2902530963920302,
+    "pnl_pct": 32.902530963920306,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791201258.4324253,
+    "closed_at": 1791201273.464443
+  }
+]
