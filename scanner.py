@@ -21,7 +21,7 @@ def get_latest_tokens(limit=15):
             if (time.time() - mtime) < CACHE_TTL:
                 with open(CACHE_FILE, "r") as f:
                     cached_tokens = json.load(f)
-                    if cached_tokens:
+                    if cached_tokens and len(cached_tokens) >= 5:
                         return cached_tokens[:limit]
     except Exception as e:
         pass
@@ -47,13 +47,16 @@ def get_latest_tokens(limit=15):
                     seen_addrs.add(addr)
                     sol_addrs.append(addr)
                     
-        # Fetch token details
+        # Fetch token details: iterate until enough valid tokens are collected
         valid_tokens = []
-        for addr in sol_addrs[:limit]:
+        target_count = max(limit, 12)
+        for addr in sol_addrs:
             token_info = get_token_details(addr)
             if token_info:
                 valid_tokens.append(token_info)
-            time.sleep(0.1)
+                if len(valid_tokens) >= target_count:
+                    break
+            time.sleep(0.04)
             
         # Save to shared cache
         if valid_tokens:

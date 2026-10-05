@@ -190,7 +190,7 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
                 log_event("SCAN", f"Memindai token ({slots_info})", bot_id=bot_id)
                 
                 # Fetch tokens (scanner uses shared cache across all bots)
-                tokens = get_latest_tokens(limit=5)
+                tokens = get_latest_tokens(limit=10)
                 for token in tokens:
                     if not portfolio.can_buy():
                         break
