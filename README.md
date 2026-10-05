@@ -19,3 +19,8 @@ Berbagai strategi dan *technical indicators* (MACD, RSI, EMA, Bollinger Bands) t
 ## Menjalankan Bot
 Bot dikelola melalui Systemd `trading-bot.service` dan `trading-web.service`.
 Konfigurasi tersimpan pada file `.env` (di-ignore oleh git demi keamanan).
+
+## Pola Branching
+- **`main` (Production):** Digunakan langsung oleh server VPS untuk menjalankan bot dan menerima sinkronisasi riwayat otomatis (`auto_sync.sh`).
+- **`dev` (Development):** Digunakan untuk pengembangan fitur baru, eksperimen indikator/AI, atau perubahan dashboard sebelum digabungkan (*merged*) ke `main`.
+
