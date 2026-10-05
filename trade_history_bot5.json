@@ -128,5 +128,57 @@
     "reason": "TAKE_PROFIT",
     "opened_at": 1791201507.3344917,
     "closed_at": 1791201591.621554
+  },
+  {
+    "symbol": "BOND",
+    "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
+    "buy_price": 2.012e-05,
+    "sell_price": 1.689e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.394632206759443,
+    "profit_usd": -1.605367793240557,
+    "pnl_pct": -16.05367793240557,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791201524.7901921,
+    "closed_at": 1791201756.1401458
+  },
+  {
+    "symbol": "Trojan",
+    "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
+    "buy_price": 3.431e-05,
+    "sell_price": 5.145e-05,
+    "cost_usd": 10.0,
+    "proceeds": 14.99562809676479,
+    "profit_usd": 4.99562809676479,
+    "pnl_pct": 49.9562809676479,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791201681.2987282,
+    "closed_at": 1791201756.2018642
+  },
+  {
+    "symbol": "Trojan",
+    "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
+    "buy_price": 5.145e-05,
+    "sell_price": 3.425e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.656948493683188,
+    "profit_usd": -3.3430515063168116,
+    "pnl_pct": -33.43051506316812,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791201771.630266,
+    "closed_at": 1791201801.7406888
+  },
+  {
+    "symbol": "VANTA",
+    "address": "GBA7C3tPZNBH9U43GmqEgMEzToyMDqw4DABwbBxipump",
+    "buy_price": 0.0001019,
+    "sell_price": 8.058e-05,
+    "cost_usd": 10.0,
+    "proceeds": 7.90775269872424,
+    "profit_usd": -2.0922473012757603,
+    "pnl_pct": -20.922473012757596,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791201610.571663,
+    "closed_at": 1791201836.1142533
   }
 ]

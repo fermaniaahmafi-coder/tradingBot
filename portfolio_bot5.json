@@ -1,5 +1,5 @@
 {
-  "cash": 74.61253293579591,
+  "cash": 72.56749443172757,
   "positions": [
     {
       "address": "2us1WG1j2UCqDy3T3rRZKoW3jHTfQRQvJ9AsGk9Jpump",
@@ -8,24 +8,24 @@
       "buy_price": 1.49e-05,
       "tokens_count": 671140.9395973155,
       "cost_usd": 10.0,
-      "current_price": 1.802e-05,
-      "current_val": 12.093959731543626,
+      "current_price": 1.827e-05,
+      "current_val": 12.261744966442954,
       "target_tp_price": 1.937e-05,
       "target_sl_price": 1.341e-05,
       "opened_at": 1791201065.7082696
     },
     {
-      "address": "HQsXJKumSYSp6tnkg6VM3E61vFqizHBsHcMf3EK6YrxK",
-      "name": "Bond",
-      "symbol": "BOND",
-      "buy_price": 2.012e-05,
-      "tokens_count": 497017.89264413517,
+      "address": "BTr1HgdQcBcxWdYtEKh7d1Qr3w2wzqAadZEmEJmyGgjw",
+      "name": "Trojan Horse",
+      "symbol": "Trojan",
+      "buy_price": 4.586e-05,
+      "tokens_count": 218054.94984736154,
       "cost_usd": 10.0,
-      "current_price": 1.88e-05,
-      "current_val": 9.34393638170974,
-      "target_tp_price": 2.6156e-05,
-      "target_sl_price": 1.8108e-05,
-      "opened_at": 1791201524.7901921
+      "current_price": 4.79e-05,
+      "current_val": 10.444832097688618,
+      "target_tp_price": 6.1911e-05,
+      "target_sl_price": 4.1274e-05,
+      "opened_at": 1791201815.1847677
     }
   ]
 }

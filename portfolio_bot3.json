@@ -1,4 +1,18 @@
 {
-  "cash": 104.61010509374809,
-  "positions": []
+  "cash": 96.62262518740705,
+  "positions": [
+    {
+      "address": "2us1WG1j2UCqDy3T3rRZKoW3jHTfQRQvJ9AsGk9Jpump",
+      "name": "Isaac feels pain",
+      "symbol": "ISAAC",
+      "buy_price": 1.802e-05,
+      "tokens_count": 554938.9567147613,
+      "cost_usd": 10.0,
+      "current_price": 1.76e-05,
+      "current_val": 9.7669256381798,
+      "target_tp_price": 2.0182400000000002e-05,
+      "target_sl_price": 1.65784e-05,
+      "opened_at": 1791201603.8802583
+    }
+  ]
 }
