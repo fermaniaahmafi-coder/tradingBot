@@ -141,5 +141,31 @@
     "reason": "STOP_LOSS",
     "opened_at": 1791202721.115271,
     "closed_at": 1791202743.3481524
+  },
+  {
+    "symbol": "TIT",
+    "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
+    "buy_price": 8.592e-05,
+    "sell_price": 7.726e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.992085661080074,
+    "profit_usd": -1.0079143389199263,
+    "pnl_pct": -10.079143389199256,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791202967.723489,
+    "closed_at": 1791203169.7912662
+  },
+  {
+    "symbol": "PACKZ",
+    "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
+    "buy_price": 3.044e-05,
+    "sell_price": 2.525e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.295006570302235,
+    "profit_usd": -1.7049934296977654,
+    "pnl_pct": -17.04993429697766,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791203061.623014,
+    "closed_at": 1791203169.833568
   }
 ]

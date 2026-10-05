@@ -401,5 +401,44 @@
     "reason": "TAKE_PROFIT",
     "opened_at": 1791202900.7568443,
     "closed_at": 1791203115.5011053
+  },
+  {
+    "symbol": "TIT",
+    "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
+    "buy_price": 8.592e-05,
+    "sell_price": 7.726e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.992085661080074,
+    "profit_usd": -1.0079143389199263,
+    "pnl_pct": -10.079143389199256,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791202984.2814147,
+    "closed_at": 1791203150.9059412
+  },
+  {
+    "symbol": "PACKZ",
+    "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
+    "buy_price": 3.044e-05,
+    "sell_price": 2.525e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.295006570302235,
+    "profit_usd": -1.7049934296977654,
+    "pnl_pct": -17.04993429697766,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791203083.793167,
+    "closed_at": 1791203183.3393474
+  },
+  {
+    "symbol": "Apiary",
+    "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
+    "buy_price": 4.474e-05,
+    "sell_price": 3.997e-05,
+    "cost_usd": 10.0,
+    "proceeds": 8.933839964237817,
+    "profit_usd": -1.0661600357621825,
+    "pnl_pct": -10.661600357621822,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791203168.3057594,
+    "closed_at": 1791203231.3947926
   }
 ]

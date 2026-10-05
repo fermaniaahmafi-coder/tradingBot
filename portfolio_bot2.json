@@ -1,31 +1,18 @@
 {
-  "cash": 69.15275388213283,
+  "cash": 76.43984611351513,
   "positions": [
-    {
-      "address": "Ar3QBegnCQr6ZFyN9h637ar9JCxZRvdboiR1QzMrpump",
-      "name": "Trade Internet Trends",
-      "symbol": "TIT",
-      "buy_price": 8.592e-05,
-      "tokens_count": 116387.33705772812,
-      "cost_usd": 10.0,
-      "current_price": 8.721e-05,
-      "current_val": 10.150139664804469,
-      "target_tp_price": 0.00010310400000000001,
-      "target_sl_price": 7.7328e-05,
-      "opened_at": 1791202967.723489
-    },
     {
       "address": "B3A4k63nD5SD4w9S718ffTgx3xcQ3WUHN6y3GyQG5kBA",
       "name": "UsePackz",
       "symbol": "PACKZ",
-      "buy_price": 3.044e-05,
-      "tokens_count": 328515.111695138,
+      "buy_price": 2.525e-05,
+      "tokens_count": 396039.603960396,
       "cost_usd": 10.0,
-      "current_price": 3.086e-05,
-      "current_val": 10.137976346911957,
-      "target_tp_price": 3.6528e-05,
-      "target_sl_price": 2.80048e-05,
-      "opened_at": 1791203061.623014
+      "current_price": 2.605e-05,
+      "current_val": 10.316831683168317,
+      "target_tp_price": 3.0299999999999998e-05,
+      "target_sl_price": 2.3230000000000003e-05,
+      "opened_at": 1791203177.0484004
     }
   ]
 }

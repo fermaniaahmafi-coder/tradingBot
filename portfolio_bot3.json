@@ -1,31 +1,31 @@
 {
-  "cash": 93.65545022504713,
+  "cash": 92.87563175865245,
   "positions": [
     {
       "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
       "name": "Crime Pays",
       "symbol": "CRIME",
-      "buy_price": 2.96e-05,
-      "tokens_count": 337837.8378378378,
+      "buy_price": 2.271e-05,
+      "tokens_count": 440334.6543372963,
       "cost_usd": 10.0,
-      "current_price": 2.96e-05,
-      "current_val": 10.0,
-      "target_tp_price": 3.3152000000000004e-05,
-      "target_sl_price": 2.7232000000000003e-05,
-      "opened_at": 1791203117.5454218
+      "current_price": 2.109e-05,
+      "current_val": 9.286657859973579,
+      "target_tp_price": 2.61165e-05,
+      "target_sl_price": 2.0439000000000002e-05,
+      "opened_at": 1791203196.22871
     },
     {
       "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
       "name": "\u02da \u0f18 \u0cc0\u22c6\uff61\u02da",
       "symbol": "Apiary",
-      "buy_price": 4.127e-05,
-      "tokens_count": 242306.76035861397,
+      "buy_price": 3.846e-05,
+      "tokens_count": 260010.40041601664,
       "cost_usd": 10.0,
-      "current_price": 4.127e-05,
+      "current_price": 3.846e-05,
       "current_val": 10.0,
-      "target_tp_price": 4.6222400000000007e-05,
-      "target_sl_price": 3.796840000000001e-05,
-      "opened_at": 1791203125.7898545
+      "target_tp_price": 4.3075200000000004e-05,
+      "target_sl_price": 3.5383200000000004e-05,
+      "opened_at": 1791203286.3113031
     }
   ]
 }

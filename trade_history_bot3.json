@@ -440,5 +440,31 @@
     "reason": "TAKE_PROFIT",
     "opened_at": 1791203086.4659371,
     "closed_at": 1791203101.530861
+  },
+  {
+    "symbol": "CRIME",
+    "address": "C6zXoVqL77p2ZLA4Bzdua1P2GGh5ngKj9GwCBupHxUdH",
+    "buy_price": 2.96e-05,
+    "sell_price": 2.06e-05,
+    "cost_usd": 10.0,
+    "proceeds": 6.959459459459459,
+    "profit_usd": -3.0405405405405412,
+    "pnl_pct": -30.40540540540541,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791203117.5454218,
+    "closed_at": 1791203140.8243878
+  },
+  {
+    "symbol": "Apiary",
+    "address": "3vUfSEHR6koiXFoS43RCov96RZpRT2P6NCiLC3w4pJbv",
+    "buy_price": 4.127e-05,
+    "sell_price": 5.06e-05,
+    "cost_usd": 10.0,
+    "proceeds": 12.260722074145866,
+    "profit_usd": 2.260722074145866,
+    "pnl_pct": 22.60722074145867,
+    "reason": "TAKE_PROFIT",
+    "opened_at": 1791203125.7898545,
+    "closed_at": 1791203175.7840223
   }
 ]
