@@ -4,6 +4,7 @@ import time
 from config import Config
 from scanner import fetch_current_price
 from bot_logger import log_event
+from db_manager import get_wallet, set_wallet, get_positions, save_positions, add_trade, get_trades
 
 class Portfolio:
     def __init__(self):
@@ -13,24 +14,19 @@ class Portfolio:
         self.load_state()
 
     def load_state(self):
-        if os.path.exists(Config.DATA_FILE):
-            try:
-                with open(Config.DATA_FILE, "r") as f:
-                    data = json.load(f)
-                    self.cash = data.get("cash", Config.INITIAL_BALANCE)
-                    self.positions = data.get("positions", [])
-            except Exception as e:
-                print(f"[PORTFOLIO] Failed to load state: {e}")
-        
-        if os.path.exists(Config.HISTORY_FILE):
-            try:
-                with open(Config.HISTORY_FILE, "r") as f:
-                    self.history = json.load(f)
-            except Exception:
-                self.history = []
+        try:
+            self.cash = get_wallet()
+            self.positions = get_positions()
+            self.history = get_trades(500)
+        except Exception as e:
+            print(f"[PORTFOLIO] Failed to load state from DB: {e}")
 
     def save_state(self):
         try:
+            set_wallet(self.cash)
+            save_positions(self.positions)
+            
+            # Keep JSON files synced for easy git sync / backup
             with open(Config.DATA_FILE, "w") as f:
                 json.dump({
                     "cash": self.cash,
@@ -43,6 +39,8 @@ class Portfolio:
             print(f"[PORTFOLIO] Failed to save state: {e}")
 
     def can_buy(self):
+        self.cash = get_wallet()
+        self.positions = get_positions()
         return (
             self.cash >= Config.POSITION_SIZE and 
             len(self.positions) < Config.MAX_POSITIONS
@@ -77,6 +75,7 @@ class Portfolio:
         self.cash -= amount_usd
         self.positions.append(position)
         self.save_state()
+        
         log_event("TRADE_BUY", f"Membeli ${position['symbol']} @ ${buy_price:.6f}", {
             "symbol": position["symbol"],
             "amount_usd": amount_usd,
@@ -88,6 +87,7 @@ class Portfolio:
         return True
 
     def check_and_update_positions(self):
+        self.positions = get_positions()
         active = []
         for pos in self.positions:
             curr_price = fetch_current_price(pos["address"])
@@ -114,7 +114,7 @@ class Portfolio:
     def sell(self, pos, sell_price, reason, pnl_pct):
         proceeds = pos["tokens_count"] * sell_price
         profit_usd = proceeds - pos["cost_usd"]
-        self.cash += proceeds
+        self.cash = get_wallet() + proceeds
         
         trade_record = {
             "symbol": pos["symbol"],
@@ -126,9 +126,14 @@ class Portfolio:
             "profit_usd": profit_usd,
             "pnl_pct": pnl_pct,
             "reason": reason,
+            "opened_at": pos.get("opened_at", time.time()),
             "closed_at": time.time()
         }
+        
+        add_trade(trade_record)
         self.history.append(trade_record)
+        set_wallet(self.cash)
+        
         log_event("TRADE_SELL", f"Menjual ${pos['symbol']} ({reason}) @ ${sell_price:.6f} | PnL: {pnl_pct:+.2f}%", {
             "symbol": pos["symbol"],
             "sell_price": sell_price,
@@ -139,7 +144,9 @@ class Portfolio:
         print(f"[PORTFOLIO] SELL ({reason}): {pos['symbol']} @ ${sell_price:.6f} | PnL: ${profit_usd:+.2f} ({pnl_pct:+.2f}%)")
 
     def print_summary(self):
-        coin_val = sum(p["current_val"] for p in self.positions)
+        self.cash = get_wallet()
+        self.positions = get_positions()
+        coin_val = sum(p.get("current_val", 0) for p in self.positions)
         total_asset = self.cash + coin_val
         slots_left = int(self.cash // Config.POSITION_SIZE)
         

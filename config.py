@@ -16,5 +16,6 @@ class Config:
     MIN_LIQUIDITY = float(os.getenv("MIN_LIQUIDITY", "5000"))
     MIN_VOLUME_24H = float(os.getenv("MIN_VOLUME_24H", "10000"))
     
+    DB_PATH = "/home/trading/trading.db"
     DATA_FILE = "/home/trading/portfolio.json"
     HISTORY_FILE = "/home/trading/trade_history.json"

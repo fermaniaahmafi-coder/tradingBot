@@ -1,3 +1,4 @@
+from db_manager import get_wallet, set_wallet, get_positions, save_positions, get_trades, get_recent_activities, reset_db
 import os
 import json
 import subprocess
@@ -612,6 +613,16 @@ HTML_TEMPLATE = """
                                     <div class="pos-pnl ${pnlClass}">${pnlPct >= 0 ? '+' : ''}${pnlPct.toFixed(2)}% (${formatPrice(p.current_price)})</div>
                                 </div>
                             </div>
+                            
+                            <!-- Visual Progress Bar towards TP/SL -->
+                            <div style="margin-top: 10px; width: 100%; height: 6px; background: var(--surface-hover); border-radius: 4px; overflow: hidden; position: relative;">
+                                <div style="position: absolute; left: 0; height: 100%; width: 50%; background: ${pnlPct >= 0 ? 'var(--emerald)' : 'var(--rose)'}; 
+                                    transform: translateX(${pnlPct >= 0 ? '0' : '100%'}) scaleX(${Math.min(Math.abs(pnlPct) / 10, 1)}); 
+                                    transform-origin: ${pnlPct >= 0 ? 'left' : 'right'}; transition: all 0.3s ease;">
+                                </div>
+                                <!-- Center marker (Entry) -->
+                                <div style="position: absolute; left: 50%; height: 100%; width: 2px; background: var(--text-primary);"></div>
+                            </div>
                         `;
                     });
                     posContainer.innerHTML = html;
@@ -637,9 +648,10 @@ HTML_TEMPLATE = """
                                     <div class="pos-symbol">${h.symbol} ${badge}</div>
                                     <div class="pos-meta">Beli: ${formatPrice(h.buy_price)} &bull; Jual: ${formatPrice(h.sell_price)}</div>
                                 </div>
-                                <div class="pos-stats">
+                                <div class="pos-stats" style="text-align: right;">
                                     <div class="pos-val ${colorClass}">${isWin ? '+' : ''}${formatUSD(h.profit_usd)}</div>
                                     <div class="pos-pnl ${colorClass}">${h.pnl_pct >= 0 ? '+' : ''}${h.pnl_pct.toFixed(2)}%</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Hold: ${( (h.closed_at - (h.opened_at||h.closed_at)) / 60 ).toFixed(1)} mins</div>
                                 </div>
                             </div>
                         `;
@@ -918,28 +930,18 @@ def api_status():
     except:
         bot_active = False
 
-    cash = Config.INITIAL_BALANCE
-    positions = []
-    history = []
-    
-    if os.path.exists(Config.DATA_FILE):
-        try:
-            with open(Config.DATA_FILE, "r") as f:
-                data = json.load(f)
-                cash = data.get("cash", Config.INITIAL_BALANCE)
-                positions = data.get("positions", [])
-        except:
-            pass
-            
-    if os.path.exists(Config.HISTORY_FILE):
-        try:
-            with open(Config.HISTORY_FILE, "r") as f:
-                history = json.load(f)
-        except:
-            pass
+    try:
+        cash = get_wallet()
+        positions = get_positions()
+        history = get_trades(500)
+        logs = get_recent_activities(40)
+    except Exception as e:
+        cash = Config.INITIAL_BALANCE
+        positions = []
+        history = []
+        logs = []
             
     coin_val = sum([p.get("current_val", 0) for p in positions])
-    logs = get_recent_logs(40)
     
     return jsonify({
         "bot_active": bot_active,
@@ -966,7 +968,8 @@ def api_control(action):
         return jsonify({"success": True, "message": "Bot berhasil dihentikan!"})
     elif action == "reset":
         subprocess.run(["systemctl", "stop", "trading-bot"])
-        # Reset state files
+        # Reset SQLite DB and fallback files
+        reset_db(Config.INITIAL_BALANCE)
         with open(Config.DATA_FILE, "w") as f:
             json.dump({"cash": Config.INITIAL_BALANCE, "positions": []}, f, indent=2)
         with open(Config.HISTORY_FILE, "w") as f:
@@ -991,19 +994,12 @@ from scanner import get_token_details
 @app.route("/api/coin/<address>")
 def api_coin(address):
     # Cari di posisi
-    positions = []
-    history = []
-    if os.path.exists(Config.DATA_FILE):
-        try:
-            with open(Config.DATA_FILE, "r") as f:
-                data = json.load(f)
-                positions = data.get("positions", [])
-        except: pass
-    if os.path.exists(Config.HISTORY_FILE):
-        try:
-            with open(Config.HISTORY_FILE, "r") as f:
-                history = json.load(f)
-        except: pass
+    try:
+        positions = get_positions()
+        history = get_trades(500)
+    except:
+        positions = []
+        history = []
         
     pos = next((p for p in positions if p["address"] == address), None)
     hist = next((h for h in reversed(history) if h["address"] == address), None)
@@ -1047,22 +1043,23 @@ def api_control_sell(address):
     # Trigger script / code untuk manual sell
     # Karena portfolio jalan di process terpisah, kita manipulasi target_sl_price jadi current_price
     # supaya bot mendeteksi SL dan menjualnya di iterasi berikutnya (max 15 detik).
-    if os.path.exists(Config.DATA_FILE):
-        try:
-            with open(Config.DATA_FILE, "r+") as f:
-                data = json.load(f)
-                for p in data.get("positions", []):
-                    if p["address"] == address:
-                        # Set SL & TP ke harga sekarang agar loop bot berikutnya lgsg jual!
-                        p["target_sl_price"] = 9999999999  # Paksa hit SL
-                        p["target_tp_price"] = 0  
-                f.seek(0)
-                json.dump(data, f, indent=2)
-                f.truncate()
+    try:
+        positions = get_positions()
+        found = False
+        for p in positions:
+            if p["address"] == address:
+                p["target_sl_price"] = 9999999999  # Paksa hit SL
+                p["target_tp_price"] = 0
+                found = True
+        if found:
+            save_positions(positions)
+            # Sync to JSON
+            with open(Config.DATA_FILE, "w") as f:
+                json.dump({"cash": get_wallet(), "positions": positions}, f, indent=2)
             return jsonify({"success": True, "message": "Perintah jual dikirim! Bot akan menutup posisi dalam 15 detik."})
-        except:
-            return jsonify({"error": "Gagal read/write portfolio"}), 500
-    return jsonify({"error": "Portfolio tidak ditemukan"}), 404
+        return jsonify({"error": "Posisi tidak ditemukan"}), 404
+    except Exception as e:
+        return jsonify({"error": f"Gagal update posisi: {e}"}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050)
