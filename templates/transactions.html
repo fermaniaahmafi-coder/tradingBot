@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - Monetra Hermes Sniper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #f2f4f7;
+            --surface: #ffffff;
+            --surface-hover: #f8fafc;
+            --border-light: #edf0f5;
+            --border-subtle: #e2e8f0;
+            --text-main: #0f172a;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent-lime: #9ef32b;
+            --accent-lime-hover: #8be41b;
+            --emerald: #10b981;
+            --emerald-subtle: #ecfdf5;
+            --rose: #f43f5e;
+            --rose-subtle: #fff1f2;
+            --blue: #3b82f6;
+            --blue-subtle: #eff6ff;
+            --card-radius: 22px;
+            --pill-radius: 9999px;
+            --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+            --shadow-elevated: 0 12px 30px -4px rgba(15, 23, 42, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f6;
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* Top Nav */
+        .top-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-cluster {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--accent-lime);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(158, 243, 43, 0.35);
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+        }
+
+        .nav-capsule {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8fafc;
+            padding: 5px 8px;
+            border-radius: var(--pill-radius);
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill-btn {
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-radius: var(--pill-radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .nav-pill-btn:hover { color: var(--text-main); }
+        .nav-pill-btn.active {
+            background: #ffffff;
+            color: var(--text-main);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .top-right-cluster {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-btn-round {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: #ffffff;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .icon-btn-round:hover {
+            background: #f8fafc;
+            color: var(--text-main);
+        }
+
+        /* Layout */
+        .dashboard-main-shell {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 28px;
+        }
+
+        .sidebar-pill-dock {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 36px;
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-soft);
+            height: calc(100% - 10px);
+            min-height: 580px;
+        }
+
+        .dock-top-group, .dock-bottom-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .dock-item-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .dock-item-btn:hover {
+            color: var(--text-main);
+            background: #f1f5f9;
+        }
+
+        .dock-item-btn.active {
+            background: #0f172a;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+        }
+
+        .content-canvas {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Greeting & Search */
+        .greeting-search-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .greeting-heading {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .greeting-subtext {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .search-pill-box {
+            position: relative;
+            min-width: 280px;
+        }
+
+        .search-pill-box input {
+            width: 100%;
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: var(--pill-radius);
+            padding: 10px 18px 10px 42px;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-pill-box input:focus {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .search-pill-box svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* 4 Highlights Quad */
+        .summary-quad-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .summary-quad-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .summary-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
+            padding: 18px 20px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .summary-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .summary-value {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .summary-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Main Panel */
+        .panel-container {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+        }
+
+        .filter-tags-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .filter-tag-btn {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            padding: 6px 16px;
+            border-radius: var(--pill-radius);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-tag-btn.active {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+
+        .btn-export-excel {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid var(--border-light);
+            border-radius: var(--pill-radius);
+            padding: 7px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .btn-export-excel:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-export-excel:active {
+            transform: translateY(0);
+        }
+
+        .btn-export-excel svg {
+            color: #10b981;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-export-excel:hover svg {
+            transform: scale(1.15);
+        }
+
+        .spin-icon {
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Transaction List */
+        .tx-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tx-row-item {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tx-row-item:hover {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transform: translateY(-1px);
+        }
+
+        .tx-info-side {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .tx-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            color: #0f172a;
+        }
+
+        .tx-name-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .tx-symbol-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            color: #0f172a;
+        }
+
+        .tx-meta-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tx-stats-side {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            text-align: right;
+        }
+
+        .tx-profit-val {
+            font-size: 16px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tx-pnl-pct {
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .badge-pill-soft {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--pill-radius);
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+        }
+
+        .badge-emerald { background: var(--emerald-subtle); color: var(--emerald); }
+        .badge-rose { background: var(--rose-subtle); color: var(--rose); }
+
+        .color-emerald { color: var(--emerald); }
+        .color-rose { color: var(--rose); }
+
+        /* Modal Overlay & Card */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 28px;
+            max-width: 620px;
+            width: 100%;
+            padding: 28px 32px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transform: scale(0.95);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-btn-close {
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .modal-btn-close:hover {
+            background: #e2e8f0;
+            color: var(--text-main);
+        }
+
+        .modal-grid-quad {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .modal-stat-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .modal-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .modal-stat-val {
+            font-size: 16px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: #0f172a;
+        }
+
+        .modal-meta-row {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .modal-btn-primary {
+            flex: 1;
+            background: var(--accent-lime);
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 12px;
+            border-radius: var(--pill-radius);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .modal-btn-primary:hover {
+            background: var(--accent-lime-hover);
+        }
+
+        .modal-btn-secondary {
+            background: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 12px 20px;
+            border-radius: var(--pill-radius);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        @media (max-width: 860px) {
+            body { padding: 12px; }
+            .app-container { padding: 20px 16px; border-radius: 20px; }
+            .dashboard-main-shell { grid-template-columns: 1fr; }
+            .sidebar-pill-dock { display: none; }
+            .nav-capsule { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Nav (Dashboard, Analytics, Transactions) -->
+        <nav class="top-navbar">
+            <a href="/" class="brand-cluster">
+                <div class="brand-logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <div class="brand-title">Monetra</div>
+            </a>
+
+            <div class="nav-capsule">
+                <a href="/" class="nav-pill-btn">Live Trading</a>
+                <a href="/analytics" class="nav-pill-btn">Analytics</a>
+                <a href="/transactions" class="nav-pill-btn active">Transactions</a>
+            </div>
+
+            <div class="top-right-cluster">
+                <a href="/" class="icon-btn-round" title="Dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+
+        <div class="dashboard-main-shell">
+            <!-- Sidebar Dock -->
+            <aside class="sidebar-pill-dock">
+                <div class="dock-top-group">
+                    <a href="/" class="dock-item-btn" title="Dashboard">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </a>
+                    <a href="/analytics" class="dock-item-btn" title="Analytics">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </a>
+                    <a href="/transactions" class="dock-item-btn active" title="Transactions">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="dock-bottom-group">
+                    <a href="/" class="dock-item-btn" title="Kembali">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 14 4 9 9 4"></polyline>
+                            <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                        </svg>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Canvas -->
+            <div class="content-canvas">
+                <!-- Header & Search -->
+                <div class="greeting-search-row">
+                    <div>
+                        <h1 class="greeting-heading">Trading Transactions</h1>
+                        <p class="greeting-subtext">Detailed record of automated sniper executions. Click any trade to view complete telemetry.</p>
+                    </div>
+
+                    <div class="search-pill-box">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="tx-search-input" placeholder="Search token, symbol, or ID..." oninput="handleSearch(this.value)">
+                    </div>
+                </div>
+
+                <!-- 4 Summary Stats -->
+                <div class="summary-quad-grid">
+                    <div class="summary-card">
+                        <span class="summary-label">Total Executions</span>
+                        <div class="summary-value" id="stat-total-tx">14 Trades</div>
+                        <span class="summary-sub" id="stat-win-ratio">10 Wins &bull; 4 Losses</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">Realized Net Profit</span>
+                        <div class="summary-value color-emerald" id="stat-net-profit">+$15.60</div>
+                        <span class="summary-sub" id="stat-roi">+15.60% ROI</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">Total Traded Volume</span>
+                        <div class="summary-value" id="stat-total-vol">$140.00</div>
+                        <span class="summary-sub">$10.00 / Position Size</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">Hit Target Ratio</span>
+                        <div class="summary-value" id="stat-win-rate">71.4%</div>
+                        <span class="summary-sub">Take Profit Accuracy</span>
+                    </div>
+                </div>
+
+                <!-- Transaction List Panel -->
+                <div class="panel-container">
+                    <div class="panel-header-bar">
+                        <div>
+                            <h3 class="panel-title">Completed Trade Ledger</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary);">Click any row to open the complete trade performance analysis</p>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <div class="filter-tags-row">
+                                <button class="filter-tag-btn active" onclick="setTxFilter('all')">Semua (All)</button>
+                                <button class="filter-tag-btn" onclick="setTxFilter('TP')">Take Profit (Win)</button>
+                                <button class="filter-tag-btn" onclick="setTxFilter('SL')">Stop Loss (Loss)</button>
+                            </div>
+                            <button class="btn-export-excel" id="btn-export-excel" onclick="exportToExcel()" title="Export ke file Excel (.xlsx)">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="8" y1="13" x2="16" y2="13"></line>
+                                    <line x1="8" y1="17" x2="16" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                <span>Export to Excel</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tx-list" id="transaction-list-container">
+                        <div style="text-align: center; color: var(--text-muted); padding: 30px;">Memuat transaksi...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Informative Detail Modal -->
+    <div class="modal-overlay" id="tx-modal-overlay" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-card">
+            <div class="modal-top-bar">
+                <div class="modal-title-wrap">
+                    <div class="tx-avatar" id="m-token-avatar">SM</div>
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <h3 style="font-size: 18px; font-weight: 800;" id="m-token-symbol">$SM</h3>
+                            <span class="badge-pill-soft badge-emerald" id="m-reason-badge">TAKE PROFIT</span>
+                        </div>
+                        <span style="font-size: 11px; color: var(--text-muted);" id="m-trade-id">Trade #2 &bull; Raydium Pool</span>
+                    </div>
+                </div>
+                <button class="modal-btn-close" onclick="closeModal()">✕</button>
+            </div>
+
+            <!-- Financial Quad Stats -->
+            <div class="modal-grid-quad">
+                <div class="modal-stat-box">
+                    <span class="modal-stat-label">Entry Price</span>
+                    <span class="modal-stat-val" id="m-buy-price">$0.0007228</span>
+                </div>
+                <div class="modal-stat-box">
+                    <span class="modal-stat-label">Exit Price</span>
+                    <span class="modal-stat-val" id="m-sell-price">$0.0008195</span>
+                </div>
+                <div class="modal-stat-box">
+                    <span class="modal-stat-label">Modal vs Proceeds</span>
+                    <span class="modal-stat-val" id="m-cost-proceeds">$10.00 → $11.34</span>
+                </div>
+                <div class="modal-stat-box">
+                    <span class="modal-stat-label">Realized Profit / ROI</span>
+                    <span class="modal-stat-val color-emerald" id="m-profit-roi">+$1.34 (+13.38%)</span>
+                </div>
+            </div>
+
+            <!-- Telemetry & Execution Meta -->
+            <div class="modal-meta-row">
+                <div class="modal-meta-item">
+                    <span style="color: var(--text-secondary);">Waktu Eksekusi:</span>
+                    <strong id="m-closed-time" style="font-family: 'JetBrains Mono', monospace;">2026-10-05 13:17:04</strong>
+                </div>
+                <div class="modal-meta-item">
+                    <span style="color: var(--text-secondary);">Durasi Hold Posisi:</span>
+                    <strong id="m-hold-duration">1 Menit 40 Detik</strong>
+                </div>
+                <div class="modal-meta-item">
+                    <span style="color: var(--text-secondary);">Trigger Alasan:</span>
+                    <strong id="m-reason-desc" style="color: var(--emerald);">Take Profit Hit (+8.0% target tercapai)</strong>
+                </div>
+                <div class="modal-meta-item">
+                    <span style="color: var(--text-secondary);">Mint Address:</span>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0f172a;" id="m-address-short">49tV...7zC6</span>
+                </div>
+            </div>
+
+            <!-- AI Note -->
+            <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 12px 14px;">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px;">Analisis AI Sniper:</div>
+                <div style="font-size: 12px; color: #334155; line-height: 1.4;" id="m-ai-note">
+                    Token berhasil melewati filter anti-honeypot DeepSeek dengan likuiditas sehat. Eksekusi keluar otomatis terpantau saat lonjakan harga menyentuh take-profit threshold.
+                </div>
+            </div>
+
+            <div class="modal-btn-row">
+                <a href="#" target="_blank" class="modal-btn-primary" id="m-dex-link">Lihat di DexScreener ↗</a>
+                <button class="modal-btn-secondary" onclick="copyAddress()">Salin Address</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allTrades = [];
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let selectedTrade = null;
+
+        function formatUSD(val) {
+            return "$" + (val || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        function formatPrice(val) {
+            if (!val) return "$0.00";
+            if (val < 0.0001) return "$" + val.toLocaleString('en-US', {minimumFractionDigits: 7, maximumFractionDigits: 7});
+            if (val < 0.01) return "$" + val.toLocaleString('en-US', {minimumFractionDigits: 5, maximumFractionDigits: 5});
+            return "$" + val.toLocaleString('en-US', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+        }
+
+        async function loadTransactions() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                allTrades = (data.history || []).slice().reverse();
+
+                // Compute summary
+                const totalTrades = allTrades.length;
+                const wins = allTrades.filter(t => (t.profit_usd || 0) > 0);
+                const losses = allTrades.filter(t => (t.profit_usd || 0) <= 0);
+                const netProfit = allTrades.reduce((acc, t) => acc + (t.profit_usd || 0), 0);
+                const totalVol = allTrades.reduce((acc, t) => acc + (t.cost_usd || 10), 0);
+                const winRate = totalTrades > 0 ? (wins.length / totalTrades * 100).toFixed(1) : '0';
+
+                document.getElementById('stat-total-tx').textContent = `${totalTrades} Trades`;
+                document.getElementById('stat-win-ratio').textContent = `${wins.length} Wins • ${losses.length} Losses`;
+                
+                const pnlEl = document.getElementById('stat-net-profit');
+                pnlEl.textContent = (netProfit >= 0 ? '+' : '') + formatUSD(netProfit);
+                pnlEl.className = 'summary-value ' + (netProfit >= 0 ? 'color-emerald' : 'color-rose');
+                
+                document.getElementById('stat-roi').textContent = `${(netProfit / 100 * 100).toFixed(2)}% ROI`;
+                document.getElementById('stat-total-vol').textContent = formatUSD(totalVol);
+                document.getElementById('stat-win-rate').textContent = `${winRate}%`;
+
+                renderList();
+            } catch (e) {
+                console.error("Error loading transactions:", e);
+            }
+        }
+
+        function setTxFilter(f) {
+            currentFilter = f;
+            const buttons = document.querySelectorAll('.filter-tag-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderList();
+        }
+
+        function handleSearch(val) {
+            searchQuery = (val || '').toLowerCase().trim();
+            renderList();
+        }
+
+        function renderList() {
+            const container = document.getElementById('transaction-list-container');
+            let list = allTrades;
+
+            if (currentFilter === 'TP') {
+                list = list.filter(t => (t.profit_usd || 0) > 0 || t.reason === 'TAKE_PROFIT');
+            } else if (currentFilter === 'SL') {
+                list = list.filter(t => (t.profit_usd || 0) <= 0 || t.reason === 'STOP_LOSS');
+            }
+
+            if (searchQuery) {
+                list = list.filter(t => 
+                    (t.symbol || '').toLowerCase().includes(searchQuery) ||
+                    (t.address || '').toLowerCase().includes(searchQuery) ||
+                    String(t.id || '').includes(searchQuery)
+                );
+            }
+
+            if (list.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 30px;">Tidak ada transaksi yang sesuai.</div>';
+                return;
+            }
+
+            let html = '';
+            list.forEach(t => {
+                const isWin = (t.profit_usd || 0) >= 0;
+                const profitClass = isWin ? 'color-emerald' : 'color-rose';
+                const badgeClass = isWin ? 'badge-emerald' : 'badge-rose';
+                const badgeText = t.reason === 'TAKE_PROFIT' ? 'TAKE PROFIT' : 'STOP LOSS';
+                
+                let dateStr = 'Recent';
+                if (t.closed_at) {
+                    const d = new Date(t.closed_at * 1000);
+                    dateStr = d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                }
+
+                html += `
+                    <div class="tx-row-item" onclick="openDetailModal(${t.id})">
+                        <div class="tx-info-side">
+                            <div class="tx-avatar" style="background: ${isWin ? 'var(--emerald-subtle)' : 'var(--rose-subtle)'};">
+                                ${t.symbol ? t.symbol.substring(0, 3) : 'SOL'}
+                            </div>
+                            <div class="tx-name-wrap">
+                                <div class="tx-symbol-row">
+                                    <span>${t.symbol}</span>
+                                    <span class="badge-pill-soft ${badgeClass}">${badgeText}</span>
+                                    <span style="font-size: 11px; color: var(--text-muted);">#${t.id}</span>
+                                </div>
+                                <div class="tx-meta-desc">
+                                    Beli: ${formatPrice(t.buy_price)} &bull; Jual: ${formatPrice(t.sell_price)} &bull; ${dateStr}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tx-stats-side">
+                            <div>
+                                <div class="tx-profit-val ${profitClass}">
+                                    ${isWin ? '+' : ''}${formatUSD(t.profit_usd)}
+                                </div>
+                                <div class="tx-pnl-pct ${profitClass}">
+                                    ${(t.pnl_pct || 0) >= 0 ? '+' : ''}${(t.pnl_pct || 0).toFixed(2)}%
+                                </div>
+                            </div>
+                            <span style="font-size: 11px; color: var(--blue); font-weight: 700;">Detail →</span>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function openDetailModal(tradeId) {
+            const trade = allTrades.find(t => t.id === tradeId);
+            if (!trade) return;
+            selectedTrade = trade;
+
+            const isWin = (trade.profit_usd || 0) >= 0;
+            document.getElementById('m-token-avatar').textContent = trade.symbol ? trade.symbol.substring(0, 3) : 'SOL';
+            document.getElementById('m-token-symbol').textContent = `$${trade.symbol || 'Unknown'}`;
+            
+            const badge = document.getElementById('m-reason-badge');
+            badge.textContent = trade.reason === 'TAKE_PROFIT' ? 'TAKE PROFIT (+8%)' : 'STOP LOSS (-6%)';
+            badge.className = 'badge-pill-soft ' + (isWin ? 'badge-emerald' : 'badge-rose');
+            
+            document.getElementById('m-trade-id').textContent = `Trade ID #${trade.id} • Raydium Pool`;
+            document.getElementById('m-buy-price').textContent = formatPrice(trade.buy_price);
+            document.getElementById('m-sell-price').textContent = formatPrice(trade.sell_price);
+            document.getElementById('m-cost-proceeds').textContent = `${formatUSD(trade.cost_usd || 10)} → ${formatUSD(trade.proceeds || (10 + trade.profit_usd))}`;
+
+            const profitEl = document.getElementById('m-profit-roi');
+            profitEl.textContent = `${isWin ? '+' : ''}${formatUSD(trade.profit_usd)} (${(trade.pnl_pct || 0) >= 0 ? '+' : ''}${(trade.pnl_pct || 0).toFixed(2)}%)`;
+            profitEl.className = 'modal-stat-val ' + (isWin ? 'color-emerald' : 'color-rose');
+
+            if (trade.closed_at) {
+                const d = new Date(trade.closed_at * 1000);
+                document.getElementById('m-closed-time').textContent = d.toLocaleString('id-ID');
+            } else {
+                document.getElementById('m-closed-time').textContent = 'Live Execution';
+            }
+
+            const holdMins = trade.closed_at && trade.opened_at ? ((trade.closed_at - trade.opened_at) / 60).toFixed(1) : '1.5';
+            document.getElementById('m-hold-duration').textContent = `${holdMins} Menit (Hit & Run)`;
+
+            const reasonDesc = document.getElementById('m-reason-desc');
+            if (isWin) {
+                reasonDesc.textContent = 'Take Profit Hit (+8.0% target tercapai)';
+                reasonDesc.style.color = 'var(--emerald)';
+                document.getElementById('m-ai-note').textContent = 'Momentum breakout terkonfirmasi AI. Posisi ditutup secara otomatis pada keuntungan target optimal untuk mengamankan likuiditas kas.';
+            } else {
+                reasonDesc.textContent = 'Stop Loss Cut (-6.0% proteksi risiko)';
+                reasonDesc.style.color = 'var(--rose)';
+                document.getElementById('m-ai-note').textContent = 'Proteksi risiko bot otomatis memotong posisi untuk mencegah slippage lebih dalam pada volatilitas tinggi pasar Solana.';
+            }
+
+            const fullAddr = trade.address || '';
+            document.getElementById('m-address-short').textContent = fullAddr ? (fullAddr.substring(0, 6) + '...' + fullAddr.substring(fullAddr.length - 6)) : '-';
+            document.getElementById('m-dex-link').href = `https://dexscreener.com/solana/${fullAddr}`;
+
+            document.getElementById('tx-modal-overlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('tx-modal-overlay').classList.remove('active');
+        }
+
+        function closeModalOnBackdrop(e) {
+            if (e.target.id === 'tx-modal-overlay') {
+                closeModal();
+            }
+        }
+
+        function copyAddress() {
+            if (selectedTrade && selectedTrade.address) {
+                navigator.clipboard.writeText(selectedTrade.address);
+                alert('Mint address berhasil disalin ke clipboard:\n' + selectedTrade.address);
+            }
+        }
+
+        function exportToExcel() {
+            const btn = document.getElementById('btn-export-excel');
+            const origContent = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.style.pointerEvents = 'none';
+                btn.innerHTML = `
+                    <svg class="spin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="2" x2="12" y2="6"></line>
+                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                        <line x1="2" y1="12" x2="6" y2="12"></line>
+                        <line x1="18" y1="12" x2="22" y2="12"></line>
+                        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                    </svg>
+                    <span>Mengekspor...</span>
+                `;
+            }
+
+            const params = new URLSearchParams();
+            if (currentFilter && currentFilter !== 'all') {
+                params.append('filter', currentFilter);
+            }
+            if (searchQuery) {
+                params.append('search', searchQuery);
+            }
+
+            const downloadUrl = `/api/export/transactions?${params.toString()}`;
+            
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.setAttribute('download', '');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => {
+                if (btn) {
+                    btn.style.pointerEvents = 'auto';
+                    btn.innerHTML = origContent;
+                }
+            }, 1200);
+        }
+
+        loadTransactions();
+    </script>
+</body>
+</html>

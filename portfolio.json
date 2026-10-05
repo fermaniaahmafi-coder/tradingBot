@@ -1,4 +1,20 @@
 {
-  "cash": 115.59930113400796,
-  "positions": []
+  "cash": 108.53,
+  "positions": [
+    {
+      "address": "49tVXDe7c44LGg95brseq1KfzFr4SvoYwDMrm1Xn7zC6",
+      "symbol": "SM",
+      "buy_price": 0.0002417,
+      "current_price": 0.0002579,
+      "tokens_count": 41373.6,
+      "amount_usd": 10.0,
+      "current_val": 10.67,
+      "profit_usd": 0.67,
+      "pnl_usd": 0.67,
+      "pnl_pct": 6.7,
+      "target_tp_price": 0.000261,
+      "target_sl_price": 0.0002272,
+      "buy_time": 1791190848
+    }
+  ]
 }

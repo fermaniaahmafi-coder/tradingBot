@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Koin - Monetra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #f2f4f7;
+            --surface: #ffffff;
+            --border-light: #edf0f5;
+            --border-subtle: #e2e8f0;
+            --text-main: #0f172a;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent-lime: #9ef32b;
+            --accent-lime-hover: #8be41b;
+            --emerald: #10b981;
+            --rose: #f43f5e;
+            --card-radius: 24px;
+            --pill-radius: 9999px;
+            --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f6;
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-back-pill {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: var(--pill-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-back-pill:hover {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .coin-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .coin-symbol-heading {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 960px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .chart-box {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
+            height: 600px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .info-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
+            padding: 26px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            font-family: 'JetBrains Mono', monospace;
+            color: #0f172a;
+        }
+
+        .gauge-slider-wrap {
+            margin: 15px 0 30px 0;
+            position: relative;
+        }
+
+        .gauge-rail {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .gauge-marker-point {
+            position: absolute;
+            top: -20px;
+            font-size: 11px;
+            font-weight: 700;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .gauge-marker-point.sl { left: 0; color: var(--rose); }
+        .gauge-marker-point.tp { left: 100%; color: var(--emerald); }
+        .gauge-marker-point.entry { color: #0f172a; }
+
+        .gauge-cursor {
+            position: absolute;
+            top: -6px;
+            width: 12px;
+            height: 20px;
+            background: var(--accent-lime);
+            border: 2px solid #0f172a;
+            border-radius: 4px;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: left 0.4s ease;
+        }
+
+        .btn-sell-danger {
+            background: #fff1f2;
+            color: var(--rose);
+            border: 1px solid #fecdd3;
+            padding: 14px;
+            width: 100%;
+            border-radius: var(--pill-radius);
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-sell-danger:hover {
+            background: var(--rose);
+            color: #ffffff;
+            border-color: var(--rose);
+        }
+
+        .text-green { color: var(--emerald); }
+        .text-red { color: var(--rose); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-nav">
+            <a href="/" class="btn-back-pill">← Kembali ke Dashboard</a>
+            <div class="coin-title-group">
+                <span class="coin-symbol-heading" id="coin-symbol">Memuat...</span>
+            </div>
+        </div>
+
+        <div class="detail-grid">
+            <div class="chart-box" id="chart-wrapper">
+                <div style="padding: 24px; color: var(--text-secondary);">Memuat chart live DexScreener...</div>
+            </div>
+
+            <div class="info-card" id="details-panel">
+                <div style="color: var(--text-secondary);">Memuat data token...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const address = window.location.pathname.split('/').pop();
+        
+        async function fetchDetails() {
+            try {
+                const res = await fetch(`/api/coin/${address}`);
+                const data = await res.json();
+                
+                document.getElementById('coin-symbol').textContent = data.symbol || address.substring(0,6);
+                
+                // Embed DexScreener chart iframe
+                const chartWrapper = document.getElementById('chart-wrapper');
+                if (chartWrapper.innerHTML.includes('Memuat') && data.pair_address) {
+                    chartWrapper.innerHTML = `<iframe src="https://dexscreener.com/solana/${data.pair_address}?embed=1&theme=light&trades=0&info=0" width="100%" height="100%" frameborder="0"></iframe>`;
+                }
+
+                let html = '';
+                
+                if (data.status === 'ACTIVE') {
+                    const pnlPct = ((data.current_price - data.buy_price) / (data.buy_price || 1)) * 100;
+                    const pnlClass = pnlPct >= 0 ? 'text-green' : 'text-red';
+                    
+                    let range = (data.target_tp_price - data.target_sl_price) || 1;
+                    let currentPos = data.current_price - data.target_sl_price;
+                    let pctLeft = Math.max(0, Math.min(100, (currentPos / range) * 100));
+                    let entryPos = Math.max(0, Math.min(100, ((data.buy_price - data.target_sl_price) / range) * 100));
+
+                    html += `
+                        <div>
+                            <span style="background: rgba(16, 185, 129, 0.12); color: var(--emerald); padding: 5px 12px; border-radius: var(--pill-radius); font-size: 12px; font-weight: 700;">POSISI AKTIF</span>
+                        </div>
+                        
+                        <div class="stat-field">
+                            <span class="stat-label">Harga Saat Ini (Live DexScreener)</span>
+                            <div class="stat-value ${pnlClass}">$${(data.current_price || 0).toFixed(8)} (${pnlPct >= 0 ? '+' : ''}${pnlPct.toFixed(2)}%)</div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="stat-field">
+                                <span class="stat-label">Entry Price</span>
+                                <div class="stat-value" style="font-size: 16px;">$${(data.buy_price || 0).toFixed(8)}</div>
+                            </div>
+                            <div class="stat-field">
+                                <span class="stat-label">Current Value</span>
+                                <div class="stat-value ${pnlClass}" style="font-size: 16px;">$${(data.current_val || 0).toFixed(2)}</div>
+                            </div>
+                        </div>
+
+                        <div class="gauge-slider-wrap">
+                            <div class="gauge-rail">
+                                <div class="gauge-marker-point sl">SL (-6%)</div>
+                                <div class="gauge-marker-point tp">TP (+8%)</div>
+                                <div class="gauge-marker-point entry" style="left: ${entryPos}%;">Entry</div>
+                                <div class="gauge-cursor" style="left: ${pctLeft}%;"></div>
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 5px 0;">
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="stat-field">
+                                <span class="stat-label">24h Volume</span>
+                                <div class="stat-value" style="font-size: 15px;">$${data.volume_24h ? data.volume_24h.toLocaleString(undefined, {maximumFractionDigits:0}) : '0'}</div>
+                            </div>
+                            <div class="stat-field">
+                                <span class="stat-label">Liquidity</span>
+                                <div class="stat-value" style="font-size: 15px;">$${data.liquidity_usd ? data.liquidity_usd.toLocaleString(undefined, {maximumFractionDigits:0}) : '0'}</div>
+                            </div>
+                        </div>
+
+                        <button class="btn-sell-danger" onclick="sellNow()">Jual Sekarang (Manual Close)</button>
+                    `;
+                } else if (data.status === 'CLOSED') {
+                    const isWin = (data.profit_usd || 0) >= 0;
+                    const pnlClass = isWin ? 'text-green' : 'text-red';
+                    html += `
+                        <div>
+                            <span style="background: #f1f5f9; color: var(--text-secondary); padding: 5px 12px; border-radius: var(--pill-radius); font-size: 12px; font-weight: 700;">RIWAYAT (${data.reason})</span>
+                        </div>
+                        <div class="stat-field">
+                            <span class="stat-label">Entry Price</span>
+                            <div class="stat-value" style="font-size: 16px;">$${(data.buy_price || 0).toFixed(8)}</div>
+                        </div>
+                        <div class="stat-field">
+                            <span class="stat-label">Exit Price</span>
+                            <div class="stat-value" style="font-size: 16px;">$${(data.sell_price || 0).toFixed(8)}</div>
+                        </div>
+                        <div class="stat-field">
+                            <span class="stat-label">Profit / Loss</span>
+                            <div class="stat-value ${pnlClass}">
+                                ${isWin ? '+' : ''}$${(data.profit_usd || 0).toFixed(2)} (${isWin ? '+' : ''}${(data.pnl_pct || 0).toFixed(2)}%)
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="stat-field">
+                            <span class="stat-label">Harga Saat Ini</span>
+                            <div class="stat-value">$${(data.current_price || 0).toFixed(8)}</div>
+                        </div>
+                        <div class="stat-field">
+                            <span class="stat-label">Status</span>
+                            <div style="font-size: 14px; color: var(--text-secondary);">Tidak ada posisi aktif atau riwayat.</div>
+                        </div>
+                    `;
+                }
+
+                if (data.dex_url) {
+                    html += `<div style="margin-top: 10px; text-align: center;"><a href="${data.dex_url}" target="_blank" style="color: #3b82f6; font-size: 13px; text-decoration: none; font-weight: 600;">Lihat di DexScreener ↗</a></div>`;
+                }
+                
+                document.getElementById('details-panel').innerHTML = html;
+                
+            } catch (err) {
+                console.error("Fetch error:", err);
+            }
+        }
+
+        async function sellNow() {
+            if (confirm('Yakin ingin menutup posisi secara manual pada harga pasar saat ini?')) {
+                try {
+                    const res = await fetch(`/api/control/sell/${address}`, { method: 'POST' });
+                    const result = await res.json();
+                    alert(result.message || 'Perintah jual dikirim');
+                    fetchDetails();
+                } catch (e) {
+                    alert('Gagal mengeksekusi');
+                }
+            }
+        }
+
+        setInterval(fetchDetails, 3000);
+        fetchDetails();
+    </script>
+</body>
+</html>

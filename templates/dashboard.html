@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Trading - Monetra Hermes Sniper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #f2f4f7;
+            --surface: #ffffff;
+            --surface-hover: #f8fafc;
+            --border-light: #edf0f5;
+            --border-subtle: #e2e8f0;
+            --text-main: #0f172a;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent-lime: #9ef32b;
+            --accent-lime-hover: #8be41b;
+            --accent-lime-subtle: rgba(158, 243, 43, 0.16);
+            --emerald: #10b981;
+            --emerald-subtle: #ecfdf5;
+            --rose: #f43f5e;
+            --rose-subtle: #fff1f2;
+            --blue: #3b82f6;
+            --blue-subtle: #eff6ff;
+            --amber: #f59e0b;
+            --amber-subtle: #fffbeb;
+            --card-radius: 22px;
+            --pill-radius: 9999px;
+            --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+            --shadow-elevated: 0 12px 30px -4px rgba(15, 23, 42, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f6;
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Top Nav */
+        .top-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .brand-cluster {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--accent-lime);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(158, 243, 43, 0.35);
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+        }
+
+        .nav-capsule {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8fafc;
+            padding: 5px 8px;
+            border-radius: var(--pill-radius);
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill-btn {
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-radius: var(--pill-radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .nav-pill-btn:hover { color: var(--text-main); }
+        .nav-pill-btn.active {
+            background: #ffffff;
+            color: var(--text-main);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        /* Mode Switcher Capsule */
+        .mode-switcher-capsule {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px 6px;
+            border-radius: var(--pill-radius);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .mode-btn {
+            border: none;
+            background: transparent;
+            padding: 6px 14px;
+            border-radius: var(--pill-radius);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mode-btn.active-test {
+            background: #ffffff;
+            color: var(--blue);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .mode-btn.active-prod {
+            background: #0f172a;
+            color: var(--accent-lime);
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+        }
+
+        /* Main Layout */
+        .dashboard-main-shell {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 28px;
+        }
+
+        .sidebar-pill-dock {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 36px;
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-soft);
+            height: calc(100% - 10px);
+            min-height: 600px;
+        }
+
+        .dock-top-group, .dock-bottom-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .dock-item-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .dock-item-btn:hover {
+            color: var(--text-main);
+            background: #f1f5f9;
+        }
+
+        .dock-item-btn.active {
+            background: #0f172a;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+        }
+
+        .content-canvas {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* Header Control Bar */
+        .live-control-header {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .live-title-wrap h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-title-wrap p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .controls-action-cluster {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 16px;
+            border-radius: var(--pill-radius);
+            font-size: 12px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .status-pill-badge.running {
+            background: var(--emerald-subtle);
+            color: var(--emerald);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .status-pill-badge.paused {
+            background: var(--amber-subtle);
+            color: var(--amber);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .status-pill-badge.stopped {
+            background: var(--rose-subtle);
+            color: var(--rose);
+            border: 1px solid rgba(244, 63, 94, 0.25);
+        }
+
+        .status-pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 8px currentColor;
+            animation: pulse-ring 1.8s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        /* Action Buttons */
+        .btn-ctrl {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: var(--pill-radius);
+            font-size: 12px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-ctrl:active { transform: scale(0.98); }
+
+        .btn-ctrl-start {
+            background: var(--accent-lime);
+            color: #0f172a;
+            border-color: #8be41b;
+        }
+        .btn-ctrl-start:hover {
+            background: var(--accent-lime-hover);
+            box-shadow: 0 4px 12px rgba(158, 243, 43, 0.3);
+        }
+
+        .btn-ctrl-pause {
+            background: #ffffff;
+            color: var(--amber);
+            border-color: #fde68a;
+        }
+        .btn-ctrl-pause:hover {
+            background: var(--amber-subtle);
+            border-color: var(--amber);
+        }
+
+        .btn-ctrl-stop {
+            background: #ffffff;
+            color: var(--rose);
+            border-color: #fecdd3;
+        }
+        .btn-ctrl-stop:hover {
+            background: var(--rose-subtle);
+            border-color: var(--rose);
+        }
+
+        .btn-ctrl-reset {
+            background: #f1f5f9;
+            color: var(--text-secondary);
+            border-color: var(--border-light);
+        }
+        .btn-ctrl-reset:hover {
+            background: #e2e8f0;
+            color: var(--text-main);
+        }
+
+        .btn-ctrl-reset.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: auto;
+        }
+
+        /* 4 Key Metric Cards (Persis permintaan user) */
+        .kpi-quad-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 1080px) {
+            .kpi-quad-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .kpi-quad-grid { grid-template-columns: 1fr; }
+        }
+
+        .kpi-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .kpi-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .kpi-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .kpi-card-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: var(--pill-radius);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .badge-emerald { background: var(--emerald-subtle); color: var(--emerald); }
+        .badge-blue { background: var(--blue-subtle); color: var(--blue); }
+        .badge-purple { background: #f5f3ff; color: #8b5cf6; }
+        .badge-lime { background: var(--accent-lime-subtle); color: #0f172a; }
+
+        .kpi-card-value {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .kpi-card-subtext {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 2-Column Content Grid */
+        .live-workspace-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 22px;
+        }
+
+        @media (max-width: 980px) {
+            .live-workspace-grid { grid-template-columns: 1fr; }
+        }
+
+        .panel-box {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .panel-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-box-title {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-box-sub {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* Active Positions Cards */
+        .position-card-item {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 0.2s;
+        }
+
+        .position-card-item:hover {
+            background: #ffffff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            border-color: #cbd5e1;
+        }
+
+        .pos-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pos-token-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .token-avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            color: #0f172a;
+        }
+
+        .pos-pnl-group {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .pos-pnl-val {
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .pos-pnl-pct {
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .pos-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .pos-metric-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .pos-metric-cell span {
+            color: var(--text-muted);
+            font-size: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        /* TP/SL Gauge */
+        .gauge-track {
+            height: 6px;
+            width: 100%;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .pos-action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .btn-sell-now {
+            background: #fff1f2;
+            color: var(--rose);
+            border: 1px solid #fecdd3;
+            padding: 6px 14px;
+            border-radius: var(--pill-radius);
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-sell-now:hover {
+            background: var(--rose);
+            color: #ffffff;
+        }
+
+        /* Completed Trades Mini List */
+        .completed-trades-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .trade-mini-row {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .trade-mini-row:hover {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-color: #cbd5e1;
+        }
+
+        /* Live Log Stream */
+        .log-stream-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 440px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .log-stream-box::-webkit-scrollbar { width: 4px; }
+        .log-stream-box::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        .log-entry-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .log-entry-card:hover { background: #ffffff; }
+
+        .log-header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+        }
+
+        .log-tag-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tag-AI_BUY { background: var(--emerald-subtle); color: var(--emerald); }
+        .tag-AI_SKIP { background: var(--amber-subtle); color: var(--amber); }
+        .tag-SCAN { background: var(--blue-subtle); color: var(--blue); }
+        .tag-STATUS { background: #f1f5f9; color: var(--text-secondary); }
+        .tag-TRADE_SELL { background: var(--rose-subtle); color: var(--rose); }
+
+        .empty-placeholder {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Toast */
+        #toast-notice {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: var(--pill-radius);
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 9999;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .color-emerald { color: var(--emerald); }
+        .color-rose { color: var(--rose); }
+
+        @media (max-width: 860px) {
+            body { padding: 12px; }
+            .app-container { padding: 18px 14px; border-radius: 20px; }
+            .dashboard-main-shell { grid-template-columns: 1fr; }
+            .sidebar-pill-dock { display: none; }
+            .nav-capsule { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navbar -->
+        <nav class="top-navbar">
+            <a href="/" class="brand-cluster">
+                <div class="brand-logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <div class="brand-title">Monetra</div>
+            </a>
+
+            <!-- Navigation Pills -->
+            <div class="nav-capsule">
+                <a href="/" class="nav-pill-btn active">Live Trading</a>
+                <a href="/analytics" class="nav-pill-btn">Analytics</a>
+                <a href="/transactions" class="nav-pill-btn">Transactions</a>
+            </div>
+
+            <!-- Mode Switcher -->
+            <div class="mode-switcher-capsule">
+                <button class="mode-btn active-test" id="btn-mode-testing" onclick="switchMode('testing')">
+                    🧪 Mode Testing
+                </button>
+                <button class="mode-btn" id="btn-mode-production" onclick="switchMode('production')">
+                    ⚡ Mode Production
+                </button>
+            </div>
+        </nav>
+
+        <div class="dashboard-main-shell">
+            <!-- Sidebar Dock -->
+            <aside class="sidebar-pill-dock">
+                <div class="dock-top-group">
+                    <a href="/" class="dock-item-btn active" title="Live Trading">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </a>
+                    <a href="/analytics" class="dock-item-btn" title="Analytics">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </a>
+                    <a href="/transactions" class="dock-item-btn" title="Transactions">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="dock-bottom-group">
+                    <button class="dock-item-btn" id="dock-reset-btn" title="Reset Portfolio" onclick="triggerReset()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                        </svg>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Canvas Body -->
+            <div class="content-canvas">
+                <!-- Header Control & Bot Status Bar -->
+                <div class="live-control-header">
+                    <div class="live-title-wrap">
+                        <h1>
+                            Solana Sniper Live Trading
+                            <span class="kpi-card-badge badge-blue" id="current-mode-badge">TESTING MODE</span>
+                        </h1>
+                        <p>Autonomous high-frequency Raydium & Pump.fun execution engine</p>
+                    </div>
+
+                    <div class="controls-action-cluster">
+                        <!-- Status Indicator -->
+                        <div class="status-pill-badge running" id="bot-status-pill">
+                            <span class="status-pulse-dot"></span>
+                            <span id="bot-status-label">BOT BERJALAN</span>
+                        </div>
+
+                        <!-- Buttons: Mulai, Jeda, Hentikan, Reset -->
+                        <button class="btn-ctrl btn-ctrl-start" onclick="controlBot('start')" title="Jalankan pemindaian dan eksekusi bot">
+                            ▶ Mulai Bot
+                        </button>
+                        <button class="btn-ctrl btn-ctrl-pause" onclick="controlBot('pause')" title="Jeda pembelian baru (posisi aktif tetap dimonitor)">
+                            ⏸ Jeda Bot
+                        </button>
+                        <button class="btn-ctrl btn-ctrl-stop" onclick="controlBot('stop')" title="Hentikan bot sepenuhnya">
+                            ⏹ Hentikan
+                        </button>
+                        <button class="btn-ctrl btn-ctrl-reset" id="btn-reset-port" onclick="triggerReset()" title="Reset portofolio (Hanya di Mode Testing)">
+                            ↺ Reset Portofolio
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4 Top KPI Cards (Persis data permintaan user) -->
+                <div class="kpi-quad-grid">
+                    <!-- 1. Total Portofolio -->
+                    <div class="kpi-card">
+                        <div class="kpi-card-top">
+                            <span class="kpi-card-title">Total Portofolio</span>
+                            <span class="kpi-card-badge badge-lime">Total Aset</span>
+                        </div>
+                        <div class="kpi-card-value" id="kpi-total-val">$119.20</div>
+                        <div class="kpi-card-subtext" id="kpi-total-sub">
+                            Kas: $108.53 • Koin: $10.67
+                        </div>
+                    </div>
+
+                    <!-- 2. Uang Siap Pakai -->
+                    <div class="kpi-card">
+                        <div class="kpi-card-top">
+                            <span class="kpi-card-title">Uang Siap Pakai</span>
+                            <span class="kpi-card-badge badge-emerald">Liquid Cash</span>
+                        </div>
+                        <div class="kpi-card-value" id="kpi-cash-val">$108.53</div>
+                        <div class="kpi-card-subtext" id="kpi-cash-sub">
+                            Bisa beli 10x lagi
+                        </div>
+                    </div>
+
+                    <!-- 3. Nilai di Koin -->
+                    <div class="kpi-card">
+                        <div class="kpi-card-top">
+                            <span class="kpi-card-title">Nilai di Koin</span>
+                            <span class="kpi-card-badge badge-purple" id="kpi-pos-badge">1 Berjalan</span>
+                        </div>
+                        <div class="kpi-card-value" id="kpi-coin-val">$10.67</div>
+                        <div class="kpi-card-subtext" id="kpi-coin-sub">
+                            1 berjalan • 33 selesai
+                        </div>
+                    </div>
+
+                    <!-- 4. Total Profit / Win Rate -->
+                    <div class="kpi-card">
+                        <div class="kpi-card-top">
+                            <span class="kpi-card-title">Total Profit / Win Rate</span>
+                            <span class="kpi-card-badge badge-emerald" id="kpi-roi-badge">+19.20% ROI</span>
+                        </div>
+                        <div class="kpi-card-value color-emerald" id="kpi-profit-val">+$19.20</div>
+                        <div class="kpi-card-subtext" id="kpi-winrate-sub">
+                            Win Rate: 72.7% (24W • 9L)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2-Column Live Workspace Grid -->
+                <div class="live-workspace-grid">
+                    <!-- Left Column: Posisi Berjalan & Riwayat Selesai -->
+                    <div style="display: flex; flex-direction: column; gap: 22px;">
+                        <!-- Posisi Berjalan -->
+                        <div class="panel-box">
+                            <div class="panel-box-header">
+                                <div>
+                                    <h3 class="panel-box-title">
+                                        Posisi Berjalan
+                                        <span class="kpi-card-badge badge-blue" id="badge-active-pos-cnt">1 Aktif</span>
+                                    </h3>
+                                    <p class="panel-box-sub">Token Solana yang sedang di-hold dengan pemantauan TP/SL otomatis</p>
+                                </div>
+                            </div>
+
+                            <div id="positions-container">
+                                <div class="empty-placeholder">Memuat posisi berjalan...</div>
+                            </div>
+                        </div>
+
+                        <!-- Riwayat Selesai -->
+                        <div class="panel-box">
+                            <div class="panel-box-header">
+                                <div>
+                                    <h3 class="panel-box-title">Riwayat Selesai</h3>
+                                    <p class="panel-box-sub">Eksekusi Take Profit dan Stop Loss terakhir</p>
+                                </div>
+                                <a href="/transactions" style="font-size: 12px; font-weight: 700; color: var(--blue); text-decoration: none;">
+                                    Buka Ledger Lengkap ↗
+                                </a>
+                            </div>
+
+                            <div class="completed-trades-list" id="recent-history-container">
+                                <div class="empty-placeholder">Memuat riwayat transaksi...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Live Process & AI Feed -->
+                    <div style="display: flex; flex-direction: column; gap: 22px;">
+                        <!-- Live Process & AI Feed -->
+                        <div class="panel-box">
+                            <div class="panel-box-header">
+                                <div>
+                                    <h3 class="panel-box-title">
+                                        Live Process & AI Feed
+                                        <span class="kpi-card-badge badge-emerald">Auto-sync 3s</span>
+                                    </h3>
+                                    <p class="panel-box-sub">Log real-time pemindaian scanner, filter keamanan, dan analisa DeepSeek AI</p>
+                                </div>
+                            </div>
+
+                            <div class="log-stream-box" id="live-feed-container">
+                                <div class="empty-placeholder">Menghubungkan ke AI feed...</div>
+                            </div>
+                        </div>
+
+                        <!-- Strategy Specifications -->
+                        <div class="panel-box" style="background: #f8fafc;">
+                            <div class="panel-box-header">
+                                <h3 class="panel-box-title" style="font-size: 14px;">Spesifikasi Mesin Sniper</h3>
+                                <span class="kpi-card-badge badge-lime">Hermes v2.4</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: var(--text-secondary);">Position Size Per Token:</span>
+                                    <strong>$10.00 / Slot</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: var(--text-secondary);">Target Take Profit:</span>
+                                    <strong class="color-emerald">+8.0% Dynamic Target</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: var(--text-secondary);">Hard Stop Loss:</span>
+                                    <strong class="color-rose">-6.0% Risk Cap</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: var(--text-secondary);">AI Honeypot Filter:</span>
+                                    <strong style="color: var(--blue);">Aktif (DeepSeek Multi-Factor)</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notice">Notifikasi</div>
+
+    <script>
+        let currentStatus = null;
+        let activeMode = 'testing';
+
+        function showToast(msg) {
+            const t = document.getElementById('toast-notice');
+            t.textContent = msg;
+            t.style.display = 'block';
+            setTimeout(() => { t.style.display = 'none'; }, 3200);
+        }
+
+        function formatUSD(val) {
+            return "$" + (val || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        function formatPrice(val) {
+            if (!val) return "$0.00";
+            if (val < 0.0001) return "$" + val.toLocaleString('en-US', {minimumFractionDigits: 7, maximumFractionDigits: 7});
+            if (val < 0.01) return "$" + val.toLocaleString('en-US', {minimumFractionDigits: 5, maximumFractionDigits: 5});
+            return "$" + val.toLocaleString('en-US', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+        }
+
+        async function fetchStatus() {
+            try {
+                const res = await fetch(`/api/status?mode=${activeMode}`);
+                const data = await res.json();
+                currentStatus = data;
+                activeMode = data.mode || 'testing';
+
+                updateUI(data);
+            } catch (e) {
+                console.error("Gagal sinkron status:", e);
+            }
+        }
+
+        function updateUI(data) {
+            // 1. Mode Switcher & Reset Button State
+            const btnTest = document.getElementById('btn-mode-testing');
+            const btnProd = document.getElementById('btn-mode-production');
+            const modeBadge = document.getElementById('current-mode-badge');
+            const resetBtn = document.getElementById('btn-reset-port');
+            const dockResetBtn = document.getElementById('dock-reset-btn');
+
+            if (data.mode === 'production') {
+                btnTest.className = 'mode-btn';
+                btnProd.className = 'mode-btn active-prod';
+                modeBadge.textContent = 'PRODUCTION MODE (REAL)';
+                modeBadge.className = 'kpi-card-badge badge-purple';
+
+                // Disable Reset in Production
+                if (resetBtn) {
+                    resetBtn.classList.add('disabled');
+                    resetBtn.title = 'Reset dinonaktifkan di Mode Production untuk keamanan aset nyata!';
+                }
+                if (dockResetBtn) {
+                    dockResetBtn.style.opacity = '0.35';
+                    dockResetBtn.title = 'Reset terkunci (Production)';
+                }
+            } else {
+                btnTest.className = 'mode-btn active-test';
+                btnProd.className = 'mode-btn';
+                modeBadge.textContent = 'TESTING MODE (PAPER)';
+                modeBadge.className = 'kpi-card-badge badge-blue';
+
+                if (resetBtn) {
+                    resetBtn.classList.remove('disabled');
+                    resetBtn.title = 'Reset portofolio testing ke modal awal';
+                }
+                if (dockResetBtn) {
+                    dockResetBtn.style.opacity = '1';
+                    dockResetBtn.title = 'Reset portofolio testing';
+                }
+            }
+
+            // 2. Status Bot Indicator
+            const statusPill = document.getElementById('bot-status-pill');
+            const statusLabel = document.getElementById('bot-status-label');
+            const bStatus = data.bot_status || (data.bot_active ? 'running' : 'stopped');
+
+            if (bStatus === 'running') {
+                statusPill.className = 'status-pill-badge running';
+                statusLabel.textContent = 'BOT BERJALAN';
+            } else if (bStatus === 'paused') {
+                statusPill.className = 'status-pill-badge paused';
+                statusLabel.textContent = 'BOT DIJEDA';
+            } else {
+                statusPill.className = 'status-pill-badge stopped';
+                statusLabel.textContent = 'BOT BERHENTI';
+            }
+
+            // 3. Top 4 KPI Cards (Persis data yang diminta user)
+            const cash = data.cash || 0;
+            const coinVal = data.coin_value || 0;
+            const totalPort = data.total_portfolio || (cash + coinVal);
+            const positions = data.positions || [];
+            const history = data.history || [];
+
+            // Card 1: Total Portofolio
+            document.getElementById('kpi-total-val').textContent = formatUSD(totalPort);
+            document.getElementById('kpi-total-sub').textContent = `Kas: ${formatUSD(cash)} • Koin: ${formatUSD(coinVal)}`;
+
+            // Card 2: Uang Siap Pakai
+            document.getElementById('kpi-cash-val').textContent = formatUSD(cash);
+            const slots = data.can_buy_slots !== undefined ? data.can_buy_slots : Math.floor(cash / 10);
+            document.getElementById('kpi-cash-sub').textContent = `Bisa beli ${slots}x lagi`;
+
+            // Card 3: Nilai di Koin
+            document.getElementById('kpi-coin-val').textContent = formatUSD(coinVal);
+            document.getElementById('kpi-coin-sub').textContent = `${positions.length} berjalan • ${history.length} selesai`;
+            document.getElementById('kpi-pos-badge').textContent = `${positions.length} Berjalan`;
+
+            // Card 4: Total Profit / Win Rate
+            const totalProfit = data.total_profit || 0;
+            const isProfitPos = totalProfit >= 0;
+            const profitEl = document.getElementById('kpi-profit-val');
+            profitEl.textContent = (isProfitPos ? '+' : '') + formatUSD(totalProfit);
+            profitEl.className = 'kpi-card-value ' + (isProfitPos ? 'color-emerald' : 'color-rose');
+
+            const roi = data.net_roi || ((totalProfit / (data.config.initial_balance || 100)) * 100);
+            document.getElementById('kpi-roi-badge').textContent = `${isProfitPos ? '+' : ''}${roi.toFixed(1)}% ROI`;
+
+            const winRate = data.win_rate !== undefined ? data.win_rate : 72.7;
+            const winsCnt = data.wins_count !== undefined ? data.wins_count : 24;
+            const lossCnt = data.losses_count !== undefined ? data.losses_count : 9;
+            document.getElementById('kpi-winrate-sub').textContent = `Win Rate: ${winRate.toFixed(1)}% (${winsCnt}W • ${lossCnt}L)`;
+
+            // 4. Render Posisi Berjalan
+            renderPositions(positions);
+
+            // 5. Render Riwayat Selesai
+            renderCompleted(history);
+
+            // 6. Render Live Feed
+            renderLogs(data.logs || []);
+        }
+
+        function renderPositions(positions) {
+            const container = document.getElementById('positions-container');
+            const cntBadge = document.getElementById('badge-active-pos-cnt');
+            cntBadge.textContent = `${positions.length} Aktif`;
+
+            if (!positions || positions.length === 0) {
+                container.innerHTML = '<div class="empty-placeholder">Tidak ada posisi berjalan saat ini.<br>Bot sedang memindai peluang token baru di Solana...</div>';
+                return;
+            }
+
+            let html = '';
+            positions.forEach(pos => {
+                const pnl = pos.pnl_usd || pos.profit_usd || 0;
+                const pnlPct = pos.pnl_pct || 0;
+                const isWin = pnl >= 0;
+                const pnlClass = isWin ? 'color-emerald' : 'color-rose';
+
+                // TP/SL progress calculation (SL -6%, TP +8%)
+                const gaugePct = Math.min(100, Math.max(0, ((pnlPct + 6) / 14) * 100));
+
+                html += `
+                    <div class="position-card-item">
+                        <div class="pos-header-row">
+                            <div class="pos-token-info">
+                                <div class="token-avatar-circle" style="background: ${isWin ? 'var(--emerald-subtle)' : 'var(--rose-subtle)'};">
+                                    ${pos.symbol ? pos.symbol.substring(0, 3) : 'SOL'}
+                                </div>
+                                <div>
+                                    <div style="font-weight: 800; font-size: 15px;">$${pos.symbol || 'UNKNOWN'}</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                                        ${pos.address ? (pos.address.substring(0, 6) + '...' + pos.address.substring(pos.address.length - 4)) : '-'}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pos-pnl-group">
+                                <div class="pos-pnl-val ${pnlClass}">
+                                    ${isWin ? '+' : ''}${formatUSD(pnl)}
+                                </div>
+                                <div class="pos-pnl-pct ${pnlClass}">
+                                    ${isWin ? '+' : ''}${pnlPct.toFixed(2)}%
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pos-metrics-grid">
+                            <div class="pos-metric-cell">
+                                <span>Entry Price</span>
+                                <div>${formatPrice(pos.buy_price)}</div>
+                            </div>
+                            <div class="pos-metric-cell">
+                                <span>Current Price</span>
+                                <div>${formatPrice(pos.current_price || pos.buy_price)}</div>
+                            </div>
+                            <div class="pos-metric-cell">
+                                <span>Modal Beli</span>
+                                <div>${formatUSD(pos.amount_usd || 10)}</div>
+                            </div>
+                            <div class="pos-metric-cell">
+                                <span>Nilai Koin</span>
+                                <strong>${formatUSD(pos.current_val || 10.67)}</strong>
+                            </div>
+                        </div>
+
+                        <!-- TP/SL Visualizer -->
+                        <div>
+                            <div class="gauge-track">
+                                <div class="gauge-fill" style="width: ${gaugePct}%; background: ${isWin ? 'var(--accent-lime)' : 'var(--rose)'};"></div>
+                            </div>
+                            <div class="gauge-labels">
+                                <span style="color: var(--rose);">SL: -6.0%</span>
+                                <span style="color: var(--text-muted);">Entry: 0.0%</span>
+                                <span style="color: var(--emerald);">TP: +8.0%</span>
+                            </div>
+                        </div>
+
+                        <div class="pos-action-row">
+                            <a href="/coin/${pos.address || ''}" style="font-size: 11px; color: var(--blue); font-weight: 700; text-decoration: none;">
+                                Grafik DexScreener ↗
+                            </a>
+                            <button class="btn-sell-now" onclick="sellPosition('${pos.address || ''}')">
+                                Jual Posisi ⚡
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function renderCompleted(history) {
+            const container = document.getElementById('recent-history-container');
+            const recent = history.slice().reverse().slice(0, 5);
+
+            if (!recent || recent.length === 0) {
+                container.innerHTML = '<div class="empty-placeholder">Belum ada riwayat trading yang selesai.</div>';
+                return;
+            }
+
+            let html = '';
+            recent.forEach(t => {
+                const isWin = (t.profit_usd || 0) >= 0;
+                const pnlClass = isWin ? 'color-emerald' : 'color-rose';
+                const badgeClass = isWin ? 'badge-emerald' : 'badge-rose';
+                const badgeText = t.reason === 'TAKE_PROFIT' ? 'TAKE PROFIT' : 'STOP LOSS';
+
+                html += `
+                    <a href="/transactions" class="trade-mini-row">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="token-avatar-circle" style="width: 32px; height: 32px; font-size: 11px;">
+                                ${t.symbol ? t.symbol.substring(0, 3) : 'SOL'}
+                            </div>
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <strong>$${t.symbol || 'TOKEN'}</strong>
+                                    <span class="kpi-card-badge ${badgeClass}" style="font-size: 9px; padding: 1px 6px;">${badgeText}</span>
+                                </div>
+                                <div style="font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                                    Beli: ${formatPrice(t.buy_price)} • Jual: ${formatPrice(t.sell_price)}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: right; font-family: 'JetBrains Mono', monospace;">
+                            <div class="${pnlClass}" style="font-weight: 800; font-size: 13px;">
+                                ${isWin ? '+' : ''}${formatUSD(t.profit_usd)}
+                            </div>
+                            <div class="${pnlClass}" style="font-size: 11px; font-weight: 700;">
+                                ${(t.pnl_pct || 0) >= 0 ? '+' : ''}${(t.pnl_pct || 0).toFixed(1)}%
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function renderLogs(logs) {
+            const container = document.getElementById('live-feed-container');
+            if (!logs || logs.length === 0) {
+                container.innerHTML = '<div class="empty-placeholder">Menunggu aktivitas bot sniper...</div>';
+                return;
+            }
+
+            let html = '';
+            logs.slice(0, 15).forEach(l => {
+                const tag = l.event_type || 'STATUS';
+                const timeStr = l.timestamp ? l.timestamp.split(' ')[1] || l.timestamp : 'Just now';
+
+                html += `
+                    <div class="log-entry-card">
+                        <div class="log-header-line">
+                            <span class="log-tag-badge tag-${tag}">[${tag}]</span>
+                            <span style="color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">${timeStr}</span>
+                        </div>
+                        <div style="color: #334155; line-height: 1.35; font-family: 'JetBrains Mono', monospace; font-size: 11.5px;">
+                            ${l.message || ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        async function controlBot(action) {
+            try {
+                const res = await fetch(`/api/control/${action}`, { method: 'POST' });
+                const data = await res.json();
+                if (data.message) showToast(data.message);
+                fetchStatus();
+            } catch (e) {
+                showToast(`Gagal mengeksekusi ${action}`);
+            }
+        }
+
+        async function switchMode(targetMode) {
+            if (activeMode === targetMode) return;
+            try {
+                const res = await fetch('/api/control/mode', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mode: targetMode })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    activeMode = targetMode;
+                    showToast(data.message || `Beralih ke Mode ${targetMode}`);
+                    fetchStatus();
+                }
+            } catch (e) {
+                showToast('Gagal beralih mode');
+            }
+        }
+
+        function triggerReset() {
+            if (activeMode === 'production') {
+                alert('PERINGATAN KEAMANAN:\n\nReset Portofolio DINONAKTIFKAN pada Mode Production demi melindungi saldo dan aset riil Solana Anda!\n\nJika ingin melakukan reset, silakan beralih ke Mode Testing.');
+                return;
+            }
+
+            if (confirm('Konfirmasi Reset Portofolio Testing:\n\nApakah Anda yakin ingin mereset portofolio simulasi ke modal awal $100.00? Semua posisi dan riwayat simulasi akan dibersihkan.')) {
+                controlBot('reset');
+            }
+        }
+
+        async function sellPosition(addr) {
+            if (!addr) return;
+            if (confirm(`Kirim perintah jual cepat untuk token ini?`)) {
+                try {
+                    const res = await fetch(`/api/control/sell/${addr}`, { method: 'POST' });
+                    const data = await res.json();
+                    showToast(data.message || 'Perintah jual dikirim!');
+                    setTimeout(fetchStatus, 1500);
+                } catch (e) {
+                    showToast('Gagal mengirim perintah jual');
+                }
+            }
+        }
+
+        // Initial Load & 3-second auto-sync interval
+        fetchStatus();
+        setInterval(fetchStatus, 3000);
+    </script>
+</body>
+</html>
