@@ -131,3 +131,105 @@ def reset_db(initial_balance=100.0, bot_id="bot1"):
         conn.execute("DELETE FROM activities")
         conn.execute("INSERT OR REPLACE INTO wallet (id, cash, updated_at) VALUES (1, ?, ?)", (initial_balance, time.time()))
         conn.commit()
+
+def get_hourly_analytics(bot_id="bot7", tz_offset=7):
+    """
+    Analisis performa & tren pasar berdasarkan jam eksekusi trade (WIB / UTC+7).
+    Mengidentifikasi Golden Hours (Jam Tren Naik) & Danger Hours (Jam Rawan Dump).
+    """
+    from datetime import datetime, timezone
+    import glob
+
+    hourly = {}
+    for h in range(24):
+        hourly[h] = {
+            "hour": h,
+            "label": f"{h:02d}:00 - {h:02d}:59 WIB",
+            "trades": 0,
+            "wins": 0,
+            "losses": 0,
+            "profit": 0.0,
+            "win_rate": 0.0,
+            "trend": "BELUM ADA DATA",
+            "is_golden": False,
+            "is_danger": False
+        }
+
+    targets = [bot_id] if bot_id != "all" else ["bot1", "bot2", "bot3", "bot4", "bot5", "bot6", "bot7"]
+    for b in targets:
+        db_path = Config.get_db_path(b)
+        if not os.path.exists(db_path):
+            continue
+        try:
+            with get_conn(b) as conn:
+                rows = conn.execute("SELECT opened_at, profit_usd, pnl_pct FROM trades").fetchall()
+                for r in rows:
+                    opened_at = r["opened_at"]
+                    if not opened_at:
+                        continue
+                    dt = datetime.fromtimestamp(opened_at, timezone.utc)
+                    h = (dt.hour + tz_offset) % 24
+                    profit = float(r["profit_usd"] or 0)
+                    pnl = float(r["pnl_pct"] or 0)
+                    hourly[h]["trades"] += 1
+                    if pnl > 0:
+                        hourly[h]["wins"] += 1
+                    else:
+                        hourly[h]["losses"] += 1
+                    hourly[h]["profit"] = round(hourly[h]["profit"] + profit, 2)
+        except Exception:
+            pass
+
+    for h in range(24):
+        t = hourly[h]["trades"]
+        if t > 0:
+            wr = round((hourly[h]["wins"] / t) * 100, 1)
+            hourly[h]["win_rate"] = wr
+            p = hourly[h]["profit"]
+            if wr >= 50.0 and p > 0:
+                hourly[h]["trend"] = "TREN NAIK"
+                hourly[h]["is_golden"] = True
+            elif wr < 42.0 or p < -5.0:
+                hourly[h]["trend"] = "RAWAN DUMP"
+                hourly[h]["is_danger"] = True
+            else:
+                hourly[h]["trend"] = "NETRAL"
+
+    golden_hours = [d["label"] for d in hourly.values() if d["is_golden"]]
+    danger_hours = [d["label"] for d in hourly.values() if d["is_danger"]]
+    active_hours = [d for d in hourly.values() if d["trades"] > 0]
+    best_hour = max(active_hours, key=lambda x: x["profit"])["label"] if active_hours else "Belum cukup data"
+
+    return {
+        "bot_id": bot_id,
+        "timezone": "WIB (UTC+7)",
+        "golden_hours": golden_hours,
+        "danger_hours": danger_hours,
+        "best_hour": best_hour,
+        "hourly_data": list(hourly.values())
+    }
+
+def get_current_hourly_context(bot_id="bot7", tz_offset=7):
+    """
+    Mengambil ringkasan tren pada jam saat ini untuk di-inject ke prompt AI.
+    """
+    from datetime import datetime, timezone
+    now_utc = datetime.now(timezone.utc)
+    current_hour_wib = (now_utc.hour + tz_offset) % 24
+    
+    analytics = get_hourly_analytics(bot_id=bot_id, tz_offset=tz_offset)
+    hr_data = analytics["hourly_data"][current_hour_wib]
+    
+    if hr_data["trades"] == 0:
+        return f"Jam {current_hour_wib:02d}:00 WIB | Belum ada riwayat trade pada jam ini. Mode eksplorasi hati-hati."
+        
+    trend_tag = hr_data["trend"]
+    advice = "Tren historis jam ini cenderung BULLISH/NAIK. Boleh lebih optimis mengejar TP." if hr_data["is_golden"] else (
+             "Tren historis jam ini RAWAN DUMP/VOLATILITAS TINGGI. Wajib SL ketat & utamakan TP kilat." if hr_data["is_danger"] else
+             "Tren historis jam ini NETRAL/KONSOLIDASI. Fokus pada pantulan oversold yang jelas."
+    )
+    return (
+        f"Jam Saat Ini: {current_hour_wib:02d}:00 WIB ({hr_data['trades']} trades historis, "
+        f"Win Rate: {hr_data['win_rate']}%, Net: ${hr_data['profit']:+.2f}). "
+        f"Status: {trend_tag}. {advice}"
+    )

@@ -4,7 +4,7 @@ import time
 import subprocess
 from flask import Flask, jsonify, request, render_template, send_file, redirect, make_response
 from config import Config
-from db_manager import get_wallet, set_wallet, get_positions, save_positions, get_trades, get_recent_activities, reset_db, get_stats
+from db_manager import get_wallet, set_wallet, get_positions, save_positions, get_trades, get_recent_activities, reset_db, get_stats, get_hourly_analytics
 from bot_logger import log_event, get_recent_logs
 from ai_engine import STRATEGIES
 from scanner import get_token_details
@@ -546,9 +546,17 @@ def api_analytics():
         "sl_count": sl_count,
         "equity_curve": equity_curve,
         "token_stats": token_stats,
+        "hourly_analytics": get_hourly_analytics(bot_id=bot_id),
         "recent_trades": list(reversed(history))[:10],
         "recent_trades_all": all_history
     })
+
+
+@app.route("/api/analytics/hourly")
+@login_required
+def api_hourly_analytics():
+    bot_id = request.args.get("bot", "bot7").lower()
+    return jsonify(get_hourly_analytics(bot_id=bot_id))
 
 
 @app.route("/api/export/transactions")

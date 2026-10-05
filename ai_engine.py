@@ -144,9 +144,10 @@ def analyze_token(token_info, bot_id="bot1"):
 {stoch_line}"""
 
     learning_str = ""
+    hourly_context_str = ""
     if bot_id == "bot7":
         try:
-            from db_manager import get_trades, get_stats
+            from db_manager import get_trades, get_stats, get_current_hourly_context
             stats = get_stats(bot_id="bot7")
             trades = get_trades(5, bot_id="bot7")
             if stats.get("total_trades", 0) > 0:
@@ -162,6 +163,7 @@ RIWAYAT BELAJAR BOT7 (Self-Reflection):
 {recent_lines}
 (Gunakan evaluasi ini untuk menyesuaikan toleransi risiko & ukuran posisi Anda.)
 """
+            hourly_context_str = f"\nANALISIS WAKTU & TREN JAM (WIB):\n- {get_current_hourly_context(bot_id='bot7')}\n"
         except Exception:
             pass
 
@@ -170,6 +172,7 @@ RIWAYAT BELAJAR BOT7 (Self-Reflection):
 Anda adalah bot sniper memecoin profesional Solana dengan persona strategi: **{strat['name']}**.
 Deskripsi Strategi: {strat['desc']}
 {learning_str}
+{hourly_context_str}
 Analisis data token berikut:
 Nama: {token_info.get('name')} ({token_info.get('symbol')})
 Harga USD: {token_info.get('price_usd')}

@@ -917,6 +917,41 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Rentang Jam Tren Naik & Analisis Waktu (WIB) -->
+                <div class="card-container" style="margin-top: 24px;">
+                    <div class="card-header-bar" style="flex-wrap: wrap; gap: 12px;">
+                        <div>
+                            <h3 class="card-title">🕒 Analisis Rentang Jam & Tren Pasar (Waktu Indonesia Barat - WIB)</h3>
+                            <p class="card-subtitle">Mencatat performa per jam untuk mengetahui kapan pasar cenderung tren naik (Golden Hours) vs rawan dump</p>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                            <span class="badge-pill-soft badge-emerald" id="hourly-golden-badge">🏆 Golden Hours: Memuat...</span>
+                            <span class="badge-pill-soft badge-rose" id="hourly-danger-badge">⚠️ Rawan Dump: Memuat...</span>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Rentang Jam (WIB)</th>
+                                    <th>Total Trades</th>
+                                    <th>Menang (Win)</th>
+                                    <th>Kalah (Loss)</th>
+                                    <th>Win Rate</th>
+                                    <th>Net PnL ($)</th>
+                                    <th>Status Tren Pasar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hourly-analysis-body">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: var(--text-muted);">Memuat data analisis rentang jam...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -926,6 +961,21 @@
         let rawData = null;
         let activeTimeframe = 'all';
         let equityChart = null;
+        let currentBot = localStorage.getItem('hermes_active_bot') || 'bot1';
+
+        const botSelectorEl = document.getElementById('bot-selector');
+        if (botSelectorEl) {
+            botSelectorEl.value = currentBot;
+        }
+
+        function changeBot() {
+            const el = document.getElementById('bot-selector');
+            if (el) {
+                currentBot = el.value;
+                localStorage.setItem('hermes_active_bot', currentBot);
+                loadAnalytics();
+            }
+        }
 
         function formatUSD(val) {
             return "$" + (val || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -937,7 +987,7 @@
 
         async function loadAnalytics() {
             try {
-                const res = await fetch('/api/analytics');
+                const res = await fetch(`/api/analytics?bot=${currentBot}`);
                 rawData = await res.json();
                 rawTrades = rawData.recent_trades_all || rawData.recent_trades || [];
                 
@@ -948,6 +998,11 @@
                     if (stData.history && stData.history.length > 0) {
                         rawTrades = stData.history;
                     }
+                }
+
+                // Render Hourly Analytics
+                if (rawData.hourly_analytics) {
+                    renderHourlyTable(rawData.hourly_analytics);
                 }
 
                 // Calculate counts for each filter pill
@@ -1375,6 +1430,68 @@
                 `;
             });
             container.innerHTML = html;
+        }
+
+        function renderHourlyTable(hourlyData) {
+            const tbody = document.getElementById('hourly-analysis-body');
+            const goldenBadge = document.getElementById('hourly-golden-badge');
+            const dangerBadge = document.getElementById('hourly-danger-badge');
+
+            if (!hourlyData || !hourlyData.hourly_data) {
+                if (tbody) tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Data rentang jam belum tersedia</td></tr>';
+                return;
+            }
+
+            const goldenList = hourlyData.golden_hours || [];
+            const dangerList = hourlyData.danger_hours || [];
+
+            if (goldenBadge) {
+                goldenBadge.textContent = goldenList.length > 0 
+                    ? `🏆 Golden Hours (${goldenList.join(', ')})`
+                    : '🏆 Golden Hours: Belum terdeteksi';
+            }
+
+            if (dangerBadge) {
+                dangerBadge.textContent = dangerList.length > 0
+                    ? `⚠️ Rawan Dump (${dangerList.slice(0, 3).join(', ')})`
+                    : '⚠️ Rawan Dump: Aman';
+            }
+
+            let html = '';
+            // Only show hours with trades, or all 24 hours
+            const activeHours = hourlyData.hourly_data.filter(h => h.trades > 0);
+            const listToRender = activeHours.length > 0 ? activeHours : hourlyData.hourly_data;
+
+            listToRender.forEach(h => {
+                const isProf = h.profit > 0;
+                const isLoss = h.profit < 0;
+                const pnlColor = isProf ? 'color-emerald' : (isLoss ? 'color-rose' : '');
+                
+                let trendBadge = '';
+                if (h.trend === 'TREN NAIK') {
+                    trendBadge = '<span class="badge-pill-soft badge-emerald" style="font-weight: 700;">🟢 TREN NAIK (BULLISH)</span>';
+                } else if (h.trend === 'RAWAN DUMP') {
+                    trendBadge = '<span class="badge-pill-soft badge-rose" style="font-weight: 700;">🔴 RAWAN DUMP (BEARISH)</span>';
+                } else if (h.trades > 0) {
+                    trendBadge = '<span class="badge-pill-soft" style="background: #fef3c7; color: #b45309; font-weight: 700;">🟡 NETRAL / KONSOLIDASI</span>';
+                } else {
+                    trendBadge = '<span style="color: var(--text-muted); font-size: 12px;">Belum Ada Eksekusi</span>';
+                }
+
+                html += `
+                    <tr>
+                        <td style="font-weight: 700; color: #0f172a;">${h.label}</td>
+                        <td>${h.trades} Trades</td>
+                        <td style="color: var(--emerald); font-weight: 600;">${h.wins}</td>
+                        <td style="color: var(--rose); font-weight: 600;">${h.losses}</td>
+                        <td style="font-weight: 600;">${h.win_rate.toFixed(1)}%</td>
+                        <td class="${pnlColor}" style="font-weight: 700;">${isProf ? '+' : ''}${formatUSD(h.profit)}</td>
+                        <td>${trendBadge}</td>
+                    </tr>
+                `;
+            });
+
+            if (tbody) tbody.innerHTML = html;
         }
 
         loadAnalytics();
