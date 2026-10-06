@@ -1015,5 +1015,31 @@
     "reason": "STOP_LOSS",
     "opened_at": 1791229830.3848076,
     "closed_at": 1791230045.3765008
+  },
+  {
+    "symbol": "CWC",
+    "address": "8XQy9ebndQUCzLv5MGP7TbJF2vvgrZcbBfSqgQDypump",
+    "buy_price": 5.662e-05,
+    "sell_price": 5.224e-05,
+    "cost_usd": 10.0,
+    "proceeds": 9.226421759095727,
+    "profit_usd": -0.7735782409042731,
+    "pnl_pct": -7.735782409042733,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791237726.2767003,
+    "closed_at": 1791237772.111272
+  },
+  {
+    "symbol": "RAM",
+    "address": "3JaBGAQ9hndQwdUyGkD1i1DCtiCTEBoPVY7tuWdMariK",
+    "buy_price": 0.0001397,
+    "sell_price": 0.0001296,
+    "cost_usd": 10.0,
+    "proceeds": 9.277022190408017,
+    "profit_usd": -0.722977809591983,
+    "pnl_pct": -7.22977809591983,
+    "reason": "STOP_LOSS",
+    "opened_at": 1791244249.4188375,
+    "closed_at": 1791244282.3116553
   }
 ]
