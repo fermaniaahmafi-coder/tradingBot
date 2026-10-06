@@ -13,8 +13,8 @@
   "solOS": 5,
   "lemonbob": 3,
   "REMORA": {
-    "losses": 3,
-    "updated_at": 1791221386.984037
+    "losses": 5,
+    "updated_at": 1791245484.0278568
   },
   "VP": {
     "losses": 5,
@@ -32,10 +32,6 @@
     "losses": 2,
     "updated_at": 1791222522.4275496
   },
-  "TEAMCAT": {
-    "losses": 3,
-    "updated_at": 1791222941.957373
-  },
   "belly": {
     "losses": 4,
     "updated_at": 1791224024.2762136
@@ -47,10 +43,6 @@
   "TOKPAD": {
     "losses": 3,
     "updated_at": 1791222938.1009407
-  },
-  "SOL": {
-    "losses": 4,
-    "updated_at": 1791223754.177894
   },
   "scrollit": {
     "losses": 1,
@@ -240,10 +232,6 @@
     "losses": 7,
     "updated_at": 1791233819.0964186
   },
-  "USEFUL": {
-    "losses": 4,
-    "updated_at": 1791233688.9780557
-  },
   "BLU": {
     "losses": 4,
     "updated_at": 1791234133.0982301
@@ -321,12 +309,12 @@
     "updated_at": 1791240099.7181711
   },
   "SLIME": {
-    "losses": 5,
-    "updated_at": 1791240223.5600455
+    "losses": 6,
+    "updated_at": 1791245481.7967923
   },
   "C@T": {
-    "losses": 4,
-    "updated_at": 1791240933.5315068
+    "losses": 5,
+    "updated_at": 1791245481.7947705
   },
   "FEEBITS": {
     "losses": 2,
@@ -349,8 +337,8 @@
     "updated_at": 1791241597.857975
   },
   "SATOSHI": {
-    "losses": 3,
-    "updated_at": 1791241877.8374267
+    "losses": 4,
+    "updated_at": 1791245481.7990975
   },
   "ASS": {
     "losses": 6,
@@ -365,8 +353,8 @@
     "updated_at": 1791242918.8947635
   },
   "INK": {
-    "losses": 6,
-    "updated_at": 1791242918.891122
+    "losses": 7,
+    "updated_at": 1791245481.801331
   },
   "BACTERIA": {
     "losses": 3,
@@ -377,11 +365,35 @@
     "updated_at": 1791244081.2536874
   },
   "NEURALS": {
-    "losses": 2,
-    "updated_at": 1791245005.3348358
+    "losses": 3,
+    "updated_at": 1791245129.5931168
   },
   "DRAFTED": {
+    "losses": 3,
+    "updated_at": 1791245316.4762082
+  },
+  "POMCOIN": {
     "losses": 1,
-    "updated_at": 1791245005.335924
+    "updated_at": 1791245462.807971
+  },
+  "RAM": {
+    "losses": 3,
+    "updated_at": 1791246341.8502045
+  },
+  "AGENCYSOL": {
+    "losses": 1,
+    "updated_at": 1791245481.7987988
+  },
+  "STOCKED": {
+    "losses": 1,
+    "updated_at": 1791245484.0254734
+  },
+  "CROS": {
+    "losses": 1,
+    "updated_at": 1791245484.029134
+  },
+  "Icon": {
+    "losses": 1,
+    "updated_at": 1791246341.8536906
   }
 }

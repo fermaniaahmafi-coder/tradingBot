@@ -1,44 +1,4 @@
 {
-  "cash": 81.08,
-  "positions": [
-    {
-      "address": "2SXnYy9TewvZ1FjJf96aE6xbYB7fiqMMXoRzznNtpump",
-      "name": "SOLgiving",
-      "symbol": "SOLgiving",
-      "buy_price": 8.686e-05,
-      "tokens_count": 69076.6751093714,
-      "cost_usd": 6.0,
-      "current_price": 9.103e-05,
-      "current_val": 6.288049735206078,
-      "target_tp_price": 9.380880000000001e-05,
-      "target_sl_price": 8.2517e-05,
-      "opened_at": 1791241778.8523924
-    },
-    {
-      "address": "2xdpA4thtTXKiy2vckuHbnmw4beMVijjrxHYHPFMpump",
-      "name": "Icon",
-      "symbol": "Icon",
-      "buy_price": 3.723e-06,
-      "tokens_count": 1611603.5455278,
-      "cost_usd": 6.0,
-      "current_price": 3.719e-06,
-      "current_val": 5.993553585817888,
-      "target_tp_price": 4.020840000000001e-06,
-      "target_sl_price": 3.53685e-06,
-      "opened_at": 1791244092.1191223
-    },
-    {
-      "address": "GDeKVeV3cs6UCTRDmHqZHugBmUbLLRW7hi9P91XXeLNT",
-      "name": "USEFUL COIN",
-      "symbol": "USEFUL",
-      "buy_price": 9.799e-05,
-      "tokens_count": 71435.86080212267,
-      "cost_usd": 7.0,
-      "current_price": 9.917e-05,
-      "current_val": 7.084294315746505,
-      "target_tp_price": 0.0001058292,
-      "target_sl_price": 9.30905e-05,
-      "opened_at": 1791244205.2532206
-    }
-  ]
+  "cash": 101.02,
+  "positions": []
 }

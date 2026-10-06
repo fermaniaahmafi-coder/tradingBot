@@ -190,7 +190,8 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
                 log_event("SCAN", f"Memindai token ({slots_info})", bot_id=bot_id)
                 
                 # Fetch tokens (scanner uses shared cache across all bots)
-                tokens = get_latest_tokens(limit=10)
+                scan_limit = 16 if bot_id == "bot7" else 10
+                tokens = get_latest_tokens(limit=scan_limit)
                 for token in tokens:
                     if not portfolio.can_buy():
                         break
@@ -243,7 +244,8 @@ def run_bot(bot_id="bot1", iterations=None, delay=15):
             if iterations and count >= iterations:
                 break
                 
-            time.sleep(delay)
+            loop_delay = 8 if bot_id == "bot7" else delay
+            time.sleep(loop_delay)
             
         except KeyboardInterrupt:
             print(f"\n[{bot_id.upper()}] Bot dihentikan oleh user.")

@@ -1,31 +1,35 @@
 {
-  "cash": 5.570022229338246,
+  "cash": 6.3,
   "positions": [
     {
-      "address": "CRoSvUCQynLTs8xvwxHpYxcLJMkva8DDNvcr9TLW3w7m",
-      "name": "Chinese Reserved Oil Supply",
-      "symbol": "CROS",
-      "buy_price": 0.003001,
-      "tokens_count": 3332.2225924691766,
+      "address": "2HraspnyKvYhnHP6JfkXTMsfEmntwyEcqB1LQuZrpump",
+      "name": "AGENIE",
+      "symbol": "AGENIE",
+      "buy_price": 3.922077165473588e-05,
+      "tokens_count": 254202.03579284067,
       "cost_usd": 10.0,
-      "current_price": 0.003014,
-      "current_val": 10.043318893702098,
-      "target_tp_price": 0.0033611200000000004,
-      "target_sl_price": 0.0027609200000000005,
-      "opened_at": 1791209055.5783708
+      "current_price": 3.922077165473588e-05,
+      "current_val": 9.97,
+      "target_tp_price": 4.392726425330419e-05,
+      "target_sl_price": 3.608310992235701e-05,
+      "opened_at": 1791245492.9640632
     },
     {
-      "address": "WoSEAj2AePRdEV4DhDwGeDCDZuEjigZnc5hDBNGYYrT",
-      "name": "World Oil Supply Exchange",
-      "symbol": "WOSE",
-      "buy_price": 0.0035,
-      "tokens_count": 2857.142857142857,
+      "address": "3JaBGAQ9hndQwdUyGkD1i1DCtiCTEBoPVY7tuWdMariK",
+      "name": "Ram the Hash Smashers",
+      "symbol": "RAM",
+      "buy_price": 0.0003107520383576541,
+      "raw_buy_price": 0.0003101,
+      "tokens_count": 32083.458093121888,
       "cost_usd": 10.0,
-      "current_price": 0.003547,
-      "current_val": 10.134285714285713,
-      "target_tp_price": 0.003920000000000001,
-      "target_sl_price": 0.00322,
-      "opened_at": 1791217530.1373563
+      "buy_fee_usd": 0.07,
+      "buy_slippage_pct": 0.21026712597681438,
+      "liquidity_usd": 48699.12,
+      "current_price": 0.0003107520383576541,
+      "current_val": 9.97,
+      "target_tp_price": 0.00034804228296057263,
+      "target_sl_price": 0.0002858918752890418,
+      "opened_at": 1791245514.1954675
     }
   ]
 }

@@ -42,18 +42,21 @@ class Portfolio:
     def can_buy(self, amount=None):
         self.cash = get_wallet(self.bot_id)
         self.positions = get_positions(self.bot_id)
-        min_amount = amount if amount is not None else (5.0 if self.bot_id == "bot7" else Config.POSITION_SIZE)
+        min_amount = amount if amount is not None else (3.0 if self.bot_id == "bot7" else Config.POSITION_SIZE)
+        max_positions = 18 if self.bot_id == "bot7" else Config.MAX_POSITIONS
         gas_fee = 0.04
         return (
             self.cash >= (min_amount + gas_fee) and 
-            len(self.positions) < Config.MAX_POSITIONS
+            len(self.positions) < max_positions
         )
 
     def buy(self, token, tp_multiplier, sl_multiplier, position_size=None):
         if position_size is not None and isinstance(position_size, (int, float)):
-            amount_usd = round(max(5.0, min(float(position_size), 25.0, self.cash)), 2)
+            min_size = 3.0 if self.bot_id == "bot7" else 5.0
+            max_size = 8.0 if self.bot_id == "bot7" else 25.0
+            amount_usd = round(max(min_size, min(float(position_size), max_size, self.cash)), 2)
         else:
-            amount_usd = Config.POSITION_SIZE
+            amount_usd = 4.5 if self.bot_id == "bot7" else Config.POSITION_SIZE
 
         gas_fee_buy = 0.04  # Simulasi Solana base fee + priority tip
         if self.cash < (amount_usd + gas_fee_buy):
@@ -132,17 +135,16 @@ class Portfolio:
             opened_at = pos.get("opened_at", now)
             holding_mins = (now - opened_at) / 60.0
 
-            # 1. Take Profit Tercapai
+            # 4. Stagnation / Time-Decay Timeout Exit (Koin tertahan > 20 mnt tanpa volatilitas atau > 35 mnt)
+            timeout_limit = 20.0 if self.bot_id == "bot7" else 40.0
+            max_hold_limit = 35.0 if self.bot_id == "bot7" else 60.0
             if curr_price >= pos["target_tp_price"]:
                 self.sell(pos, curr_price, "TAKE_PROFIT", pnl_pct)
-            # 2. Stop Loss Terpicu
             elif curr_price <= pos["target_sl_price"]:
                 self.sell(pos, curr_price, "STOP_LOSS", pnl_pct)
-            # 3. Flash Dump / Liquidity Rug Defense (jatuh > 85% dari buy price)
             elif curr_price <= pos["buy_price"] * 0.15:
                 self.sell(pos, curr_price, "RUG_FLASH_CRASH", pnl_pct)
-            # 4. Stagnation / Time-Decay Timeout Exit (Koin tertahan > 40 mnt tanpa volatilitas atau > 60 mnt)
-            elif holding_mins >= 40.0 and (abs(pnl_pct) < 3.0 or holding_mins >= 60.0):
+            elif holding_mins >= timeout_limit and (abs(pnl_pct) < 2.5 or holding_mins >= max_hold_limit):
                 self.sell(pos, curr_price, "STAGNATION_TIMEOUT", pnl_pct)
             else:
                 active.append(pos)

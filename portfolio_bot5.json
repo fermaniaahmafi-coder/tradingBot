@@ -1,57 +1,22 @@
 {
-  "cash": 8.992701028331343,
+  "cash": 33.18,
   "positions": [
     {
-      "address": "CB3uw1SwQeCy8ixy2UAF7b2sFuFUibQAei7LoXNCVMWY",
-      "name": "Gangster George",
-      "symbol": "GG",
-      "buy_price": 7.184e-05,
-      "tokens_count": 139198.21826280624,
+      "address": "HMBnqgXcJoCknndyciyntfXoGJo76fWa93FmRzX2pump",
+      "name": "Planet Of Memes ",
+      "symbol": "POMCOIN",
+      "buy_price": 2.0008942333439404e-05,
+      "raw_buy_price": 1.996e-05,
+      "tokens_count": 498277.2119512738,
       "cost_usd": 10.0,
-      "current_price": 6.858e-05,
-      "current_val": 9.546213808463252,
-      "target_tp_price": 9.3392e-05,
-      "target_sl_price": 6.4656e-05,
-      "opened_at": 1791207298.963359
-    },
-    {
-      "address": "CRoSvUCQynLTs8xvwxHpYxcLJMkva8DDNvcr9TLW3w7m",
-      "name": "Chinese Reserved Oil Supply",
-      "symbol": "CROS",
-      "buy_price": 0.003006,
-      "tokens_count": 3326.67997338656,
-      "cost_usd": 10.0,
-      "current_price": 0.003014,
-      "current_val": 10.026613439787093,
-      "target_tp_price": 0.0039078,
-      "target_sl_price": 0.0027054,
-      "opened_at": 1791208995.341525
-    },
-    {
-      "address": "2Jrkp1PWkz33BAy5s5MUwqUs5odMgYj1fZYaxC8RygpG",
-      "name": "SATOSHI",
-      "symbol": "SATOSHI",
-      "buy_price": 2.592e-05,
-      "tokens_count": 385802.4691358025,
-      "cost_usd": 10.0,
-      "current_price": 2.632e-05,
-      "current_val": 10.154320987654321,
-      "target_tp_price": 3.3696e-05,
-      "target_sl_price": 2.3328e-05,
-      "opened_at": 1791241744.7226882
-    },
-    {
-      "address": "7E17FfBVYfQLAdQiSMK3ESNwkiYGdZPTVvB5b5oypump",
-      "name": "LUSCA",
-      "symbol": "INK",
-      "buy_price": 7.478e-05,
-      "tokens_count": 133725.5950788981,
-      "cost_usd": 10.0,
-      "current_price": 8.431e-05,
-      "current_val": 11.274404921101898,
-      "target_tp_price": 0.00010095300000000001,
-      "target_sl_price": 6.7302e-05,
-      "opened_at": 1791242037.1684575
+      "buy_fee_usd": 0.07,
+      "buy_slippage_pct": 0.24520207133971708,
+      "liquidity_usd": 11061.44,
+      "current_price": 2.0008942333439404e-05,
+      "current_val": 9.97,
+      "target_tp_price": 2.6011625033471227e-05,
+      "target_sl_price": 1.8008048100095465e-05,
+      "opened_at": 1791245510.3179433
     }
   ]
 }

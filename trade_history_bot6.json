@@ -11,7 +11,9 @@
     "pnl_pct": -12.638230647709308,
     "reason": "STOP_LOSS",
     "opened_at": 1791217667.8438268,
-    "closed_at": 1791217721.6824064
+    "closed_at": 1791217721.6824064,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 125,
@@ -25,7 +27,9 @@
     "pnl_pct": 18.798484575139813,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791217691.57498,
-    "closed_at": 1791217805.6493773
+    "closed_at": 1791217805.6493773,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 126,
@@ -39,7 +43,9 @@
     "pnl_pct": 10.578661844484616,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791217730.326644,
-    "closed_at": 1791217882.8003964
+    "closed_at": 1791217882.8003964,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 127,
@@ -53,7 +59,9 @@
     "pnl_pct": -15.070588235294125,
     "reason": "STOP_LOSS",
     "opened_at": 1791217886.7996404,
-    "closed_at": 1791217908.626664
+    "closed_at": 1791217908.626664,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 128,
@@ -67,7 +75,9 @@
     "pnl_pct": 9.235936188077243,
     "reason": "TAKE_PROFIT",
     "opened_at": 1791217890.6713653,
-    "closed_at": 1791217965.3956673
+    "closed_at": 1791217965.3956673,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 129,
@@ -81,7 +91,9 @@
     "pnl_pct": -48.99159663865546,
     "reason": "STOP_LOSS",
     "opened_at": 1791217950.3504052,
-    "closed_at": 1791217983.5764925
+    "closed_at": 1791217983.5764925,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 130,
@@ -95,7 +107,9 @@
     "pnl_pct": -32.99719887955182,
     "reason": "STOP_LOSS",
     "opened_at": 1791217986.3673232,
-    "closed_at": 1791218001.4026663
+    "closed_at": 1791218001.4026663,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 131,
@@ -109,7 +123,9 @@
     "pnl_pct": -41.84782608695652,
     "reason": "STOP_LOSS",
     "opened_at": 1791218004.7551916,
-    "closed_at": 1791218037.4039254
+    "closed_at": 1791218037.4039254,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 132,
@@ -123,7 +139,9 @@
     "pnl_pct": -48.54255319148936,
     "reason": "STOP_LOSS",
     "opened_at": 1791218081.186476,
-    "closed_at": 1791218126.294029
+    "closed_at": 1791218126.294029,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   },
   {
     "id": 133,
@@ -137,6 +155,8 @@
     "pnl_pct": -45.59055118110236,
     "reason": "STOP_LOSS",
     "opened_at": 1791218130.604636,
-    "closed_at": 1791218145.646942
+    "closed_at": 1791218145.646942,
+    "fee_usd": 0.0,
+    "slippage_pct": 0.0
   }
 ]
