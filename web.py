@@ -126,7 +126,7 @@ def load_data_with_fallback(bot_id="bot1", mode=None):
         if os.path.exists(db_path):
             db_cash = get_wallet(bot_id)
             db_positions = get_positions(bot_id)
-            db_history = get_trades(500, bot_id)
+            db_history = get_trades(None, bot_id)
             db_logs = get_recent_activities(40, bot_id)
             if db_history or db_positions or db_cash > 0:
                 for idx, t in enumerate(db_history, 1):
@@ -320,15 +320,17 @@ def api_settings_trading():
 @app.route("/api/bots")
 @login_required
 def api_bots():
-    """List summary for all 5 bots"""
+    """List summary for all bots"""
     bots = []
     for bot_id, strat in STRATEGIES.items():
         cash, positions, history, _ = load_data_with_fallback(bot_id)
         coin_val = sum([p.get("current_val", 0) for p in positions])
         total_portfolio = cash + coin_val
-        wins = [h for h in history if (h.get("profit_usd") or 0) > 0]
-        win_rate = (len(wins) / len(history) * 100) if history else 0.0
-        total_profit = sum([h.get("profit_usd", 0) for h in history]) + sum([p.get("pnl_usd", p.get("profit_usd", 0)) for p in positions])
+        stats = get_stats(bot_id)
+        total_trades = stats.get("total_trades", len(history))
+        win_count = stats.get("win_count", len([h for h in history if (h.get("profit_usd") or 0) > 0]))
+        win_rate = (win_count / total_trades * 100) if total_trades else 0.0
+        total_profit = total_portfolio - Config.INITIAL_BALANCE
         net_roi = (total_profit / Config.INITIAL_BALANCE * 100)
         
         # Check service status
@@ -349,7 +351,7 @@ def api_bots():
             "total_profit": round(total_profit, 2),
             "net_roi": round(net_roi, 2),
             "win_rate": round(win_rate, 1),
-            "total_trades": len(history),
+            "total_trades": total_trades,
             "open_positions": len(positions)
         })
     return jsonify({"bots": bots})
@@ -382,14 +384,14 @@ def api_status():
 
     bot_active = (bot_status == "running")
 
-    wins = [h for h in history if (h.get("profit_usd") or 0) > 0]
-    losses = [h for h in history if (h.get("profit_usd") or 0) <= 0]
-    win_rate = (len(wins) / len(history) * 100) if history else 0.0
-    realised_pnl = sum([h.get("profit_usd", 0) for h in history])
-    unrealised_pnl = sum([p.get("pnl_usd", p.get("profit_usd", 0)) for p in positions])
-    total_profit = realised_pnl + unrealised_pnl
+    stats = get_stats(bot_id)
+    total_trades_count = stats.get("total_trades", len(history))
+    wins_count = stats.get("win_count", len([h for h in history if (h.get("profit_usd") or 0) > 0]))
+    losses_count = stats.get("loss_count", len([h for h in history if (h.get("profit_usd") or 0) <= 0]))
+    win_rate = (wins_count / total_trades_count * 100) if total_trades_count > 0 else 0.0
 
     init_bal = Config.INITIAL_BALANCE
+    total_profit = total_portfolio - init_bal
     net_roi = (total_profit / init_bal * 100) if init_bal > 0 else 0.0
 
     return jsonify({
@@ -405,8 +407,9 @@ def api_status():
         "total_profit": round(total_profit, 2),
         "net_roi": round(net_roi, 2),
         "win_rate": round(win_rate, 1),
-        "wins_count": len(wins),
-        "losses_count": len(losses),
+        "wins_count": wins_count,
+        "losses_count": losses_count,
+        "total_trades": total_trades_count,
         "positions": positions,
         "history": history,
         "logs": logs,

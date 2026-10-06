@@ -1142,7 +1142,8 @@
 
             // Card 3: Nilai di Koin
             document.getElementById('kpi-coin-val').textContent = formatUSD(coinVal);
-            document.getElementById('kpi-coin-sub').textContent = `${positions.length} berjalan • ${history.length} selesai`;
+            const totalDone = data.total_trades !== undefined ? data.total_trades : history.length;
+            document.getElementById('kpi-coin-sub').textContent = `${positions.length} berjalan • ${totalDone} selesai`;
             document.getElementById('kpi-pos-badge').textContent = `${positions.length} Berjalan`;
 
             // Card 4: Total Profit / Win Rate

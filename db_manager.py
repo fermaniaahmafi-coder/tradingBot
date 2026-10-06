@@ -88,9 +88,10 @@ def add_trade(record, bot_id="bot1"):
         ))
         conn.commit()
 
-def get_trades(limit=500, bot_id="bot1"):
+def get_trades(limit=None, bot_id="bot1"):
     with get_conn(bot_id) as conn:
-        rows = conn.execute(f"SELECT * FROM trades ORDER BY id DESC LIMIT {limit}").fetchall()
+        limit_sql = f" LIMIT {int(limit)}" if limit else ""
+        rows = conn.execute(f"SELECT * FROM trades ORDER BY id DESC{limit_sql}").fetchall()
         res = [dict(r) for r in rows]
         res.reverse()
         return res
