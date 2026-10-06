@@ -1,4 +1,31 @@
 {
-  "cash": 107.95859222482089,
-  "positions": []
+  "cash": 5.570022229338246,
+  "positions": [
+    {
+      "address": "CRoSvUCQynLTs8xvwxHpYxcLJMkva8DDNvcr9TLW3w7m",
+      "name": "Chinese Reserved Oil Supply",
+      "symbol": "CROS",
+      "buy_price": 0.003001,
+      "tokens_count": 3332.2225924691766,
+      "cost_usd": 10.0,
+      "current_price": 0.003014,
+      "current_val": 10.043318893702098,
+      "target_tp_price": 0.0033611200000000004,
+      "target_sl_price": 0.0027609200000000005,
+      "opened_at": 1791209055.5783708
+    },
+    {
+      "address": "WoSEAj2AePRdEV4DhDwGeDCDZuEjigZnc5hDBNGYYrT",
+      "name": "World Oil Supply Exchange",
+      "symbol": "WOSE",
+      "buy_price": 0.0035,
+      "tokens_count": 2857.142857142857,
+      "cost_usd": 10.0,
+      "current_price": 0.003547,
+      "current_val": 10.134285714285713,
+      "target_tp_price": 0.003920000000000001,
+      "target_sl_price": 0.00322,
+      "opened_at": 1791217530.1373563
+    }
+  ]
 }

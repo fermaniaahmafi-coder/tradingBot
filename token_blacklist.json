@@ -11,5 +11,377 @@
   "LLM": 5,
   "RELAY": 5,
   "solOS": 5,
-  "lemonbob": 3
+  "lemonbob": 3,
+  "REMORA": {
+    "losses": 3,
+    "updated_at": 1791221386.984037
+  },
+  "VP": {
+    "losses": 5,
+    "updated_at": 1791222295.6741986
+  },
+  "ELEVEN": {
+    "losses": 4,
+    "updated_at": 1791222348.3963246
+  },
+  "launchpad": {
+    "losses": 3,
+    "updated_at": 1791222348.3968937
+  },
+  "PLANT": {
+    "losses": 2,
+    "updated_at": 1791222522.4275496
+  },
+  "TEAMCAT": {
+    "losses": 3,
+    "updated_at": 1791222941.957373
+  },
+  "belly": {
+    "losses": 4,
+    "updated_at": 1791224024.2762136
+  },
+  "QINU": {
+    "losses": 2,
+    "updated_at": 1791222692.6143267
+  },
+  "TOKPAD": {
+    "losses": 3,
+    "updated_at": 1791222938.1009407
+  },
+  "SOL": {
+    "losses": 4,
+    "updated_at": 1791223754.177894
+  },
+  "scrollit": {
+    "losses": 1,
+    "updated_at": 1791223704.6467733
+  },
+  "FLRN": {
+    "losses": 3,
+    "updated_at": 1791224124.6793516
+  },
+  "PillCrew": {
+    "losses": 3,
+    "updated_at": 1791225136.9717133
+  },
+  "HODLUP": {
+    "losses": 5,
+    "updated_at": 1791224654.7019532
+  },
+  "PIL": {
+    "losses": 1,
+    "updated_at": 1791224372.551914
+  },
+  "swordcali": {
+    "losses": 4,
+    "updated_at": 1791224941.8310184
+  },
+  "MOTION": {
+    "losses": 3,
+    "updated_at": 1791224736.3538237
+  },
+  "PATIENTZERO": {
+    "losses": 4,
+    "updated_at": 1791224941.837534
+  },
+  "GrokDog": {
+    "losses": 4,
+    "updated_at": 1791225498.5051267
+  },
+  "(\u2267\u03c9\u2266)": {
+    "losses": 1,
+    "updated_at": 1791225215.0601807
+  },
+  "BATE": {
+    "losses": 3,
+    "updated_at": 1791225498.506139
+  },
+  "SOTTO": {
+    "losses": 3,
+    "updated_at": 1791225588.8233724
+  },
+  "Grokdog": {
+    "losses": 3,
+    "updated_at": 1791225862.5681493
+  },
+  "MCRV": {
+    "losses": 3,
+    "updated_at": 1791226171.0673947
+  },
+  "CR": {
+    "losses": 4,
+    "updated_at": 1791226348.6281748
+  },
+  "AI": {
+    "losses": 1,
+    "updated_at": 1791226243.3196645
+  },
+  "PLAGUE": {
+    "losses": 4,
+    "updated_at": 1791226972.38136
+  },
+  "EYEFO": {
+    "losses": 4,
+    "updated_at": 1791227017.183859
+  },
+  "TANG": {
+    "losses": 4,
+    "updated_at": 1791227329.5069203
+  },
+  "BENOIR": {
+    "losses": 2,
+    "updated_at": 1791227329.5079355
+  },
+  "zDOG": {
+    "losses": 3,
+    "updated_at": 1791228278.7092454
+  },
+  "QLE": {
+    "losses": 3,
+    "updated_at": 1791228385.88835
+  },
+  "STUDS": {
+    "losses": 1,
+    "updated_at": 1791228465.2657664
+  },
+  "WUF": {
+    "losses": 2,
+    "updated_at": 1791229522.3093235
+  },
+  "INCOGNITO": {
+    "losses": 5,
+    "updated_at": 1791228682.882181
+  },
+  "CTA": {
+    "losses": 3,
+    "updated_at": 1791229099.3135226
+  },
+  "MINTRO": {
+    "losses": 8,
+    "updated_at": 1791229099.3116164
+  },
+  "CFTC": {
+    "losses": 5,
+    "updated_at": 1791230981.9422996
+  },
+  "DNE": {
+    "losses": 4,
+    "updated_at": 1791229949.7341769
+  },
+  "Pollen": {
+    "losses": 4,
+    "updated_at": 1791229818.2948315
+  },
+  "SOLBOOK": {
+    "losses": 5,
+    "updated_at": 1791229880.059201
+  },
+  "ASCEND": {
+    "losses": 4,
+    "updated_at": 1791230145.3375373
+  },
+  "FLOAT": {
+    "losses": 4,
+    "updated_at": 1791230145.342004
+  },
+  "\u0427\u0423\u041c\u0410": {
+    "losses": 3,
+    "updated_at": 1791230469.5338917
+  },
+  "Axelle": {
+    "losses": 4,
+    "updated_at": 1791230728.9212153
+  },
+  "CREAM": {
+    "losses": 5,
+    "updated_at": 1791230981.940328
+  },
+  "http": {
+    "losses": 2,
+    "updated_at": 1791230728.923678
+  },
+  "FIX6900": {
+    "losses": 3,
+    "updated_at": 1791230955.5173533
+  },
+  "NOLLA": {
+    "losses": 8,
+    "updated_at": 1791231675.6313918
+  },
+  "sizeinu": {
+    "losses": 6,
+    "updated_at": 1791231499.6593928
+  },
+  "DREADBORN": {
+    "losses": 8,
+    "updated_at": 1791232424.0079324
+  },
+  "PFX": {
+    "losses": 3,
+    "updated_at": 1791235894.82503
+  },
+  "doppl": {
+    "losses": 1,
+    "updated_at": 1791233106.4362953
+  },
+  "SOUVENIR": {
+    "losses": 1,
+    "updated_at": 1791233180.364434
+  },
+  "CLAY": {
+    "losses": 9,
+    "updated_at": 1791233688.975859
+  },
+  "I": {
+    "losses": 7,
+    "updated_at": 1791233593.0546355
+  },
+  "PlagueShield": {
+    "losses": 7,
+    "updated_at": 1791233819.0964186
+  },
+  "USEFUL": {
+    "losses": 4,
+    "updated_at": 1791233688.9780557
+  },
+  "BLU": {
+    "losses": 4,
+    "updated_at": 1791234133.0982301
+  },
+  "BOOT": {
+    "losses": 3,
+    "updated_at": 1791234206.6574805
+  },
+  "Sirius": {
+    "losses": 7,
+    "updated_at": 1791235195.614815
+  },
+  "KEEMSTAR": {
+    "losses": 3,
+    "updated_at": 1791234652.0410318
+  },
+  "notAI": {
+    "losses": 6,
+    "updated_at": 1791235195.6292913
+  },
+  "SATPAD": {
+    "losses": 3,
+    "updated_at": 1791235652.764697
+  },
+  "\u0e02\u0e19\u0e38\u0e19": {
+    "losses": 2,
+    "updated_at": 1791235652.7682433
+  },
+  "BUILT": {
+    "losses": 4,
+    "updated_at": 1791236429.4646952
+  },
+  "AGENCY": {
+    "losses": 7,
+    "updated_at": 1791236867.7807271
+  },
+  "Ark": {
+    "losses": 3,
+    "updated_at": 1791237179.5825477
+  },
+  "BUCKAZOID": {
+    "losses": 4,
+    "updated_at": 1791237936.517696
+  },
+  "CWC": {
+    "losses": 11,
+    "updated_at": 1791238857.7326896
+  },
+  "XBT": {
+    "losses": 3,
+    "updated_at": 1791238010.9942427
+  },
+  "fued": {
+    "losses": 1,
+    "updated_at": 1791239137.2041073
+  },
+  "HOMOInu": {
+    "losses": 3,
+    "updated_at": 1791239187.0161338
+  },
+  "BONDY": {
+    "losses": 1,
+    "updated_at": 1791239420.9924586
+  },
+  "LOCAL": {
+    "losses": 3,
+    "updated_at": 1791239874.166721
+  },
+  "SPROUT": {
+    "losses": 3,
+    "updated_at": 1791239897.7159748
+  },
+  "DOTS": {
+    "losses": 3,
+    "updated_at": 1791240099.7181711
+  },
+  "SLIME": {
+    "losses": 5,
+    "updated_at": 1791240223.5600455
+  },
+  "C@T": {
+    "losses": 4,
+    "updated_at": 1791240933.5315068
+  },
+  "FEEBITS": {
+    "losses": 2,
+    "updated_at": 1791240223.5634491
+  },
+  "SINU": {
+    "losses": 3,
+    "updated_at": 1791241013.3728871
+  },
+  "CLIP": {
+    "losses": 3,
+    "updated_at": 1791241750.5628533
+  },
+  "maxi": {
+    "losses": 4,
+    "updated_at": 1791241794.9121437
+  },
+  "APE": {
+    "losses": 1,
+    "updated_at": 1791241597.857975
+  },
+  "SATOSHI": {
+    "losses": 3,
+    "updated_at": 1791241877.8374267
+  },
+  "ASS": {
+    "losses": 6,
+    "updated_at": 1791242071.2297986
+  },
+  "ANA2LY": {
+    "losses": 6,
+    "updated_at": 1791242252.1777573
+  },
+  "ABU": {
+    "losses": 3,
+    "updated_at": 1791242918.8947635
+  },
+  "INK": {
+    "losses": 6,
+    "updated_at": 1791242918.891122
+  },
+  "BACTERIA": {
+    "losses": 3,
+    "updated_at": 1791243565.230506
+  },
+  "Yajucoin": {
+    "losses": 3,
+    "updated_at": 1791244081.2536874
+  },
+  "NEURALS": {
+    "losses": 2,
+    "updated_at": 1791245005.3348358
+  },
+  "DRAFTED": {
+    "losses": 1,
+    "updated_at": 1791245005.335924
+  }
 }
